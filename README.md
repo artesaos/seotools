@@ -1,2 +1,2 @@
-# seotols
-SeoTols para Laravel
+# SEOTools
+Ferramentas de SEO para Laravel
