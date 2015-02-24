@@ -1,0 +1,24 @@
+{
+  "name": "artesaos/seotools",
+  "description": "SEO Tools for Laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vinicius",
+      "email": "luiz.vinicius73@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "phpspec/phpspec": "2.1.x"
+  },
+  "autoload": {
+    "psr-4": {
+      "Artesaos\\SEOTools\\": "src/SEOTools/"
+    }
+  },
+  "minimum-stability": "dev"
+}
