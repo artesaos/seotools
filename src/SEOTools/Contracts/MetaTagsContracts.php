@@ -6,14 +6,15 @@ interface MetaTagsContracts
     public function __construct(array $defaults = array(), array $webmaster = array());
 
     /**
-     * Generates meta tags
+     * Generates meta tags.
      *
      * @return string
      */
     public function generate();
 
     /**
-     * Sets the title
+     * Set the title.
+     * 
      * @param string $title
      *
      * @return MetaTagsContracts
@@ -21,6 +22,8 @@ interface MetaTagsContracts
     public function setTitle($title);
 
     /**
+     * Set the description.
+     * 
      * @param string $description
      *
      * @return MetaTagsContracts
@@ -29,7 +32,7 @@ interface MetaTagsContracts
 
     /**
      * Sets the list of keywords, you can send an array or string separated with commas
-     * also clears the previously set keywords
+     * also clears the previously set keywords.
      *
      * @param string|array $keywords
      *
@@ -38,7 +41,7 @@ interface MetaTagsContracts
     public function setKeywords($keywords);
 
     /**
-     * Add a keyword
+     * Add a keyword.
      *
      * @param string|array $keyword
      *
@@ -58,14 +61,14 @@ interface MetaTagsContracts
     public function addMeta($meta, $value = null, $name = 'name');
 
     /**
-     * Takes the title formatted for display
+     * Get the title formatted for display.
      *
      * @return string
      */
     public function getTitle();
 
     /**
-     * takes the title that was set
+     * Get the title that was set.
      *
      * @return string
      */
