@@ -5,9 +5,84 @@ use Artesaos\SEOTools\Contracts\MetaTagsContracts;
 class SEOMeta implements MetaTagsContracts
 {
 
+    /**
+	 * The meta title.
+	 *
+	 * @var string
+	 */
+	protected $title;
+	
+	/**
+	 * The meta title session.
+	 *
+	 * @var string
+	 */
+	protected $title_session;
+	
+	/**
+	 * The meta description.
+	 *
+	 * @var string
+	 */
+	protected $description;
+	
+	/**
+	 * The meta keywords.
+	 *
+	 * @var array
+	 */
+	protected $keywords;
+	
+	/**
+	 * extra metatags
+	 *
+	 * @var array
+	 */
+	protected $metatags = [];
+	
+	/**
+	 * The default configurations.
+	 *
+	 * @var array
+	 */
+	protected $defaults = array(
+		'title'       => false,
+		'description' => false,
+		'separator'   => ' | ',
+		'keywords'    => array()
+	);
+	
+	/**
+	 * The webmaster tags values.
+	 * 
+	 * @var array
+	 */
+	protected $webmaster = array(
+		'google'    => null,
+		'bing'      => null,
+		'alexa'     => null,
+		'pinterest' => null,
+		'yandex'    => null
+	);
+	
+	/**
+	 * The webmaster tags.
+	 * 
+	 * @var array
+	 */
+	public $webmasterTags = array(
+		'google'   => "google-site-verification",
+		'bing'     => "msvalidate.01",
+		'alexa'    => "alexaVerifyID",
+		'pintrest' => "p:domain_verify",
+		'yandex'   => "yandex-verification"
+	);
+	
     public function __construct(array $defaults = array(), array $webmaster = array())
     {
-        // TODO: Implement __construct() method.
+        $this->defaults = array_merge($this->defaults, $defaults);
+        
+		$this->webmaster = array_merge($this->webmaster, $webmaster);
     }
 
     /**
@@ -29,7 +104,16 @@ class SEOMeta implements MetaTagsContracts
      */
     public function setTitle($title)
     {
-        // TODO: Implement setTitle() method.
+        // clean title
+        $title = strip_tags($title);
+        
+        // store title session        
+		$this->title_session = $title;
+		
+		// store title
+		$this->title = $this->parseTitle($title);
+		
+		return $this;
     }
 
     /**
@@ -39,7 +123,10 @@ class SEOMeta implements MetaTagsContracts
      */
     public function setDescription($description)
     {
-        // TODO: Implement setDescription() method.
+        // clean and store description
+		$this->description = strip_tags($description);
+		
+		return $this;
     }
 
     /**
@@ -52,7 +139,18 @@ class SEOMeta implements MetaTagsContracts
      */
     public function setKeywords($keywords)
     {
-        // TODO: Implement setKeywords() method.
+        
+        if(!is_array($keywords)):
+            $keywords = explode(', ', $this->keywords);    
+        endif;
+        
+        // clean keywords
+        $keywords = array_map('strip_tags', $keywords);
+        
+        // store keywords
+        $this->keywords = $keywords;
+        
+        return $this;
     }
 
     /**
@@ -64,13 +162,19 @@ class SEOMeta implements MetaTagsContracts
      */
     public function addKeyword($keyword)
     {
-        // TODO: Implement addKeyword() method.
+		if(is_array($keyword)):
+		    $this->keywords = array_merge($keyword, $this->keywords);
+		else:
+		    $this->keywords[] = strip_tags($keyword);  
+		endif;
+		
+		return $this;
     }
 
     /**
      * Add a custom meta tag.
      *
-     * @param string $meta
+     * @param string|array $meta
      * @param string $value
      * @param string $name
      *
@@ -78,7 +182,13 @@ class SEOMeta implements MetaTagsContracts
      */
     public function addMeta($meta, $value = null, $name = 'name')
     {
-        // TODO: Implement addMeta() method.
+        if (is_array($meta)):
+			foreach ($meta as $key => $value):
+				$this->metatags[$key] = array($name, $value);
+			endforeach;
+		else:
+			$this->metatags[$meta] = array($name, $value);
+		endif;
     }
 
     /**
@@ -88,7 +198,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getTitle()
     {
-        // TODO: Implement getTitle() method.
+        return $this->title ? : $this->getDefault('title');
     }
 
     /**
@@ -98,17 +208,17 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getTitleSession()
     {
-        // TODO: Implement getTitleSession() method.
+        return $this->title_session ? : $this->getTitle();
     }
 
     /**
      * Get the Meta keywords.
      *
-     * @return string
+     * @return array
      */
     public function getKeywords()
     {
-        // TODO: Implement getKeywords() method.
+        return $this->keywords;
     }
 
     /**
@@ -118,7 +228,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getDescription()
     {
-        // TODO: Implement getDescription() method.
+        return $this->description ? : $this->getDefault('description');
     }
 
     /**
@@ -142,6 +252,22 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getDefault($default)
     {
-        // TODO: Implement getDefault() method.
+        if (array_key_exists($default, $this->defaults)):
+            throw new \InvalidArgumentException("SEOTools\SEOMeta: default configuration {$default} does not exist.");			
+		endif;
+		
+		return $this->defaults[$default];
+    }
+    
+    /**
+     * Get parsed title.
+     * 
+     * @param string $title
+     * 
+     * @return string
+     */
+    private function parseTitle($title)
+    {
+        return $title . $this->getDefault('separator') . $this->getDefault('title');
     }
 }

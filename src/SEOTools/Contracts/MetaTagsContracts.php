@@ -52,7 +52,7 @@ interface MetaTagsContracts
     /**
      * Add a custom meta tag.
      *
-     * @param string $meta
+     * @param string|array $meta
      * @param string $value
      * @param string $name
      *
@@ -77,7 +77,7 @@ interface MetaTagsContracts
     /**
      * Get the Meta keywords.
      *
-     * @return string
+     * @return array
      */
     public function getKeywords();
 
