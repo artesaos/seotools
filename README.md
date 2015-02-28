@@ -2,6 +2,19 @@
 
 SEOTools is a package for **Laravel 5** that provides helpers for some common SEO techniques.
 
+> Current Build Status 
+
+[![Build Status](https://travis-ci.org/artesaos/seotools.svg)](https://travis-ci.org/artesaos/seotools)
+[![Code Climate](https://codeclimate.com/github/artesaos/seotools/badges/gpa.svg)](https://codeclimate.com/github/artesaos/seotools)
+
+> Statistics
+
+[![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable.svg)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads.svg)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable.svg)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license.svg)](https://packagist.org/packages/artesaos/seotools)
+
+> Tips
+
+<a href="http://zenhub.io" target="_blank"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px" alt="Powered by ZenHub"/></a>
+
 ## Features
 - friendly interface
 - Ease of set titles and meta tags
