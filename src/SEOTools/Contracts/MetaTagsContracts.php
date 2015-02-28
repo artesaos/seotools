@@ -3,7 +3,7 @@
 interface MetaTagsContracts
 {
 
-    public function __construct(array $defaults = array(), array $webmaster = array());
+    public function __construct(array $config = array());
 
     /**
      * Generates meta tags.
@@ -34,7 +34,7 @@ interface MetaTagsContracts
      * Sets the list of keywords, you can send an array or string separated with commas
      * also clears the previously set keywords.
      *
-     * @param string|array $keywords
+     * @param array $keywords
      *
      * @return MetaTagsContracts
      */
@@ -94,15 +94,4 @@ interface MetaTagsContracts
      * @return void
      */
     public function reset();
-
-    /**
-     * Get a default value of configuration.
-     *
-     * @param string $default
-     *
-     * @return mixed
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function getDefault($default);
 }

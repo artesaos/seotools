@@ -1,88 +1,69 @@
 <?php namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\MetaTagsContracts;
+use Illuminate\Config\Repository as Config;
 
 class SEOMeta implements MetaTagsContracts
 {
+    /**
+     * The meta title.
+     *
+     * @var string
+     */
+    protected $title;
 
     /**
-	 * The meta title.
-	 *
-	 * @var string
-	 */
-	protected $title;
-	
-	/**
-	 * The meta title session.
-	 *
-	 * @var string
-	 */
-	protected $title_session;
-	
-	/**
-	 * The meta description.
-	 *
-	 * @var string
-	 */
-	protected $description;
-	
-	/**
-	 * The meta keywords.
-	 *
-	 * @var array
-	 */
-	protected $keywords;
-	
-	/**
-	 * extra metatags
-	 *
-	 * @var array
-	 */
-	protected $metatags = [];
-	
-	/**
-	 * The default configurations.
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
-		'title'       => false,
-		'description' => false,
-		'separator'   => ' | ',
-		'keywords'    => array()
-	);
-	
-	/**
-	 * The webmaster tags values.
-	 * 
-	 * @var array
-	 */
-	protected $webmaster = array(
-		'google'    => null,
-		'bing'      => null,
-		'alexa'     => null,
-		'pinterest' => null,
-		'yandex'    => null
-	);
-	
-	/**
-	 * The webmaster tags.
-	 * 
-	 * @var array
-	 */
-	public $webmasterTags = array(
-		'google'   => "google-site-verification",
-		'bing'     => "msvalidate.01",
-		'alexa'    => "alexaVerifyID",
-		'pintrest' => "p:domain_verify",
-		'yandex'   => "yandex-verification"
-	);
-	
-    public function __construct(array $defaults = array(), array $webmaster = array())
+     * The meta title session.
+     *
+     * @var string
+     */
+    protected $title_session;
+
+    /**
+     * The meta description.
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * The meta keywords.
+     *
+     * @var array
+     */
+    protected $keywords = [];
+
+    /**
+     * extra metatags
+     *
+     * @var array
+     */
+    protected $metatags = [];
+
+    /**
+     * @var Config
+     */
+    protected $config;
+
+    /**
+     * The webmaster tags.
+     *
+     * @var array
+     */
+    public $webmasterTags = array(
+        'google'   => "google-site-verification",
+        'bing'     => "msvalidate.01",
+        'alexa'    => "alexaVerifyID",
+        'pintrest' => "p:domain_verify",
+        'yandex'   => "yandex-verification"
+    );
+
+    /**
+     * @param array $config
+     */
+    public function __construct(array $config = array())
     {
-        $this->defaults = array_merge($this->defaults, $defaults);
-        
-		$this->webmaster = array_merge($this->webmaster, $webmaster);
+        $this->config = new Config($config);
     }
 
     /**
@@ -92,7 +73,29 @@ class SEOMeta implements MetaTagsContracts
      */
     public function generate()
     {
-        // TODO: Implement generate() method.
+        $this->loadWebMasterTags();
+
+        $title       = $this->getTitle();
+        $description = $this->getDescription();
+        $keywords    = $this->getKeywords();
+        $metatags    = $this->metatags;
+
+        $html   = [];
+        $html[] = "<title>$title</title>";
+        $html[] = "<meta name='description' itemprop='description' content='{$description}' />";
+
+        if (!empty($keywords)):
+            $keywords = implode(', ', $keywords);
+            $html[]   = "<meta name='keywords' content='{$keywords}' />";
+        endif;
+
+        foreach ($metatags as $key => $value):
+            $name    = $value[0];
+            $content = $value[1];
+            $html[]  = "<meta {$name}='{$key}' content='{$content}' />";
+        endforeach;
+
+        return implode(PHP_EOL, $html);
     }
 
     /**
@@ -106,14 +109,14 @@ class SEOMeta implements MetaTagsContracts
     {
         // clean title
         $title = strip_tags($title);
-        
-        // store title session        
-		$this->title_session = $title;
-		
-		// store title
-		$this->title = $this->parseTitle($title);
-		
-		return $this;
+
+        // store title session
+        $this->title_session = $title;
+
+        // store title
+        $this->title = $this->parseTitle($title);
+
+        return $this;
     }
 
     /**
@@ -124,9 +127,9 @@ class SEOMeta implements MetaTagsContracts
     public function setDescription($description)
     {
         // clean and store description
-		$this->description = strip_tags($description);
-		
-		return $this;
+        $this->description = strip_tags($description);
+
+        return $this;
     }
 
     /**
@@ -139,17 +142,17 @@ class SEOMeta implements MetaTagsContracts
      */
     public function setKeywords($keywords)
     {
-        
-        if(!is_array($keywords)):
-            $keywords = explode(', ', $this->keywords);    
+
+        if (!is_array($keywords)):
+            $keywords = explode(', ', $this->keywords);
         endif;
-        
+
         // clean keywords
         $keywords = array_map('strip_tags', $keywords);
-        
+
         // store keywords
         $this->keywords = $keywords;
-        
+
         return $this;
     }
 
@@ -162,33 +165,33 @@ class SEOMeta implements MetaTagsContracts
      */
     public function addKeyword($keyword)
     {
-		if(is_array($keyword)):
-		    $this->keywords = array_merge($keyword, $this->keywords);
-		else:
-		    $this->keywords[] = strip_tags($keyword);  
-		endif;
-		
-		return $this;
+        if (is_array($keyword)):
+            $this->keywords = array_merge($keyword, $this->keywords);
+        else:
+            $this->keywords[] = strip_tags($keyword);
+        endif;
+
+        return $this;
     }
 
     /**
      * Add a custom meta tag.
      *
      * @param string|array $meta
-     * @param string $value
-     * @param string $name
+     * @param string       $value
+     * @param string       $name
      *
      * @return MetaTagsContracts
      */
     public function addMeta($meta, $value = null, $name = 'name')
     {
         if (is_array($meta)):
-			foreach ($meta as $key => $value):
-				$this->metatags[$key] = array($name, $value);
-			endforeach;
-		else:
-			$this->metatags[$meta] = array($name, $value);
-		endif;
+            foreach ($meta as $key => $value):
+                $this->metatags[$key] = array($name, $value);
+            endforeach;
+        else:
+            $this->metatags[$meta] = array($name, $value);
+        endif;
     }
 
     /**
@@ -198,7 +201,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getTitle()
     {
-        return $this->title ? : $this->getDefault('title');
+        return $this->title ?: $this->config->get('defaults.title', null);
     }
 
     /**
@@ -208,7 +211,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getTitleSession()
     {
-        return $this->title_session ? : $this->getTitle();
+        return $this->title_session ?: $this->getTitle();
     }
 
     /**
@@ -218,7 +221,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getKeywords()
     {
-        return $this->keywords;
+        return $this->keywords ?: $this->config->get('defaults.keywords', []);
     }
 
     /**
@@ -228,7 +231,7 @@ class SEOMeta implements MetaTagsContracts
      */
     public function getDescription()
     {
-        return $this->description ? : $this->getDefault('description');
+        return $this->description ?: $this->config->get('defaults.description', null);
     }
 
     /**
@@ -238,36 +241,31 @@ class SEOMeta implements MetaTagsContracts
      */
     public function reset()
     {
-        // TODO: Implement reset() method.
+        $this->description   = null;
+        $this->title_session = null;
+        $this->metatags      = [];
+        $this->keywords      = [];
     }
 
     /**
-     * Get a default value of configuration.
-     *
-     * @param string $default
-     *
-     * @return mixed
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function getDefault($default)
-    {
-        if (array_key_exists($default, $this->defaults)):
-            throw new \InvalidArgumentException("SEOTools\SEOMeta: default configuration {$default} does not exist.");			
-		endif;
-		
-		return $this->defaults[$default];
-    }
-    
-    /**
      * Get parsed title.
-     * 
+     *
      * @param string $title
-     * 
+     *
      * @return string
      */
-    private function parseTitle($title)
+    protected function parseTitle($title)
     {
-        return $title . $this->getDefault('separator') . $this->getDefault('title');
+        return $title . $this->config->get('defaults.separator', ' | ') . $this->config->get('defaults.title', null);
+    }
+
+    protected function loadWebMasterTags()
+    {
+        foreach ($this->config->get('webmaster_tags', []) as $name => $value):
+            if (!empty($value)):
+                $meta = array_get($this->webmasterTags, $name, $name);
+                $this->addMeta($meta, $value);
+            endif;
+        endforeach;
     }
 }

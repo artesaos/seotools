@@ -18,6 +18,13 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
+        ]);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
+        );
     }
 
     /**
@@ -28,7 +35,7 @@ class SEOToolsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('seotools.metatags', function ($app) {
-            return new SEOMeta();
+            return new SEOMeta($app['config']->get('seotools.meta', []));
         });
 
     }
