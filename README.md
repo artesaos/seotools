@@ -38,6 +38,7 @@ You need to update your application configuration in order to register the packa
     ],
 // file END ommited
 ```
+
 ### 3 - Facade
 In order to use the `SEOMeta` facade, you need to register it on the `config/app.php` file, you can do that the following way:
 
