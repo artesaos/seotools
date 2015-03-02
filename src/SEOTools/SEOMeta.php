@@ -1,6 +1,6 @@
 <?php namespace Artesaos\SEOTools;
 
-use Artesaos\SEOTools\Contracts\MetaTagsContracts;
+use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContracts;
 use Illuminate\Config\Repository as Config;
 
 class SEOMeta implements MetaTagsContracts
@@ -50,7 +50,7 @@ class SEOMeta implements MetaTagsContracts
      *
      * @var array
      */
-    public $webmasterTags = array(
+    protected $webmasterTags = array(
         'google'   => "google-site-verification",
         'bing'     => "msvalidate.01",
         'alexa'    => "alexaVerifyID",

@@ -1,6 +1,6 @@
 <?php namespace Artesaos\SEOTools\Contracts;
 
-interface MetaTagsContracts
+interface MetaTags
 {
 
     public function __construct(array $config = array());
