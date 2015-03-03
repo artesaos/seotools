@@ -3,6 +3,11 @@
 interface MetaTags
 {
 
+    /**
+     * Configuration.
+     *
+     * @param array
+     */
     public function __construct(array $config = array());
 
     /**
@@ -14,7 +19,7 @@ interface MetaTags
 
     /**
      * Set the title.
-     * 
+     *
      * @param string $title
      *
      * @return MetaTagsContracts
@@ -23,7 +28,7 @@ interface MetaTags
 
     /**
      * Set the description.
-     * 
+     *
      * @param string $description
      *
      * @return MetaTagsContracts

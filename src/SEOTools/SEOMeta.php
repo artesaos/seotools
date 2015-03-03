@@ -1,9 +1,9 @@
 <?php namespace Artesaos\SEOTools;
 
-use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContracts;
+use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 use Illuminate\Config\Repository as Config;
 
-class SEOMeta implements MetaTagsContracts
+class SEOMeta implements MetaTagsContract
 {
     /**
      * The meta title.
@@ -50,13 +50,13 @@ class SEOMeta implements MetaTagsContracts
      *
      * @var array
      */
-    protected $webmasterTags = array(
+    protected $webmasterTags = [
         'google'   => "google-site-verification",
         'bing'     => "msvalidate.01",
         'alexa'    => "alexaVerifyID",
         'pintrest' => "p:domain_verify",
         'yandex'   => "yandex-verification"
-    );
+    ];
 
     /**
      * @param array $config
@@ -103,7 +103,7 @@ class SEOMeta implements MetaTagsContracts
      *
      * @param string $title
      *
-     * @return MetaTagsContracts
+     * @return MetaTagsContract
      */
     public function setTitle($title)
     {
@@ -122,7 +122,7 @@ class SEOMeta implements MetaTagsContracts
     /**
      * @param string $description
      *
-     * @return MetaTagsContracts
+     * @return MetaTagsContract
      */
     public function setDescription($description)
     {
@@ -138,7 +138,7 @@ class SEOMeta implements MetaTagsContracts
      *
      * @param string|array $keywords
      *
-     * @return MetaTagsContracts
+     * @return MetaTagsContract
      */
     public function setKeywords($keywords)
     {
@@ -161,7 +161,7 @@ class SEOMeta implements MetaTagsContracts
      *
      * @param string|array $keyword
      *
-     * @return MetaTagsContracts
+     * @return MetaTagsContract
      */
     public function addKeyword($keyword)
     {
@@ -181,7 +181,7 @@ class SEOMeta implements MetaTagsContracts
      * @param string       $value
      * @param string       $name
      *
-     * @return MetaTagsContracts
+     * @return MetaTagsContract
      */
     public function addMeta($meta, $value = null, $name = 'name')
     {
