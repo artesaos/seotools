@@ -1,7 +1,6 @@
 <?php namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
-use Illuminate\Config\Repository as Config;
 
 class OpenGraph implements OpenGraphContract
 {
@@ -12,7 +11,7 @@ class OpenGraph implements OpenGraphContract
     protected $og_prefix = 'og:';
 
     /**
-     * @var Config
+     * @var array
      */
     protected $config;
 
@@ -31,7 +30,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function __construct(array $config = array())
     {
-        $this->config = new Config($config);
+        $this->config = $config;
     }
 
     /**
@@ -41,6 +40,8 @@ class OpenGraph implements OpenGraphContract
      */
     public function generate()
     {
+        $this->setupDefaults();
+
         $properties = $this->eachProperties($this->properties);
         $images     = $this->eachProperties($this->images, 'image');
 
@@ -80,7 +81,6 @@ class OpenGraph implements OpenGraphContract
         return implode(PHP_EOL, $html);
     }
 
-
     /**
      * Make a og tag
      *
@@ -92,6 +92,24 @@ class OpenGraph implements OpenGraphContract
     protected function makeTag($key, $value)
     {
         return '<meta property="' . $this->og_prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
+    }
+
+    /**
+     * Setup default values
+     */
+    protected function setupDefaults()
+    {
+        $defaults = (isset($this->config['defaults'])) ? $this->config['defaults'] : [];
+
+        foreach ($defaults as $key => $value):
+            if ($key == 'images'):
+                if (empty($this->images)):
+                    $this->images = $value;
+                endif;
+            elseif (!empty($value) && !array_key_exists($key, $this->properties)):
+                $this->addProperty($key, $value);
+            endif;
+        endforeach;
     }
 
     /**

@@ -24,6 +24,13 @@ return [
         ]
     ],
     'opengraph' => [
-
+        'defaults' => array(
+            'title'       => false,
+            'description' => false,
+            'url'         => false,
+            'type'        => false,
+            'site_name'   => false,
+            'images'      => array(),
+        )
     ]
 ];
