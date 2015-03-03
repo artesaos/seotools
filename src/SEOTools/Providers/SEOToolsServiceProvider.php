@@ -1,6 +1,7 @@
 <?php namespace Artesaos\SEOTools\Providers;
 
 use Artesaos\SEOTools\SEOMeta;
+use Artesaos\SEOTools\OpenGraph;
 use Illuminate\Support\ServiceProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider
@@ -36,6 +37,10 @@ class SEOToolsServiceProvider extends ServiceProvider
     {
         $this->app->singleton('seotools.metatags', function ($app) {
             return new SEOMeta($app['config']->get('seotools.meta', []));
+        });
+
+        $this->app->singleton('seotools.opengraph', function ($app) {
+            return new OpenGraph($app['config']->get('seotools.opengraph', []));
         });
 
     }

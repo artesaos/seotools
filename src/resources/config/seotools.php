@@ -1,26 +1,29 @@
 <?php
 
 return [
-    'meta' => array(
+    'meta'      => [
         /*
          * The default configurations to be used by the meta generator.
          */
-        'defaults'       => array(
+        'defaults'       => [
             'title'       => false,
             'description' => false,
             'separator'   => ' - ',
             'keywords'    => [],
-        ),
+        ],
 
         /*
          * Webmaster tags are always added.
          */
-        'webmaster_tags' => array(
+        'webmaster_tags' => [
             'google'    => null,
             'bing'      => null,
             'alexa'     => null,
             'pinterest' => null,
             'yandex'    => null
-        )
-    )
+        ]
+    ],
+    'opengraph' => [
+
+    ]
 ];

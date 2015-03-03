@@ -41,14 +41,64 @@ class OpenGraph implements OpenGraphContract
      */
     public function generate()
     {
-        // TODO: Implement generate() method.
+        $properties = $this->eachProperties($this->properties);
+        $images     = $this->eachProperties($this->images, 'image');
+
+        return PHP_EOL . $properties . PHP_EOL . $images;
+    }
+
+    /**
+     * Make list of open graph tags
+     *
+     * @param array       $properties
+     * @param null|string $prefix
+     *
+     * @return string
+     */
+    protected function eachProperties(array $properties, $prefix = null)
+    {
+        $html = [];
+
+        foreach ($properties as $property => $value):
+            if (is_array($value)):
+
+                $subListPrefix = (is_string($property)) ? $property : $prefix;
+                $subList       = $this->eachProperties($value, $subListPrefix);
+
+                $html[] = $subList;
+            else:
+                if (is_string($prefix)):
+                    $key = (is_string($property)) ? $prefix . ':' . $property : $prefix;
+                else:
+                    $key = $property;
+                endif;
+
+                $html[] = $this->makeTag($key, $value);
+            endif;
+        endforeach;
+
+        return implode(PHP_EOL, $html);
+    }
+
+
+    /**
+     * Make a og tag
+     *
+     * @param string $key
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function makeTag($key, $value)
+    {
+        return '<meta property="' . $this->og_prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
     }
 
     /**
      * Add or update property.
      *
-     * @param string $key
-     * @param string $value
+     * @param string       $key
+     * @param string|array $value
      *
      * @return OpenGraphContract
      */

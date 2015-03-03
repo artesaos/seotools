@@ -18,7 +18,7 @@ interface OpenGraph
      * Add or update property.
      *
      * @param string $key
-     * @param string $value
+     * @param string|array $value
      *
      * @return OpenGraph
      */
