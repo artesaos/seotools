@@ -81,8 +81,14 @@ class SEOMeta implements MetaTagsContract
         $metatags    = $this->metatags;
 
         $html   = [];
-        $html[] = "<title>$title</title>";
-        $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
+        
+        if($title):
+            $html[] = "<title>$title</title>";
+        endif;
+        
+        if($title):
+            $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
+        endif;
 
         if (!empty($keywords)):
             $keywords = implode(', ', $keywords);
