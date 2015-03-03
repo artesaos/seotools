@@ -1,6 +1,7 @@
 {
   "name": "artesaos/seotools",
   "description": "SEO Tools for Laravel",
+  "keywords": ["laravel5", "seo", "seotools", "webmaster", "metatags", "opengraph"],
   "license": "MIT",
   "authors": [
     {
@@ -9,7 +10,9 @@
     }
   ],
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=5.4.0",
+    "illuminate/config": "~5.x",
+    "illuminate/support": "~5.x"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*",
@@ -19,6 +22,9 @@
     "psr-4": {
       "Artesaos\\SEOTools\\": "src/SEOTools/"
     }
+  },
+  "config": {
+    "preferred-install": "dist"
   },
   "minimum-stability": "dev"
 }
