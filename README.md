@@ -54,6 +54,8 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 ### 1 - Metatags Generator
 #### In your controller
 ```php
+use SEOMeta;
+
 class CommomController extends Controller
 {
 
@@ -93,7 +95,7 @@ class CommomController extends Controller
 ```html
 <html>
 <head>
-	{{SEOMeta::generate()}}
+	{!! SEOMeta::generate() !!}
 </head>
 <body>
 

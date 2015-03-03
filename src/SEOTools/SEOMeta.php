@@ -82,17 +82,17 @@ class SEOMeta implements MetaTagsContracts
 
         $html   = [];
         $html[] = "<title>$title</title>";
-        $html[] = "<meta name='description' itemprop='description' content='{$description}' />";
+        $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
 
         if (!empty($keywords)):
             $keywords = implode(', ', $keywords);
-            $html[]   = "<meta name='keywords' content='{$keywords}' />";
+            $html[]   = "<meta name=\"keywords\" content=\"{$keywords}\" />";
         endif;
 
         foreach ($metatags as $key => $value):
             $name    = $value[0];
             $content = $value[1];
-            $html[]  = "<meta {$name}='{$key}' content='{$content}' />";
+            $html[]  = "<meta {$name}=\"{$key}\" content=\"{$content}\" />";
         endforeach;
 
         return implode(PHP_EOL, $html);
