@@ -104,7 +104,7 @@ class CommomController extends Controller
         OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
         
         OpenGraph::addImage($post->cover->url);
-        OpenGraph::addImage($post->images->list('url));
+        OpenGraph::addImage($post->images->list('url'));
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
 
         return view('myshow', compact('post'));
