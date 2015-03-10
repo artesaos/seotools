@@ -2,7 +2,7 @@
 
 SEOTools is a package for **Laravel 5** that provides helpers for some common SEO techniques.
 
-> Current Build Status 
+> Current Build Status
 
 [![Build Status](https://travis-ci.org/artesaos/seotools.svg)](https://travis-ci.org/artesaos/seotools)
 [![Code Climate](https://codeclimate.com/github/artesaos/seotools/badges/gpa.svg)](https://codeclimate.com/github/artesaos/seotools)
@@ -53,10 +53,10 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 ```
 ## 4 - Usage
 ### Meta tags Generator
-With **SEOMeta** you can create meta tags to the `head`  
+With **SEOMeta** you can create meta tags to the `head`
 
 ### Opengraph tags Generator
-With **OpenGraph** you can create opengraph tags to the `head`  
+With **OpenGraph** you can create opengraph tags to the `head`
 
 #### In your controller
 ```php
@@ -72,7 +72,7 @@ class CommomController extends Controller
     {
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
-        
+
         OpenGraph::setDescription('This is my page description');
         OpenGraph::setTitle('Home');
         OpenGraph::setUrl('http://current.url.com');
@@ -95,14 +95,14 @@ class CommomController extends Controller
         SEOMeta::addMeta('article:published_time', $post->published_date->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $post->category, 'property');
         SEOMeta::addKeyword(['key1', 'key2', 'key3']);
-        
+
         OpenGraph::setDescription($post->title);
         OpenGraph::setTitle($post->resume);
         OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'pt-br');
         OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
-        
+
         OpenGraph::addImage($post->cover->url);
         OpenGraph::addImage($post->images->list('url'));
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
@@ -134,7 +134,7 @@ class CommomController extends Controller
 	<meta name='keywords' content='key1, key2, key3' />
 	<meta property='article:published_time' content='2015-01-31T20:30:11-02:00' />
 	<meta property='article:section' content='news' />
-	
+
 	<meta property="og:description"content="description..." />
     <meta property="og:title"content="Title" />
     <meta property="og:url"content="http://current.url.com" />
@@ -156,7 +156,7 @@ class CommomController extends Controller
 </html>
 ```
 
-#### Configuration 
+#### Configuration
 In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
 - meta
  - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
@@ -166,6 +166,7 @@ In `seotools.php` configuration file you can determine the properties of the def
 
 #### API (SEOMeta)
 ```php
+SEOMeta::setTitleSeperator($seperator);
 SEOMeta::setTitle($title);
 SEOMeta::setDescription($description);
 SEOMeta::setKeywords($keywords);
@@ -182,6 +183,7 @@ SEOMeta::setTitle($title)
 // Retrieving data
 SEOMeta::getTitle();
 SEOMeta::getTitleSession();
+SEOMeta::getTitleSeperator();
 SEOMeta::getKeywords();
 SEOMeta::getDescription();
 SEOMeta::reset();
@@ -196,7 +198,7 @@ OpenGraph::addImage($url); // add image url
 OpenGraph::addImages($url); // add an array of url images
 OpenGraph::setTitle($title); // define title
 OpenGraph::setDescription($description);  // define description
-OpenGraph::setUrl($url); // define url 
+OpenGraph::setUrl($url); // define url
 OpenGraph::setSiteName($name); //define site_name
 
 // You can concatenate methods
