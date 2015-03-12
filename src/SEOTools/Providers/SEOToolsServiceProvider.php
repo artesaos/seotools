@@ -2,6 +2,7 @@
 
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\OpenGraph;
+use Artesaos\SEOTools\TwitterCards;
 use Illuminate\Support\ServiceProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider
@@ -43,6 +44,9 @@ class SEOToolsServiceProvider extends ServiceProvider
             return new OpenGraph($app['config']->get('seotools.opengraph', []));
         });
 
+        $this->app->singleton('seotools.twitter', function ($app) {
+            return new TwitterCards($app['config']->get('seotools.twitter', []));
+        });
     }
 
     /**
