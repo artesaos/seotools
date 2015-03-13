@@ -4,17 +4,27 @@ use Artesaos\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
 
 class TwitterCards implements TwitterCardsContract
 {
+
+    /**
+     *  @var string
+     */
+    protected $prefix = 'twitter:';
     
     /**
      *  @var array
      */
+    protected $html = [];
+
+    /**
+     *  @var array
+     */
     protected $values = [];
-    
+
      /**
      *  @var array
      */
     protected $images = [];
-    
+
      /**
      * @param array $defaults
      */
@@ -22,13 +32,54 @@ class TwitterCards implements TwitterCardsContract
     {
         $this->values = $defaults;
     }
-    
+
     /**
      * @return string 
      */
     public function generate()
     {
-        return 'TwitterCards';
+        $this->eachValue($this->values);
+        $this->eachValue($this->images, 'images');
+        
+        
+        
+        return implode(PHP_EOL, $this->html);
+    }
+    
+    /**
+     * Make tags
+     *
+     * @param array       $properties
+     * @param null|string $prefix
+     *
+     * @return void
+     */
+    protected function eachValue(array $values, $prefix = null)
+    {
+        foreach ($values as $key => $value):
+            if (is_array($value)):
+                $this->eachValue($value, $key);
+            else:
+                if (is_numeric($key)):
+                    $key = $prefix . $key;
+                elseif (is_string($prefix)):
+                    $key = $prefix . ':' . $key;
+                endif;
+
+                $this->html[] = $this->makeTag($key, $value);
+            endif;
+        endforeach;
+    }
+
+    /**
+     * @param string $key
+     * @param string $values
+     * 
+     * @return string
+     */
+    private function makeTag($key, $value)
+    {
+        return '<meta name="' . $this->prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
     }
     
     /**
@@ -51,7 +102,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setType($type)
     {
-        return $this->addValue('type', $site);
+        return $this->addValue('type', $type);
     }
     
     /**
@@ -71,7 +122,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setDescription($description)
     {
-        return $this->addValue('description', $site);
+        return $this->addValue('description', $description);
     }
     
     /**
