@@ -45,7 +45,7 @@ class SEOToolsServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('seotools.twitter', function ($app) {
-            return new TwitterCards($app['config']->get('seotools.twitter', []));
+            return new TwitterCards($app['config']->get('seotools.twitter.defaults', []));
         });
     }
 
