@@ -6,26 +6,26 @@ class TwitterCards implements TwitterCardsContract
 {
 
     /**
-     *  @var string
+     * @var string
      */
     protected $prefix = 'twitter:';
-    
+
     /**
-     *  @var array
+     * @var array
      */
     protected $html = [];
 
     /**
-     *  @var array
+     * @var array
      */
     protected $values = [];
 
-     /**
-     *  @var array
+    /**
+     * @var array
      */
     protected $images = [];
 
-     /**
+    /**
      * @param array $defaults
      */
     public function __construct(array $defaults)
@@ -34,18 +34,16 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
-     * @return string 
+     * @return string
      */
     public function generate()
     {
         $this->eachValue($this->values);
         $this->eachValue($this->images, 'images');
-        
-        
-        
+
         return implode(PHP_EOL, $this->html);
     }
-    
+
     /**
      * Make tags
      *
@@ -74,90 +72,100 @@ class TwitterCards implements TwitterCardsContract
     /**
      * @param string $key
      * @param string $values
-     * 
+     *
      * @return string
      */
     private function makeTag($key, $value)
     {
         return '<meta name="' . $this->prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
     }
-    
+
     /**
      * @oaram string $key
      * @oaram string|array $key
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function addValue($key, $value)
     {
         $this->values[$key] = $value;
-        
+
         return $this;
     }
-    
+
+    /**
+     * @param string $title
+     *
+     * @return TwitterCardsContract
+     */
+    public function setTitle($title)
+    {
+        return $this->addValue('title', $title);
+    }
+
     /**
      * @param string $type
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function setType($type)
     {
         return $this->addValue('type', $type);
     }
-    
+
     /**
      * @param string $site
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function setSite($site)
     {
         return $this->addValue('site', $site);
     }
-    
+
     /**
      * @param string $description
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function setDescription($description)
     {
         return $this->addValue('description', $description);
     }
-    
+
     /**
      * @param string $description
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function setUrl($url)
     {
         return $this->addValue('url', $url);
     }
-    
+
     /**
      * @param string|array $image
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function addImage($image)
     {
-        foreach ((array) $image as $url):
+        foreach ((array)$image as $url):
             $this->images[] = $url;
         endforeach;
-        
+
         return $this;
     }
-    
+
     /**
      * @param string|array $images
-     * 
+     *
      * @return TwitterCardsContract
      */
     public function setImages($images)
     {
         $this->images = [];
-        
+
         return $this->addImage($images);
     }
 }

@@ -23,42 +23,49 @@ interface TwitterCards
     /**
      * @param string $type
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function setType($type);
 
     /**
+     * @param string $title
+     *
+     * @return TwitterCards
+     */
+    public function setTitle($title);
+
+    /**
      * @param string $site
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function setSite($site);
 
     /**
      * @param string $description
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function setDescription($description);
 
     /**
      * @param string $description
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function setUrl($url);
 
     /**
      * @param string|array $image
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function addImage($image);
 
     /**
      * @param string|array $images
      * 
-     * @return TwitterCardsContract
+     * @return TwitterCards
      */
     public function setImages($images);
 }

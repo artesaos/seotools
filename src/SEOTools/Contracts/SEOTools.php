@@ -27,7 +27,7 @@ interface SEOTools
     public function opengraph();
 
      /**
-     * @return \Artesaos\SEOTools\Contracts\Twitter
+     * @return \Artesaos\SEOTools\Contracts\TwitterCards
      */
     public function twitter();
 
@@ -35,8 +35,13 @@ interface SEOTools
       * Setup title for all seo providers
       * 
       * @param string $title
-      * 
-     * @return SEOTools
      */
     public function setTitle($title);
+
+    /**
+     * Generate from all seo providers
+     *
+     * @return string
+     */
+    public function generate();
 }
