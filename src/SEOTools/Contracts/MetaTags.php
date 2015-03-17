@@ -22,7 +22,7 @@ interface MetaTags
      *
      * @param string $title
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setTitle($title);
 
@@ -31,7 +31,7 @@ interface MetaTags
      *
      * @param string $seperator
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setTitleSeperator($seperator);
 
@@ -40,7 +40,7 @@ interface MetaTags
      *
      * @param string $description
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setDescription($description);
 
@@ -50,7 +50,7 @@ interface MetaTags
      *
      * @param array $keywords
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setKeywords($keywords);
 
@@ -59,7 +59,7 @@ interface MetaTags
      *
      * @param string|array $keyword
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function addKeyword($keyword);
 
@@ -70,7 +70,7 @@ interface MetaTags
      * @param string $value
      * @param string $name
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function addMeta($meta, $value = null, $name = 'name');
 

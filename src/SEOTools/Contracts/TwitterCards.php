@@ -49,7 +49,7 @@ interface TwitterCards
     public function setDescription($description);
 
     /**
-     * @param string $description
+     * @param string $url
      * 
      * @return TwitterCards
      */

@@ -56,6 +56,18 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * Setup description for all seo providers
+     *
+     * @param string $title
+     */
+    public function setDescription($description)
+    {
+        $this->metatags()->setDescription($description);
+        $this->opengraph()->setDescription($description);
+        $this->twitter()->setDescription($description);
+    }
+
+    /**
      * Generate from all seo providers
      *
      * @return string

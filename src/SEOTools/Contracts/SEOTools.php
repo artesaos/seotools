@@ -39,6 +39,13 @@ interface SEOTools
     public function setTitle($title);
 
     /**
+     * Setup description for all seo providers
+     *
+     * @param string $title
+     */
+    public function setDescription($description);
+
+    /**
      * Generate from all seo providers
      *
      * @return string

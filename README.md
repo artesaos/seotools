@@ -48,6 +48,9 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
         // other Facades ommited
         'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
         'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
+        'Twitter' => 'Artesaos\SEOTools\Facades\Twitter',
+        // or
+        'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
     ],
 // file END ommited
 ```
@@ -61,6 +64,10 @@ With **OpenGraph** you can create opengraph tags to the `head`
 #### In your controller
 ```php
 use SEOMeta;
+use OpenGraph;
+use Twitter;
+## or
+use SEO;
 
 class CommomController extends Controller
 {
@@ -77,7 +84,18 @@ class CommomController extends Controller
         OpenGraph::setTitle('Home');
         OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'articles');
-
+        
+        Twitter::setTitle('Homepage');
+        Twitter::setSite('@LuizVinicius73');
+        
+        ## Or
+        
+        SEO::setTitle('Home');
+        SEO::setDescription('This is my page description');
+        SEO::opengraph()->setUrl('http://current.url.com');
+        SEO::opengraph()->addProperty('type', 'articles');
+        SEO::twitter()->setSite('@LuizVinicius73');
+        
         $posts = Post::all();
 
         return view('myindex', compact('posts'));
@@ -119,6 +137,9 @@ class CommomController extends Controller
 <head>
 	{!! SEOMeta::generate() !!}
 	{!! OpenGraph::generate() !!}
+	{!! Twitter::generate() !!}
+	    <!-- OR -->
+	{!! SEO::generate() !!}
 </head>
 <body>
 
@@ -149,6 +170,11 @@ class CommomController extends Controller
     <meta property="og:image"content="http://image.url.com/img3.jpg" />
     <meta property="og:image:url"content="http://image.url.com/cover.jpg" />
     <meta property="og:image:size"content="300" />
+    
+    <meta name="twitter:card"content="summary" />
+    <meta name="twitter:title"content="Title" />
+    <meta name="twitter:site"content="@LuizVinicius73" />
+
 </head>
 <body>
 
@@ -212,4 +238,42 @@ OpenGraph::addProperty($key, $value)
 
 // Generate html tags
 OpenGraph::generate();
+```
+
+### API (TwitterCard)
+
+```php
+Twitter::addValue($key, $value); // value can be string or array
+Twitter::setType($type); // type of twitter card tag
+Twitter::setTitle($type); // title of twitter card tag
+Twitter::setSite($type); // site of twitter card tag
+Twitter::setDescription($type); // description of twitter card tag
+Twitter::setUrl($type); // url of twitter card tag
+Twitter::addImage($url); // add image url
+Twitter::addImages($url); // add an array of url images
+
+// You can concatenate methods
+Twitter::addValue($key, $value)
+            ->setType($type)
+            ->addImage($url)
+            ->addImages($url)
+            ->setTitle($title)
+            ->setDescription($description)
+            ->setUrl($url)
+            ->setSite($name);
+
+// Generate html tags
+Twitter::generate();
+```
+
+#### API (SEO)
+> Facilitates access to all the SEO Providers
+
+```php
+SEO::metatags();
+SEO::twitter();
+SEO::opengraph();
+
+SEO::setTitle($title);
+SEO::setDescription($description);
 ```
