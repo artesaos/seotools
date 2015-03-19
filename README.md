@@ -114,8 +114,8 @@ class CommomController extends Controller
         SEOMeta::addMeta('article:section', $post->category, 'property');
         SEOMeta::addKeyword(['key1', 'key2', 'key3']);
 
-        OpenGraph::setDescription($post->title);
-        OpenGraph::setTitle($post->resume);
+        OpenGraph::setDescription($post->resume);
+        OpenGraph::setTitle($post->title);
         OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'pt-br');
