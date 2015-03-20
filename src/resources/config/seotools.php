@@ -24,6 +24,9 @@ return [
         ]
     ],
     'opengraph' => [
+        /*
+         * The default configurations to be used by the opengraph generator.
+         */
         'defaults' => array(
             'title'       => false,
             'description' => false,
@@ -31,6 +34,15 @@ return [
             'type'        => false,
             'site_name'   => false,
             'images'      => array(),
+        )
+    ],
+    'twitter' => [
+        /*
+         * The default values to be used by the twitter cards generator.
+         */
+        'defaults' => array(
+            'card'        => 'summary',
+          //'site'        => '@LuizVinicius73',
         )
     ]
 ];

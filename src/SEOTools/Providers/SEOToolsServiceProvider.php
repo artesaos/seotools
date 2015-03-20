@@ -2,6 +2,8 @@
 
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\OpenGraph;
+use Artesaos\SEOTools\SEOTools;
+use Artesaos\SEOTools\TwitterCards;
 use Illuminate\Support\ServiceProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider
@@ -43,6 +45,45 @@ class SEOToolsServiceProvider extends ServiceProvider
             return new OpenGraph($app['config']->get('seotools.opengraph', []));
         });
 
+        $this->app->singleton('seotools.twitter', function ($app) {
+            return new TwitterCards($app['config']->get('seotools.twitter.defaults', []));
+        });
+
+        $this->app->singleton('seotools', function ($app) {
+            return new SEOTools($app);
+        });
+
+        $this->app->bind('Artesaos\SEOTools\Contracts\MetaTags', 'Artesaos\SEOTools\MetaTags');
+        $this->app->bind('Artesaos\SEOTools\Contracts\OpenGraph', 'Artesaos\SEOTools\OpenGraph');
+        $this->app->bind('Artesaos\SEOTools\Contracts\Twitter', 'Artesaos\SEOTools\TwitterCards');
+        $this->app->bind('Artesaos\SEOTools\Contracts\SEOTools', 'Artesaos\SEOTools\SEOTools');
+
+        
+        \Blade::extend(function($view, $compiler)
+        {
+            $pattern = $compiler->createPlainMatcher('SEOMeta');  
+            return preg_replace($pattern, '<?php echo SEOMeta::generate(); ?>', $view);
+        });
+        
+        \Blade::extend(function($view, $compiler)
+        {
+            $pattern = $compiler->createPlainMatcher('OpenGraph');  
+            return preg_replace($pattern, '<?php echo OpenGraph::generate(); ?>', $view);
+        });
+        
+        \Blade::extend(function($view, $compiler)
+        {
+            $pattern = $compiler->createPlainMatcher('Twitter');  
+            return preg_replace($pattern, '<?php echo Twitter::generate(); ?>', $view);
+        });
+
+        \Blade::extend(function($view, $compiler)
+        {
+            $pattern = $compiler->createPlainMatcher('SEO');             
+            return preg_replace($pattern, '<?php echo SEO::generate(); ?>', $view);
+        });
+        
+        
     }
 
     /**

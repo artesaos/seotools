@@ -20,6 +20,13 @@ class SEOMeta implements MetaTagsContract
     protected $title_session;
 
     /**
+     * The title tag seperator.
+     *
+     * @var array
+     */
+    protected $title_seperator;
+
+    /**
      * The meta description.
      *
      * @var string
@@ -81,11 +88,11 @@ class SEOMeta implements MetaTagsContract
         $metatags    = $this->metatags;
 
         $html   = [];
-        
+
         if($title):
             $html[] = "<title>$title</title>";
         endif;
-        
+
         if($title):
             $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
         endif;
@@ -121,6 +128,21 @@ class SEOMeta implements MetaTagsContract
 
         // store title
         $this->title = $this->parseTitle($title);
+
+        return $this;
+    }
+
+    /**
+     * Sets the seperator for the title tag.
+     *
+     * @param string $seperator
+     *
+     * @return MetaTagsContract
+     */
+    public function setTitleSeperator($seperator)
+    {
+        // sets the title seperator ie - title <seperator> <site>
+        $this->title_seperator = $seperator;
 
         return $this;
     }
@@ -221,6 +243,16 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * takes the title that was set
+     *
+     * @return string
+     */
+    public function getTitleSeperator()
+    {
+        return $this->title_seperator ?: $this->config->get('defaults.separator', ' - ');
+    }
+
+    /**
      * Get the Meta keywords.
      *
      * @return array
@@ -262,7 +294,7 @@ class SEOMeta implements MetaTagsContract
      */
     protected function parseTitle($title)
     {
-        return $title . $this->config->get('defaults.separator', ' | ') . $this->config->get('defaults.title', null);
+        return $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null);
     }
 
     protected function loadWebMasterTags()
@@ -274,4 +306,5 @@ class SEOMeta implements MetaTagsContract
             endif;
         endforeach;
     }
+
 }

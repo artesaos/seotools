@@ -22,16 +22,25 @@ interface MetaTags
      *
      * @param string $title
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setTitle($title);
+
+    /**
+     * Set the title seperator.
+     *
+     * @param string $seperator
+     *
+     * @return MetaTags
+     */
+    public function setTitleSeperator($seperator);
 
     /**
      * Set the description.
      *
      * @param string $description
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setDescription($description);
 
@@ -41,7 +50,7 @@ interface MetaTags
      *
      * @param array $keywords
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function setKeywords($keywords);
 
@@ -50,7 +59,7 @@ interface MetaTags
      *
      * @param string|array $keyword
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function addKeyword($keyword);
 
@@ -61,7 +70,7 @@ interface MetaTags
      * @param string $value
      * @param string $name
      *
-     * @return MetaTagsContracts
+     * @return MetaTags
      */
     public function addMeta($meta, $value = null, $name = 'name');
 
@@ -78,6 +87,13 @@ interface MetaTags
      * @return string
      */
     public function getTitleSession();
+
+    /**
+     * Get the title seperator that was set.
+     *
+     * @return string
+     */
+    public function getTitleSeperator();
 
     /**
      * Get the Meta keywords.
