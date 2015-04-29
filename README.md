@@ -216,13 +216,13 @@ class CommomController extends Controller
 ```html
 <html>
 <head>
-	<title>Title - SubTitle</title>
-	<meta name='description' itemprop='description' content='description...' />
-	<meta name='keywords' content='key1, key2, key3' />
-	<meta property='article:published_time' content='2015-01-31T20:30:11-02:00' />
-	<meta property='article:section' content='news' />
+    <title>Title - Over 9000 Thousand!</title>
+    <meta name='description' itemprop='description' content='description...' />
+    <meta name='keywords' content='key1, key2, key3' />
+    <meta property='article:published_time' content='2015-01-31T20:30:11-02:00' />
+    <meta property='article:section' content='news' />
 
-	<meta property="og:description"content="description..." />
+    <meta property="og:description"content="description..." />
     <meta property="og:title"content="Title" />
     <meta property="og:url"content="http://current.url.com" />
     <meta property="og:type"content="article" />
@@ -265,7 +265,7 @@ SEOMeta::setKeywords($keywords);
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
 
-// You can concatenate methods
+// You can chain methods
 SEOMeta::setTitle($title)
             ->setDescription($description)
             ->setKeywords($keywords)
@@ -293,7 +293,7 @@ OpenGraph::setDescription($description);  // define description
 OpenGraph::setUrl($url); // define url
 OpenGraph::setSiteName($name); //define site_name
 
-// You can concatenate methods
+// You can chain methods
 OpenGraph::addProperty($key, $value)
             ->addImage($url)
             ->addImages($url)
@@ -318,7 +318,7 @@ Twitter::setUrl($type); // url of twitter card tag
 Twitter::addImage($url); // add image url
 Twitter::addImages($url); // add an array of url images
 
-// You can concatenate methods
+// You can chain methods
 Twitter::addValue($key, $value)
             ->setType($type)
             ->addImage($url)
