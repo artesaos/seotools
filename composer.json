@@ -1,7 +1,7 @@
 {
   "name": "artesaos/seotools",
-  "description": "SEO Tools for Laravel",
-  "keywords": ["laravel5", "seo", "seotools", "webmaster", "metatags", "opengraph"],
+  "description": "SEO Tools for Laravel and Lumen",
+  "keywords": ["laravel5", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph"],
   "license": "MIT",
   "authors": [
     {
