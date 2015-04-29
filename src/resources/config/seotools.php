@@ -6,8 +6,8 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'       => false,
-            'description' => false,
+            'title'       => 'Over 9000 Thousand!', // set false to total remove
+            'description' => 'For those who helped create the Genki Dama', // set false to total remove
             'separator'   => ' - ',
             'keywords'    => [],
         ],
@@ -27,22 +27,22 @@ return [
         /*
          * The default configurations to be used by the opengraph generator.
          */
-        'defaults' => array(
-            'title'       => false,
-            'description' => false,
+        'defaults' => [
+            'title'       => 'Over 9000 Thousand!', // set false to total remove
+            'description' => 'For those who helped create the Genki Dama', // set false to total remove
             'url'         => false,
             'type'        => false,
             'site_name'   => false,
-            'images'      => array(),
-        )
+            'images'      => [],
+        ]
     ],
     'twitter' => [
         /*
          * The default values to be used by the twitter cards generator.
          */
-        'defaults' => array(
-            'card'        => 'summary',
+        'defaults' => [
+          //'card'        => 'summary',
           //'site'        => '@LuizVinicius73',
-        )
+        ]
     ]
 ];
