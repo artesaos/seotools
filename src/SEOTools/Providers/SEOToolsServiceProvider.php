@@ -21,7 +21,17 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->setupConfig();
+        if ($this->isLumen()):
+            $this->app->configure('seotools');
+        else:
+            $this->publishes([
+                __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
+            ]);
+        endif;
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
+        );
     }
 
     /**
@@ -47,10 +57,10 @@ class SEOToolsServiceProvider extends ServiceProvider
             return new SEOTools($app);
         });
 
-        $this->app->bind('Artesaos\SEOTools\Contracts\MetaTags', 'Artesaos\SEOTools\MetaTags');
-        $this->app->bind('Artesaos\SEOTools\Contracts\OpenGraph', 'Artesaos\SEOTools\OpenGraph');
-        $this->app->bind('Artesaos\SEOTools\Contracts\Twitter', 'Artesaos\SEOTools\TwitterCards');
-        $this->app->bind('Artesaos\SEOTools\Contracts\SEOTools', 'Artesaos\SEOTools\SEOTools');
+        $this->app->bind('Artesaos\SEOTools\Contracts\MetaTags', 'seotools.metatags');
+        $this->app->bind('Artesaos\SEOTools\Contracts\OpenGraph', 'seotools.opengraph');
+        $this->app->bind('Artesaos\SEOTools\Contracts\Twitter', 'seotools.twitter');
+        $this->app->bind('Artesaos\SEOTools\Contracts\SEOTools', 'seotools');
     }
 
     /**
@@ -60,25 +70,23 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['seotools', 'seotools.metatags', 'seotools.opengraph', 'seotools.twitter'];
+        return [
+            'Artesaos\SEOTools\Contracts\SEOTools',
+            'Artesaos\SEOTools\Contracts\MetaTags',
+            'Artesaos\SEOTools\Contracts\Twitter',
+            'Artesaos\SEOTools\Contracts\OpenGraph',
+            'seotools',
+            'seotools.metatags',
+            'seotools.opengraph',
+            'seotools.twitter'
+        ];
     }
 
     /**
-     * Setup config
+     * @return bool
      */
-    private function setupConfig()
+    private function isLumen()
     {
-        if (false === str_contains($this->app->version(), 'Lumen')):
-            $this->publishes([
-                __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
-            ]);
-        else:
-            $this->app->configure('seotools');
-        endif;
-
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
-        );
+        return true === str_contains($this->app->version(), 'Lumen');
     }
-
 }
