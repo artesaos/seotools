@@ -61,6 +61,7 @@ class OpenGraph implements OpenGraphContract
         $html = [];
 
         foreach ($properties as $property => $value):
+            // multiple properties
             if (is_array($value)):
 
                 $subListPrefix = (is_string($property)) ? $property : $prefix;
@@ -73,6 +74,9 @@ class OpenGraph implements OpenGraphContract
                 else:
                     $key = $property;
                 endif;
+
+                // if empty jump to next
+                if (empty($value)) continue;
 
                 $html[] = $this->makeTag($key, $value);
             endif;
@@ -128,6 +132,20 @@ class OpenGraph implements OpenGraphContract
     }
 
     /**
+     * Remove property.
+     *
+     * @param string $key
+     *
+     * @return OpenGraphContract
+     */
+    public function removeProperty($key)
+    {
+        array_forget($this->properties, $key);
+
+        return $this;
+    }
+
+    /**
      * Add image to properties.
      *
      * @param string $url
@@ -144,7 +162,7 @@ class OpenGraph implements OpenGraphContract
     /**
      * Add images to properties.
      *
-     * @param string $urls
+     * @param array $urls
      *
      * @return OpenGraphContract
      */

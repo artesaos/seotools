@@ -25,6 +25,15 @@ interface OpenGraph
     public function addProperty($key, $value);
 
     /**
+     * Remove property.
+     *
+     * @param string $key
+     *
+     * @return OpenGraph
+     */
+    public function removeProperty($key);
+
+    /**
      * Add image to properties.
      *
      * @param string $url
@@ -36,7 +45,7 @@ interface OpenGraph
     /**
      * Add images to properties.
      *
-     * @param string $urls
+     * @param array $urls
      *
      * @return OpenGraph
      */
