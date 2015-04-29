@@ -205,7 +205,7 @@ class CommomController extends Controller
 	{!! SEO::generate() !!}
 	
 	    <!-- LUMEN -->
-	{!! app('seo)->generate() !!}
+	{!! app('seotools')->generate() !!}
 </head>
 <body>
 
