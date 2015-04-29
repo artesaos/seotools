@@ -193,7 +193,7 @@ In `seotools.php` configuration file you can determine the properties of the def
 
 #### API (SEOMeta)
 ```php
-SEOMeta::setTitleSeperator($seperator);
+SEOMeta::SetTitleSeparator($seperator);
 SEOMeta::setTitle($title);
 SEOMeta::setDescription($description);
 SEOMeta::setKeywords($keywords);
