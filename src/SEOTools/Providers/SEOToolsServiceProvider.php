@@ -13,7 +13,7 @@ class SEOToolsServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     /**
      *
@@ -21,13 +21,7 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
-        ]);
-
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
-        );
+        $this->setupConfig();
     }
 
     /**
@@ -66,7 +60,25 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return ['seotools', 'seotools.metatags', 'seotools.opengraph', 'seotools.twitter'];
+    }
+
+    /**
+     * Setup config
+     */
+    private function setupConfig()
+    {
+        if (false === str_contains($this->app->version(), 'Lumen')):
+            $this->publishes([
+                __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
+            ]);
+        else:
+            $this->app->configure('seotools');
+        endif;
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
+        );
     }
 
 }
