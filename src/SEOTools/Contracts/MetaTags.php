@@ -29,11 +29,11 @@ interface MetaTags
     /**
      * Set the title seperator.
      *
-     * @param string $seperator
+     * @param string $separator
      *
      * @return MetaTags
      */
-    public function setTitleSeperator($seperator);
+    public function setTitleSeparator($separator);
 
     /**
      * Set the description.
@@ -62,6 +62,15 @@ interface MetaTags
      * @return MetaTags
      */
     public function addKeyword($keyword);
+
+    /**
+     * Remove a metatag.
+     *
+     * @param string $key
+     *
+     * @return MetaTags
+     */
+    public function removeMeta($key);
 
     /**
      * Add a custom meta tag.

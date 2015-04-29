@@ -87,13 +87,13 @@ class SEOMeta implements MetaTagsContract
         $keywords    = $this->getKeywords();
         $metatags    = $this->metatags;
 
-        $html   = [];
+        $html = [];
 
-        if($title):
+        if ($title):
             $html[] = "<title>$title</title>";
         endif;
 
-        if($title):
+        if ($description):
             $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
         endif;
 
@@ -105,7 +105,11 @@ class SEOMeta implements MetaTagsContract
         foreach ($metatags as $key => $value):
             $name    = $value[0];
             $content = $value[1];
-            $html[]  = "<meta {$name}=\"{$key}\" content=\"{$content}\" />";
+
+            // if $content is empty jump to nest
+            if (empty($content)) continue;
+
+            $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\" />";
         endforeach;
 
         return implode(PHP_EOL, $html);
@@ -133,16 +137,15 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Sets the seperator for the title tag.
+     * Sets the separator for the title tag.
      *
-     * @param string $seperator
+     * @param string $separator
      *
      * @return MetaTagsContract
      */
-    public function setTitleSeperator($seperator)
+    public function setTitleSeparator($separator)
     {
-        // sets the title seperator ie - title <seperator> <site>
-        $this->title_seperator = $seperator;
+        $this->title_seperator = $separator;
 
         return $this;
     }
@@ -198,6 +201,20 @@ class SEOMeta implements MetaTagsContract
         else:
             $this->keywords[] = strip_tags($keyword);
         endif;
+
+        return $this;
+    }
+
+    /**
+     * Remove a metatag.
+     *
+     * @param string $key
+     *
+     * @return MetaTagsContract
+     */
+    public function removeMeta($key)
+    {
+        array_forget($this->metatags, $key);
 
         return $this;
     }
@@ -297,6 +314,9 @@ class SEOMeta implements MetaTagsContract
         return $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null);
     }
 
+    /**
+     * Load webmaster tags from configuration
+     */
     protected function loadWebMasterTags()
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value):
@@ -306,5 +326,4 @@ class SEOMeta implements MetaTagsContract
             endif;
         endforeach;
     }
-
 }
