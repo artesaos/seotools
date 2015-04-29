@@ -41,6 +41,7 @@ You need to update your application configuration in order to register the packa
     ],
 // file END ommited
 ```
+
 #### Lumen
 Go to `/bootstrap/app.php` file and add this line:
 
@@ -69,7 +70,9 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 // file END ommited
 ```
 ## 4 - Usage
+
 > Facades are not supported in Lumen.
+
 ### Lumen Usage
 
 ```php
