@@ -5,26 +5,12 @@ use Illuminate\Contracts\Foundation\Application;
 
 class SEOTools implements SEOContract
 {
-
-    /**
-     * @var Application
-     */
-    protected $app;
-
-    /**
-     * @param Application
-     */
-    public function __construct(Application $app)
-    {
-        $this->app = $app;
-    }
-
     /**
      * @return \Artesaos\SEOTools\Contracts\MetaTags
      */
     public function metatags()
     {
-        return $this->app['seotools.metatags'];
+        return app('seotools.metatags');
     }
 
     /**
@@ -32,7 +18,7 @@ class SEOTools implements SEOContract
      */
     public function opengraph()
     {
-        return $this->app['seotools.opengraph'];
+        return app('seotools.opengraph');
     }
 
     /**
@@ -40,31 +26,39 @@ class SEOTools implements SEOContract
      */
     public function twitter()
     {
-        return $this->app['seotools.twitter'];
+        return app('seotools.twitter');
     }
 
     /**
      * Setup title for all seo providers
      *
      * @param string $title
+     *
+     * @return $this
      */
     public function setTitle($title)
     {
         $this->metatags()->setTitle($title);
         $this->opengraph()->setTitle($title);
         $this->twitter()->setTitle($title);
+
+        return $this;
     }
 
     /**
      * Setup description for all seo providers
      *
-     * @param string $title
+     * @param $description
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
         $this->metatags()->setDescription($description);
         $this->opengraph()->setDescription($description);
         $this->twitter()->setDescription($description);
+
+        return $this;
     }
 
     /**
