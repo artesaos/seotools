@@ -19,6 +19,7 @@ SEOTools is a package for **Laravel 5** and **Lumen** that provides helpers for 
 ## Features
 - friendly interface
 - Ease of set titles and meta tags
+- Ease of set metas for twitter and opengraph
 
 ## Installation
 ### 1 - Dependency
@@ -39,8 +40,19 @@ You need to update your application configuration in order to register the packa
     ],
 // file END ommited
 ```
+#### Lumen
+Go to `/bootstrap/app.php` file and add this line:
+
+```php
+// file START ommited
+	$app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+// file END ommited
+```
 
 ### 3 - Facade
+
+> Facades are not supported in Lumen.
+
 In order to use the `SEOMeta` facade, you need to register it on the `config/app.php` file, you can do that the following way:
 
 ```php
@@ -56,11 +68,30 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 // file END ommited
 ```
 ## 4 - Usage
+> Facades are not supported in Lumen.
+### Lumen Usage
+
+```php
+$seotools = app('seotools');
+$metatags = app('seotools.metatags');
+$twitter = app('seotools.twitter');
+$opengraph = app('seotools.opengraph');
+
+// The behavior is the same as the facade
+// --------
+
+echo app('seotools')->generate();
+
+```
+
 ### Meta tags Generator
 With **SEOMeta** you can create meta tags to the `head`
 
 ### Opengraph tags Generator
 With **OpenGraph** you can create opengraph tags to the `head`
+
+### Twitter for Twitter Cards tags Generator
+With **Twitter** you can create opengraph tags to the `head`
 
 #### In your controller
 ```php
@@ -131,6 +162,33 @@ class CommomController extends Controller
 }
 ```
 
+#### SEOTrait
+
+```php
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+
+class CommomController extends Controller
+{
+    use SEOToolsTrait;
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $this->seo()->setTitle('Home');
+        $this->seo()->setDescription('This is my page description');
+        $this->seo()->opengraph()->setUrl('http://current.url.com');
+        $this->seo()->opengraph()->addProperty('type', 'articles');
+        $this->seo()->twitter()->setSite('@LuizVinicius73');
+        
+        $posts = Post::all();
+
+        return view('myindex', compact('posts'));
+    }
+}
+```
+
 ### In Your View
 
 ```html
@@ -141,6 +199,9 @@ class CommomController extends Controller
 	{!! Twitter::generate() !!}
 	    <!-- OR -->
 	{!! SEO::generate() !!}
+	
+	    <!-- LUMEN -->
+	{!! app('seo)->generate() !!}
 </head>
 <body>
 
