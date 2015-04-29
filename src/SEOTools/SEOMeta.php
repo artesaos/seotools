@@ -85,7 +85,7 @@ class SEOMeta implements MetaTagsContract
         $title       = $this->getTitle();
         $description = $this->getDescription();
         $keywords    = $this->getKeywords();
-        $metatags    = $this->metatags;
+        $metatags    = $this->getMetatags();
 
         $html = [];
 
@@ -158,7 +158,8 @@ class SEOMeta implements MetaTagsContract
     public function setDescription($description)
     {
         // clean and store description
-        $this->description = strip_tags($description);
+        // if is false, set false
+        $this->description = (false == $description) ? $description : strip_tags($description);
 
         return $this;
     }
@@ -173,7 +174,6 @@ class SEOMeta implements MetaTagsContract
      */
     public function setKeywords($keywords)
     {
-
         if (!is_array($keywords)):
             $keywords = explode(', ', $this->keywords);
         endif;
@@ -230,6 +230,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function addMeta($meta, $value = null, $name = 'name')
     {
+        // multiple metas
         if (is_array($meta)):
             foreach ($meta as $key => $value):
                 $this->metatags[$key] = array($name, $value);
@@ -237,6 +238,8 @@ class SEOMeta implements MetaTagsContract
         else:
             $this->metatags[$meta] = array($name, $value);
         endif;
+
+        return $this;
     }
 
     /**
@@ -280,12 +283,24 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Get all metatags
+     *
+     * @return array
+     */
+    public function getMetatags()
+    {
+        return $this->metatags;
+    }
+
+    /**
      * Get the Meta description.
      *
      * @return string
      */
     public function getDescription()
     {
+        if (false === $this->description) return null;
+
         return $this->description ?: $this->config->get('defaults.description', null);
     }
 
@@ -311,7 +326,9 @@ class SEOMeta implements MetaTagsContract
      */
     protected function parseTitle($title)
     {
-        return $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null);
+        $default = $this->config->get('defaults.title', null);
+
+        return (empty($default)) ? $title : $title . $this->getTitleSeperator() . $default;
     }
 
     /**

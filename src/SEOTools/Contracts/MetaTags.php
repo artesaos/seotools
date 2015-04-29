@@ -105,6 +105,13 @@ interface MetaTags
     public function getTitleSeperator();
 
     /**
+     * Get all metatags
+     *
+     * @return array
+     */
+    public function getMetatags();
+
+    /**
      * Get the Meta keywords.
      *
      * @return array
