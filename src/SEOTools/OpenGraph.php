@@ -95,7 +95,7 @@ class OpenGraph implements OpenGraphContract
      */
     protected function makeTag($key, $value)
     {
-        return '<meta property="' . $this->og_prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
+        return '<meta property="' . $this->og_prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
     }
 
     /**
