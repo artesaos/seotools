@@ -77,7 +77,7 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
-        return '<meta name="' . $this->prefix . strip_tags($key) . '"content="' . strip_tags($value) . '" />';
+        return '<meta name="' . $this->prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
     }
 
     /**
