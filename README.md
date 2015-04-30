@@ -69,7 +69,36 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
     ],
 // file END ommited
 ```
-## 4 - Usage
+
+
+### 4 Configuration
+
+#### Publish config
+
+In his terminal type 
+```shell
+php artisan vendor:publish
+```
+or 
+```shell
+php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
+```  
+
+> Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
+
+In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
+
+#### seotools.php
+
+- meta
+ - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
+ - **webmaster** - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
+- opengraph
+ - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- twitter
+ - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+
+## 5 - Usage
 
 > Facades are not supported in Lumen.
 
@@ -247,14 +276,6 @@ class CommomController extends Controller
 </body>
 </html>
 ```
-
-#### Configuration
-In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
-- meta
- - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
- - **webmaster** - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
-- opengraph
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
 
 #### API (SEOMeta)
 ```php
