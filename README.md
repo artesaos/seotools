@@ -25,7 +25,7 @@ SEOTools é um pacote para **Laravel 5** e **Lumen** que disponibiliza _helpers_
 
 ## Instalação
 ### 1 - Dependência
-O primeiro passo é utilizar o composer para instalar este pacote e atualizar, automaticamente, o seu arquivo `composer.json`, você pode fazer isso executando o seguinte comando:
+O primeiro passo é utilizar o [Composer](http://getcomposer.org) para instalar este pacote e atualizar, automaticamente, o seu arquivo `composer.json`, você pode fazer isso executando o seguinte comando:
 ```shell
 composer require artesaos/seotools
 ```
