@@ -94,8 +94,8 @@ No arquivo de configuração `seotools.php` você pode determinar as propriedade
 #### seotools.php
 
 - meta
- - **defaults** - Define os valores que serão exibidos na página acessada, caso nenhum valor seja especificado. Se o valor for `_false_`, nada é exibido.
- - **webmaster** - Define os valores de configuração para as principais ferramentas de _webmaster_. Se o valor for `_null_`, nada é exibido.
+ - **defaults** - Define os valores que serão exibidos na página acessada, caso nenhum valor seja especificado. Se o valor for `false`, nada é exibido.
+ - **webmaster** - Define os valores de configuração para as principais ferramentas de _webmaster_. Se o valor for `null`, nada é exibido.
 - opengraph
  - **defaults** - Define as propriedades padrão, que serão exibidas, caso nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
 - twitter
