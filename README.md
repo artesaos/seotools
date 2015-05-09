@@ -244,7 +244,7 @@ class CommomController extends Controller
 </body>
 </html>
 ```
-##### Resultado:
+##### Resultado
 ```html
 <html>
 <head>
