@@ -31,9 +31,10 @@ composer require artesaos/seotools
 ```
 
 ### 2 - Provider
-Você precisa atualizar as configurações da sua aplicação, a fim de registrar o pacote, possibilitando o carregamento pelo Laravel, apenas atualize o seu arquivo `config/app.php` adicionando, ao final da seção `'providers'`, a seguinte linha:
+Você precisa atualizar as configurações da sua aplicação, a fim de registrar o pacote, possibilitando o carregamento pelo seu _framework_.
 
-> `config/app.php`
+#### Laravel
+Vá até o final do seu arquivo `config/app.php` e adicione esta linha:
 
 ```php
 // Começo do arquivo omitido
