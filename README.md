@@ -309,9 +309,9 @@ SEOMeta::generate();
 
 ##### API (Open Graph)
 ```php
-OpenGraph::addProperty($key, $value); // valor pode ser uma _string_ ou _array_
+OpenGraph::addProperty($key, $value); // valor pode ser uma string ou array
 OpenGraph::addImage($url); // adiciona url da imagem
-OpenGraph::addImages($url); // adiciona uma _array_ de urls de imagens
+OpenGraph::addImages($url); // adiciona uma array de urls de imagens
 OpenGraph::setTitle($title); // define o título
 OpenGraph::setDescription($description);  // define a descrição
 OpenGraph::setUrl($url); // define a url
@@ -333,12 +333,12 @@ OpenGraph::generate();
 ##### API (Twitter Card)
 
 ```php
-Twitter::addValue($key, $value); // valor pode ser uma _string_ ou _array_
-Twitter::setType($type); // tipo da _tag_ do Twitter Card
-Twitter::setTitle($type); // título da _tag_ do Twitter Card
-Twitter::setSite($type); // site da _tag_ do Twitter Card
-Twitter::setDescription($type); // descrição da _tag_ do Twitter Card
-Twitter::setUrl($type); // url da _tag_ do Twitter Card
+Twitter::addValue($key, $value); // valor pode ser uma string ou array
+Twitter::setType($type); // tipo da tag do Twitter Card
+Twitter::setTitle($type); // título da tag do Twitter Card
+Twitter::setSite($type); // site da tag do Twitter Card
+Twitter::setDescription($type); // descrição da tag do Twitter Card
+Twitter::setUrl($type); // url da tag do Twitter Card
 Twitter::addImage($url); // adiciona a url da imagem
 Twitter::addImages($url); // adiciona uma array de urls de imagens
 
