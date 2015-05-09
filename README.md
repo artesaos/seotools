@@ -57,7 +57,7 @@ Vá até o seu arquivo `/bootstrap/app.php` e adicione esta linha:
 
 > Facades não são suportados no Lumen.
 
-Para que você possa usar o _facade_ `SEOMeta`, você precisa registrá-lo no arquivo `config/app.php`, você pode fazer isso da seguinte maneira:
+Para que você possa usar o _Facade_ `SEOMeta`, você precisa registrá-lo no arquivo `config/app.php`, você pode fazer isso da seguinte maneira:
 
 ```php
 // Começo do arquivo omitido
