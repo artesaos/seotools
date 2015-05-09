@@ -75,7 +75,7 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 
 #### Publish config
 
-In his terminal type 
+In your terminal type 
 ```shell
 php artisan vendor:publish
 ```
