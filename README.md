@@ -120,16 +120,16 @@ echo app('seotools')->generate();
 ```
 ### No Laravel
 
-#### Gerador de Meta Tags
+##### Gerador de Meta Tags
 Com **SEOMeta** você pode gerar meta tags para o `_head_`
 
-#### Gerador de _tags_ Open Graph
+##### Gerador de _tags_ Open Graph
 Com **OpenGraph** você pode gerar tags Open Graph para o `head`
 
-#### Gerador de Twitter Cards para o Twitter
+##### Gerador de Twitter Cards para o Twitter
 Com **Twitter** você pode gerar tags Twitter Card para o `head`
 
-#### No seu _Controller_
+##### No seu _Controller_
 ```php
 use SEOMeta;
 use OpenGraph;
@@ -198,7 +198,7 @@ class CommomController extends Controller
 }
 ```
 
-#### SEOTrait
+##### SEOTrait
 
 ```php
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
@@ -225,7 +225,7 @@ class CommomController extends Controller
 }
 ```
 
-### Na sua _View_
+##### Na sua _View_
 
 ```html
 <html>
@@ -280,7 +280,7 @@ Resultado:
 </html>
 ```
 
-#### API (SEOMeta)
+##### API (SEOMeta)
 ```php
 SEOMeta::SetTitleSeparator($seperator);
 SEOMeta::setTitle($title);
@@ -307,7 +307,7 @@ SEOMeta::reset();
 SEOMeta::generate();
 ```
 
-#### API (Open Graph)
+##### API (Open Graph)
 ```php
 OpenGraph::addProperty($key, $value); // valor pode ser uma _string_ ou _array_
 OpenGraph::addImage($url); // adiciona url da imagem
@@ -330,7 +330,7 @@ OpenGraph::addProperty($key, $value)
 OpenGraph::generate();
 ```
 
-### API (Twitter Card)
+##### API (Twitter Card)
 
 ```php
 Twitter::addValue($key, $value); // valor pode ser uma _string_ ou _array_
@@ -356,7 +356,7 @@ Twitter::addValue($key, $value)
 Twitter::generate();
 ```
 
-#### API (SEO)
+##### API (SEO)
 > Facilita o acesso a todos os SEO Providers
 
 ```php
