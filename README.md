@@ -326,7 +326,7 @@ OpenGraph::addProperty($key, $value)
             ->setUrl($url)
             ->setSiteName($name);
 
-// Gerar _tags_ html
+// Gerar tags html
 OpenGraph::generate();
 ```
 
@@ -352,7 +352,7 @@ Twitter::addValue($key, $value)
             ->setUrl($url)
             ->setSite($name);
 
-// Gerar _tags_ html
+// Gerar tags html
 Twitter::generate();
 ```
 
