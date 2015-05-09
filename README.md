@@ -99,13 +99,12 @@ No arquivo de configuração `seotools.php` você pode determinar as propriedade
 - opengraph
  - **defaults** - Define as propriedades padrão, que serão exibidas, caso nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
 - twitter
- - **defaults** - São as propriedades padrão, que serão exibidas, caso nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
+ - **defaults** - Define as propriedades padrão, que serão exibidas, caso nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
 
 ## 5 - Como usar
 
+### No Lumen
 > _Facades_ não são suportados no Lumen.
-
-### Como usar no Lumen
 
 ```php
 $seotools = app('seotools');
@@ -113,20 +112,21 @@ $metatags = app('seotools.metatags');
 $twitter = app('seotools.twitter');
 $opengraph = app('seotools.opengraph');
 
-// O resultado é o mesmo que usando _Facades_
+// O resultado é o mesmo que usando Facades
 // --------
 
 echo app('seotools')->generate();
 
 ```
+### No Laravel
 
-### Gerador de Meta Tags
+#### Gerador de Meta Tags
 Com **SEOMeta** você pode gerar meta tags para o `_head_`
 
-### Gerador de _tags_ Open Graph
+#### Gerador de _tags_ Open Graph
 Com **OpenGraph** você pode gerar tags Open Graph para o `head`
 
-### Gerador de Twitter Cards para o Twitter
+#### Gerador de Twitter Cards para o Twitter
 Com **Twitter** você pode gerar tags Twitter Card para o `head`
 
 #### No seu _Controller_
