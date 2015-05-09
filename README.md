@@ -1,108 +1,110 @@
-# SEOTools - SEO Tools for Laravel and Lumen
+# SEOTools - SEO Tools para Laravel e Lumen
 
-SEOTools is a package for **Laravel 5** and **Lumen** that provides helpers for some common SEO techniques.
+[Readme on English](https://github.com/artesaos/seotools/blob/master/README-en_US.md).
 
-> Current Build Status
+SEOTools é um pacote para **Laravel 5** e **Lumen** que disponibiliza _helpers_ para algumas técnicas comuns de SEO.
+
+> Estado atual do Pacote
 
 [![Build Status](https://travis-ci.org/artesaos/seotools.svg)](https://travis-ci.org/artesaos/seotools)
 [![Code Climate](https://codeclimate.com/github/artesaos/seotools/badges/gpa.svg)](https://codeclimate.com/github/artesaos/seotools)
 [![Codacy Badge](https://www.codacy.com/project/badge/36bce2b4929e4f3387d26b8a26e5c667)](https://www.codacy.com/app/luiz-vinicius73/seotools)
 
-> Statistics
+> Estatísticas
 
 [![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
 
-> Tips
+> Dicas
 
 <a href="http://zenhub.io" target="_blank"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px" alt="Powered by ZenHub"/></a>
 
-## Features
-- friendly interface
-- Ease of set titles and meta tags
-- Ease of set metas for twitter and opengraph
+## Recursos
+- Interface amigável
+- Facilidade para configurar Títulos e Meta Tags
+- Facilidade para configurar Meta Tags para Twitter e Open Graph (Facebook)
 
-## Installation
-### 1 - Dependency
-The first step is using composer to install the package and automatically update your `composer.json` file, you can do this by running:
+## Instalação
+### 1 - Dependência
+O primeiro passo é utilizar o composer para instalar este pacote e atualizar, automaticamente, o seu arquivo `composer.json`, você pode fazer isso executando o seguinte comando:
 ```shell
 composer require artesaos/seotools
 ```
 
 ### 2 - Provider
-You need to update your application configuration in order to register the package so it can be loaded by Laravel, just update your `config/app.php` file adding the following code at the end of your `'providers'` section:
+Você precisa atualizar as configurações da sua aplicação, a fim de registrar o pacote, possibilitando o carregamento pelo Laravel, apenas atualize o seu arquivo `config/app.php` adicionando, ao final da seção `'providers'`, a seguinte linha:
 
 > `config/app.php`
 
 ```php
-// file START ommited
+// Começo do arquivo omitido
     'providers' => [
-        // other providers ommited
+        // Outros Providers omitidos
         'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
     ],
-// file END ommited
+// Final do arquivo omitido
 ```
 
 #### Lumen
-Go to `/bootstrap/app.php` file and add this line:
+Vá até o seu arquivo `/bootstrap/app.php` e adicione esta linha:
 
 ```php
-// file START ommited
+// Começo do arquivo omitido
 	$app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
-// file END ommited
+// Final do arquivo omitido
 ```
 
 ### 3 - Facade
 
-> Facades are not supported in Lumen.
+> Facades não são suportados no Lumen.
 
-In order to use the `SEOMeta` facade, you need to register it on the `config/app.php` file, you can do that the following way:
+Para que você possa usar o _facade_ `SEOMeta`, você precisa registrá-lo no arquivo `config/app.php`, você pode fazer isso da seguinte maneira:
 
 ```php
-// file START ommited
+// Começo do arquivo omitido
     'aliases' => [
-        // other Facades ommited
+        // Outros Facades omitidos
         'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
         'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
         'Twitter' => 'Artesaos\SEOTools\Facades\Twitter',
-        // or
+        // ou
         'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
     ],
-// file END ommited
+// Final do arquivo omitido
 ```
 
 
-### 4 Configuration
+### 4 Configurações
 
-#### Publish config
+#### Publicar configurações
 
-In his terminal type 
+No seu terminal execute:
 ```shell
 php artisan vendor:publish
 ```
-or 
+ou
 ```shell
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
 ```  
 
-> Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
+> Lumen não suporta este comando, portanto você precisa copiar o arquivo `src/resources/config/seotools.php` para `config/seotools.php` no seu projeto
 
-In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
+No arquivo de configuração `seotools.php` você pode determinar as propriedades dos valores padrão e alguns comportamentos
 
 #### seotools.php
 
 - meta
- - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
- - **webmaster** - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
+ - **defaults** - Caso nenhum valor seja especificado, quais valores serão exibidos para a página acessada. Se o valor for `false`, nada é exibido.
+ - **webmaster** - São os valores de configuração para as principais ferramentas de _webmaster_. Se o valor for `null`, nada é exibido.
 - opengraph
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+ - **defaults** - São as propriedades padrão, que serão exibidas, quando nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
 - twitter
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+ - **defaults** - São as propriedades padrão, que serão exibidas, quando nenhuma outra seja definida. **Você pode adicionar _tags_ adicionais** que não estão inclusas no arquivo original de configuração.
 
-## 5 - Usage
+## 5 - Como usar
 
-> Facades are not supported in Lumen.
+> _Facades_ não são suportados no Lumen.
 
-### Lumen Usage
+### Como usar no Lumen
 
 ```php
 $seotools = app('seotools');
@@ -110,28 +112,28 @@ $metatags = app('seotools.metatags');
 $twitter = app('seotools.twitter');
 $opengraph = app('seotools.opengraph');
 
-// The behavior is the same as the facade
+// O resultado é o mesmo que usando _Facades_
 // --------
 
 echo app('seotools')->generate();
 
 ```
 
-### Meta tags Generator
-With **SEOMeta** you can create meta tags to the `head`
+### Gerador de Meta Tags
+Com **SEOMeta** você pode gerar meta tags para o `_head_`
 
-### Opengraph tags Generator
-With **OpenGraph** you can create opengraph tags to the `head`
+### Gerador de _tags_ Open Graph
+Com **OpenGraph** você pode gerar tags Open Graph para o `head`
 
-### Twitter for Twitter Cards tags Generator
-With **Twitter** you can create opengraph tags to the `head`
+### Gerador de Twitter Cards para o Twitter
+Com **Twitter** você pode gerar tags Twitter Card para o `head`
 
-#### In your controller
+#### No seu _Controller_
 ```php
 use SEOMeta;
 use OpenGraph;
 use Twitter;
-## or
+## ou
 use SEO;
 
 class CommomController extends Controller
@@ -142,22 +144,22 @@ class CommomController extends Controller
      */
     public function index()
     {
-        SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setTitle('Página Inicial');
+        SEOMeta::setDescription('Esta é a descrição da minha página');
 
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home');
-        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::setDescription('Esta é a descrição da minha página');
+        OpenGraph::setTitle('Página Inicial');
+        OpenGraph::setUrl('http://exemplo.url.com');
         OpenGraph::addProperty('type', 'articles');
         
-        Twitter::setTitle('Homepage');
+        Twitter::setTitle('Página Inicial');
         Twitter::setSite('@LuizVinicius73');
         
-        ## Or
+        ## Ou
         
-        SEO::setTitle('Home');
-        SEO::setDescription('This is my page description');
-        SEO::opengraph()->setUrl('http://current.url.com');
+        SEO::setTitle('Página Inicial');
+        SEO::setDescription('Esta é a descrição da minha página');
+        SEO::opengraph()->setUrl('http://exemplo.url.com');
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::twitter()->setSite('@LuizVinicius73');
         
@@ -209,8 +211,8 @@ class CommomController extends Controller
      */
     public function index()
     {
-        $this->seo()->setTitle('Home');
-        $this->seo()->setDescription('This is my page description');
+        $this->seo()->setTitle('Página Inicial');
+        $this->seo()->setDescription('Esta é a descrição da minha página');
         $this->seo()->opengraph()->setUrl('http://current.url.com');
         $this->seo()->opengraph()->addProperty('type', 'articles');
         $this->seo()->twitter()->setSite('@LuizVinicius73');
@@ -222,7 +224,7 @@ class CommomController extends Controller
 }
 ```
 
-### In Your View
+### Na sua _View_
 
 ```html
 <html>
@@ -230,10 +232,10 @@ class CommomController extends Controller
 	{!! SEOMeta::generate() !!}
 	{!! OpenGraph::generate() !!}
 	{!! Twitter::generate() !!}
-	    <!-- OR -->
+	    <!-- Ou -->
 	{!! SEO::generate() !!}
 	
-	    <!-- LUMEN -->
+	    <!-- Lumen -->
 	{!! app('seotools')->generate() !!}
 </head>
 <body>
@@ -241,7 +243,7 @@ class CommomController extends Controller
 </body>
 </html>
 ```
-
+Resultado:
 ```html
 <html>
 <head>
@@ -286,14 +288,14 @@ SEOMeta::setKeywords($keywords);
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
 
-// You can chain methods
+// Você pode usar métodos em cadeia
 SEOMeta::setTitle($title)
             ->setDescription($description)
             ->setKeywords($keywords)
             ->addKeyword($keyword)
             ->addMeta($meta, $value);
 
-// Retrieving data
+// Obtendo os dados
 SEOMeta::getTitle();
 SEOMeta::getTitleSession();
 SEOMeta::getTitleSeperator();
@@ -304,17 +306,17 @@ SEOMeta::reset();
 SEOMeta::generate();
 ```
 
-#### API (OpenGraph)
+#### API (Open Graph)
 ```php
-OpenGraph::addProperty($key, $value); // value can be string or array
-OpenGraph::addImage($url); // add image url
-OpenGraph::addImages($url); // add an array of url images
-OpenGraph::setTitle($title); // define title
-OpenGraph::setDescription($description);  // define description
-OpenGraph::setUrl($url); // define url
+OpenGraph::addProperty($key, $value); // valor pode ser uma _string_ ou _array_
+OpenGraph::addImage($url); // adiciona url da imagem
+OpenGraph::addImages($url); // adiciona uma _array_ de urls de imagens
+OpenGraph::setTitle($title); // define o título
+OpenGraph::setDescription($description);  // define a descrição
+OpenGraph::setUrl($url); // define a url
 OpenGraph::setSiteName($name); //define site_name
 
-// You can chain methods
+// Você pode usar métodos em cadeia
 OpenGraph::addProperty($key, $value)
             ->addImage($url)
             ->addImages($url)
@@ -323,23 +325,23 @@ OpenGraph::addProperty($key, $value)
             ->setUrl($url)
             ->setSiteName($name);
 
-// Generate html tags
+// Gerar _tags_ html
 OpenGraph::generate();
 ```
 
-### API (TwitterCard)
+### API (Twitter Card)
 
 ```php
-Twitter::addValue($key, $value); // value can be string or array
-Twitter::setType($type); // type of twitter card tag
-Twitter::setTitle($type); // title of twitter card tag
-Twitter::setSite($type); // site of twitter card tag
-Twitter::setDescription($type); // description of twitter card tag
-Twitter::setUrl($type); // url of twitter card tag
-Twitter::addImage($url); // add image url
-Twitter::addImages($url); // add an array of url images
+Twitter::addValue($key, $value); // valor pode ser uma _string_ ou _array_
+Twitter::setType($type); // tipo da _tag_ do Twitter Card
+Twitter::setTitle($type); // título da _tag_ do Twitter Card
+Twitter::setSite($type); // site da _tag_ do Twitter Card
+Twitter::setDescription($type); // descrição da _tag_ do Twitter Card
+Twitter::setUrl($type); // url da _tag_ do Twitter Card
+Twitter::addImage($url); // adiciona a url da imagem
+Twitter::addImages($url); // adiciona uma array de urls de imagens
 
-// You can chain methods
+// Você pode usar métodos em cadeia
 Twitter::addValue($key, $value)
             ->setType($type)
             ->addImage($url)
@@ -349,12 +351,12 @@ Twitter::addValue($key, $value)
             ->setUrl($url)
             ->setSite($name);
 
-// Generate html tags
+// Gerar _tags_ html
 Twitter::generate();
 ```
 
 #### API (SEO)
-> Facilitates access to all the SEO Providers
+> Facilita o acesso a todos os SEO Providers
 
 ```php
 SEO::metatags();
