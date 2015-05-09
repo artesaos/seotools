@@ -20,8 +20,8 @@ SEOTools é um pacote para **Laravel 5** e **Lumen** que disponibiliza _helpers_
 
 ## Recursos
 - Interface amigável
-- Facilidade para configurar Títulos e Meta Tags
-- Facilidade para configurar Meta Tags para Twitter e Open Graph (Facebook)
+- Facilidade para configurar títulos e meta tags
+- Facilidade para configurar meta tags para Twitter e Open Graph (Facebook)
 
 ## Instalação
 ### 1 - Dependência
