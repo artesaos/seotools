@@ -121,13 +121,13 @@ echo app('seotools')->generate();
 ### No Laravel
 
 ##### Gerador de Meta Tags
-Com **SEOMeta** você pode gerar meta tags para o `_head_`
+Com **SEOMeta** você pode gerar meta tags para o `head` da sua página
 
 ##### Gerador de _tags_ Open Graph
-Com **OpenGraph** você pode gerar tags Open Graph para o `head`
+Com **OpenGraph** você pode gerar tags Open Graph para o `head` da sua página
 
 ##### Gerador de Twitter Cards para o Twitter
-Com **Twitter** você pode gerar tags Twitter Card para o `head`
+Com **Twitter** você pode gerar tags Twitter Card para o `head` da sua página
 
 ##### No seu _Controller_
 ```php
