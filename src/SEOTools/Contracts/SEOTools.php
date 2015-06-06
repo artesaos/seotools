@@ -27,6 +27,8 @@ interface SEOTools
       * Setup title for all seo providers
       * 
       * @param string $title
+      *
+      * @return  \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function setTitle($title);
 
@@ -34,8 +36,19 @@ interface SEOTools
      * Setup description for all seo providers
      *
      * @param string $title
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function setDescription($description);
+
+    /**
+     * Add one or more images urls
+     *
+     * @param array|string $urls
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     */
+    public function addImages($urls);
 
     /**
      * Generate from all seo providers

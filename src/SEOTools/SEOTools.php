@@ -1,7 +1,6 @@
 <?php namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
-use Illuminate\Contracts\Foundation\Application;
 
 class SEOTools implements SEOContract
 {
@@ -34,7 +33,7 @@ class SEOTools implements SEOContract
      *
      * @param string $title
      *
-     * @return $this
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function setTitle($title)
     {
@@ -50,13 +49,31 @@ class SEOTools implements SEOContract
      *
      * @param $description
      *
-     * @return $this
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function setDescription($description)
     {
         $this->metatags()->setDescription($description);
         $this->opengraph()->setDescription($description);
         $this->twitter()->setDescription($description);
+
+        return $this;
+    }
+
+    /**
+     * @param array|string $urls
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     */
+    public function addImages($urls)
+    {
+        if (is_array($urls)):
+            $this->opengraph()->addImages($urls);
+        else:
+            $this->opengraph()->addImage($urls);
+        endif;
+
+        $this->twitter()->addImage($urls);
 
         return $this;
     }
