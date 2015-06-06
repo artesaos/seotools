@@ -1,7 +1,5 @@
 <?php namespace Artesaos\SEOTools\Contracts;
 
-use Illuminate\Contracts\Foundation\Application;
-
 /**
  * SEOTools
  *
