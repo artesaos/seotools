@@ -94,12 +94,12 @@ class SEOMeta implements MetaTagsContract
         endif;
 
         if ($description):
-            $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
+            $html[] = "<meta itemprop=\"description\" content=\"{$description}\">";
         endif;
 
         if (!empty($keywords)):
             $keywords = implode(', ', $keywords);
-            $html[]   = "<meta name=\"keywords\" content=\"{$keywords}\" />";
+            $html[]   = "<meta name=\"keywords\" content=\"{$keywords}\">";
         endif;
 
         foreach ($metatags as $key => $value):
@@ -109,7 +109,7 @@ class SEOMeta implements MetaTagsContract
             // if $content is empty jump to nest
             if (empty($content)) continue;
 
-            $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\" />";
+            $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
         endforeach;
 
         return implode(PHP_EOL, $html);
