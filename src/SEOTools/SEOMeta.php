@@ -175,7 +175,7 @@ class SEOMeta implements MetaTagsContract
     public function setKeywords($keywords)
     {
         if (!is_array($keywords)):
-            $keywords = explode(', ', $this->keywords);
+            $keywords = explode(', ', $keywords);
         endif;
 
         // clean keywords
