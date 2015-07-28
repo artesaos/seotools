@@ -94,7 +94,7 @@ class SEOMeta implements MetaTagsContract
         endif;
 
         if ($description):
-            $html[] = "<meta itemprop=\"description\" content=\"{$description}\">";
+            $html[] = "<meta name=\"description\" content=\"{$description}\">";
         endif;
 
         if (!empty($keywords)):
