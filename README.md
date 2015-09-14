@@ -66,7 +66,7 @@ Para que você possa usar o _Facade_ `SEOMeta`, você precisa registrá-lo no ar
         // Outros Facades omitidos
         'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
         'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
-        'Twitter' => 'Artesaos\SEOTools\Facades\Twitter',
+        'Twitter'   => 'Artesaos\SEOTools\Facades\TwitterCard',
         // ou
         'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
     ],
