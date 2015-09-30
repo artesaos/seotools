@@ -63,7 +63,7 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
         // other Facades ommited
         'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
         'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
-        'Twitter' => 'Artesaos\SEOTools\Facades\Twitter',
+        'Twitter'   => 'Artesaos\SEOTools\Facades\TwitterCard',
         // or
         'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
     ],

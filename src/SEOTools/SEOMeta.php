@@ -94,7 +94,7 @@ class SEOMeta implements MetaTagsContract
         endif;
 
         if ($description):
-            $html[] = "<meta itemprop=\"description\" content=\"{$description}\">";
+            $html[] = "<meta name=\"description\" content=\"{$description}\">";
         endif;
 
         if (!empty($keywords)):
@@ -175,7 +175,7 @@ class SEOMeta implements MetaTagsContract
     public function setKeywords($keywords)
     {
         if (!is_array($keywords)):
-            $keywords = explode(', ', $this->keywords);
+            $keywords = explode(', ', $keywords);
         endif;
 
         // clean keywords
