@@ -8,6 +8,8 @@ interface SitemapEntry
     public function getSitemapEntry();
 
     /**
+     * Get URL
+     *
      * @return string
      */
     public function getLocation();
