@@ -282,7 +282,7 @@ class CommomController extends Controller
 
 ##### API (SEOMeta)
 ```php
-SEOMeta::SetTitleSeparator($seperator);
+SEOMeta::SetTitleSeparator($separator);
 SEOMeta::setTitle($title);
 SEOMeta::setDescription($description);
 SEOMeta::setKeywords($keywords);
@@ -299,7 +299,7 @@ SEOMeta::setTitle($title)
 // Obtendo os dados
 SEOMeta::getTitle();
 SEOMeta::getTitleSession();
-SEOMeta::getTitleSeperator();
+SEOMeta::getTitleSeparator();
 SEOMeta::getKeywords();
 SEOMeta::getDescription();
 SEOMeta::reset();

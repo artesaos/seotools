@@ -27,7 +27,7 @@ interface MetaTags
     public function setTitle($title);
 
     /**
-     * Set the title seperator.
+     * Set the title separator.
      *
      * @param string $separator
      *
@@ -98,11 +98,11 @@ interface MetaTags
     public function getTitleSession();
 
     /**
-     * Get the title seperator that was set.
+     * Get the title separator that was set.
      *
      * @return string
      */
-    public function getTitleSeperator();
+    public function getTitleSeparator();
 
     /**
      * Get all metatags

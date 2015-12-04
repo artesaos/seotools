@@ -20,11 +20,11 @@ class SEOMeta implements MetaTagsContract
     protected $title_session;
 
     /**
-     * The title tag seperator.
+     * The title tag separator.
      *
      * @var array
      */
-    protected $title_seperator;
+    protected $title_separator;
 
     /**
      * The meta description.
@@ -145,7 +145,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function setTitleSeparator($separator)
     {
-        $this->title_seperator = $separator;
+        $this->title_separator = $separator;
 
         return $this;
     }
@@ -267,9 +267,9 @@ class SEOMeta implements MetaTagsContract
      *
      * @return string
      */
-    public function getTitleSeperator()
+    public function getTitleSeparator()
     {
-        return $this->title_seperator ?: $this->config->get('defaults.separator', ' - ');
+        return $this->title_separator ?: $this->config->get('defaults.separator', ' - ');
     }
 
     /**
@@ -328,7 +328,7 @@ class SEOMeta implements MetaTagsContract
     {
         $default = $this->config->get('defaults.title', null);
 
-        return (empty($default)) ? $title : $title . $this->getTitleSeperator() . $default;
+        return (empty($default)) ? $title : $title . $this->getTitleSeparator() . $default;
     }
 
     /**
