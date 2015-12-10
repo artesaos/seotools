@@ -35,7 +35,7 @@ interface SEOTools
     /**
      * Setup description for all seo providers
      *
-     * @param string $title
+     * @param string $description
      *
      * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
