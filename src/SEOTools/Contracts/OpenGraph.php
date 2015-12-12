@@ -41,7 +41,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function addImage($url, $attirbutes = array());
+    public function addImage($url, $attributes = array());
 
     /**
      * Add images to properties.
