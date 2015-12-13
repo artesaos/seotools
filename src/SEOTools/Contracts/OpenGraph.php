@@ -87,7 +87,7 @@ interface OpenGraph
      * @return OpenGraph
      */
     public function setSiteName($name);
-    
+
     /**
      * Define type property
      *
@@ -96,7 +96,7 @@ interface OpenGraph
      * @return OpenGraph
      */
     public function setType($type = null);
-    
+
     /**
      * Set Article properties
      *
@@ -104,7 +104,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setArticle($attributes = array());    
+    public function setArticle($attributes = array());
 
     /**
      * Set Profile properties
@@ -113,7 +113,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setProfile($attributes = array());    
+    public function setProfile($attributes = array());
 
     /**
      * Set Music Song properties
@@ -122,7 +122,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setMusicSong($attributes = array());    
+    public function setMusicSong($attributes = array());
 
     /**
      * Set Music Album properties
@@ -131,7 +131,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setMusicAlbum($attributes = array());    
+    public function setMusicAlbum($attributes = array());
 
     /**
      * Set Music Playlist properties
@@ -140,7 +140,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setMusicPlaylist($attributes = array());    
+    public function setMusicPlaylist($attributes = array());
 
     /**
      * Set Music  RadioStation properties
@@ -149,8 +149,8 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setMusicRadioStation($attributes = array());    
-    
+    public function setMusicRadioStation($attributes = array());
+
     /**
      * Set Video Movie properties
      *
@@ -158,7 +158,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setVideoMovie($attributes = array());    
+    public function setVideoMovie($attributes = array());
 
     /**
      * Set Video Episode properties
@@ -167,8 +167,8 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setVideoEpisode($attributes = array());    
-    
+    public function setVideoEpisode($attributes = array());
+
 
     /**
      * Set Video Episode properties
@@ -177,8 +177,8 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setVideoOther($attributes = array());    
-    
+    public function setVideoOther($attributes = array());
+
 
     /**
      * Set Video Episode properties
@@ -187,7 +187,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setVideoTVShow($attributes = array());    
+    public function setVideoTVShow($attributes = array());
 
     /**
      * Set Book properties
@@ -196,7 +196,7 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function setBook($attributes = array());    
+    public function setBook($attributes = array());
 
     /**
      * add Video properties
@@ -206,8 +206,8 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function addVideo($source = null, $attributes = array());    
-    
+    public function addVideo($source = null, $attributes = array());
+
 
     /**
      * add audio properties
@@ -217,5 +217,5 @@ interface OpenGraph
      *
      * @return OpenGraph
      */
-    public function addAudio($source = null, $attributes = array());    
+    public function addAudio($source = null, $attributes = array());
 }

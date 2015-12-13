@@ -29,46 +29,46 @@ class OpenGraph implements OpenGraphContract
      * @var array
      */
     protected $profileProperties = [];
-    
+
     /**
      * @var array
      */
-    protected $musicSongProperties = [];    
-    
+    protected $musicSongProperties = [];
+
     /**
      * @var array
      */
-    protected $musicAlbumProperties = [];    
-    
+    protected $musicAlbumProperties = [];
+
     /**
      * @var array
      */
     protected $musicPlaylistProperties = [];
-    
+
     /**
      * @var array
      */
     protected $musicRadioStationProperties = [];
-    
+
     /**
      * @var array
      */
     protected $videoMovieProperties = [];
-    
+
     /**
      * @var array
      */
     protected $videoEpisodeProperties = [];
-        
+
     /**
      * @var array
      */
-    protected $videoTVShowProperties = [];        
+    protected $videoTVShowProperties = [];
     /**
      * @var array
      */
     protected $videoOtherProperties = [];
-    
+
     /**
      * @var array
      */
@@ -78,12 +78,12 @@ class OpenGraph implements OpenGraphContract
      * @var array
      */
     protected $videoProperties = [];
-    
+
     /**
      * @var array
      */
     protected $audioProperties = [];
-    
+
     /**
      * @var array
      */
@@ -105,53 +105,53 @@ class OpenGraph implements OpenGraphContract
     public function generate()
     {
         $this->setupDefaults();
-        
+
         $output = null;
-        
+
         $output .= $this->eachProperties($this->properties);
 
         if ($images =  $this->eachProperties($this->images, 'image'))
             $output .= $images;
-        
+
         if ($article = $this->eachProperties($this->articleProperties, 'article', false))
             $output .= $article;
-        
+
         if ($profile = $this->eachProperties($this->profileProperties, 'profile', false))
             $output .= $profile;
-        
+
         if ($book = $this->eachProperties($this->bookProperties, 'book', false))
             $output .= $book;
-        
+
         if ($musicSong = $this->eachProperties($this->musicSongProperties, 'music', false))
             $output .= $musicSong;
-        
+
         if ($musicAlbum = $this->eachProperties($this->musicAlbumProperties, 'music', false))
             $output .= $musicAlbum;
-        
+
         if ($musicPlaylist = $this->eachProperties($this->musicPlaylistProperties, 'music', false))
             $output .= $musicPlaylist;
-        
+
         if ($musicRadioStation = $this->eachProperties($this->musicRadioStationProperties, 'music', false))
             $output .= $musicRadioStation;
-        
+
         if ($videoMovie = $this->eachProperties($this->videoMovieProperties, 'video', false))
             $output .= $videoMovie;
-        
+
         if ($videoEpisode = $this->eachProperties($this->videoEpisodeProperties, 'video', false))
             $output .= $videoEpisode;
-        
+
         if ($videoTVShow = $this->eachProperties($this->videoTVShowProperties, 'video', false))
             $output .= $videoTVShow;
-        
+
         if ($videoOther = $this->eachProperties($this->videoOtherProperties, 'video', false))
             $output .= $videoOther;
-        
+
         if ($video = $this->eachProperties($this->videoProperties, 'video', true))
-            $output .= $video;        
-        
+            $output .= $video;
+
         if ($audio = $this->eachProperties($this->audioProperties, 'audio', true))
             $output .= $audio;
-        
+
         return $output;
     }
 
@@ -256,9 +256,9 @@ class OpenGraph implements OpenGraphContract
             'section',
             'tag',
         ];
-        
+
         $this->setProperties('article', 'articleProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
 
@@ -277,9 +277,9 @@ class OpenGraph implements OpenGraphContract
             'username',
             'gender',
         ];
-        
+
         $this->setProperties('profile', 'profileProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
 
@@ -298,12 +298,12 @@ class OpenGraph implements OpenGraphContract
             'release_date',
             'tag'
         ];
-        
+
         $this->setProperties('book', 'bookProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
-    
+
     /**
      * Set music song properties.
      *
@@ -320,12 +320,12 @@ class OpenGraph implements OpenGraphContract
             'album:track',
             'musician',
         ];
-        
+
         $this->setProperties('music.song', 'musicSongProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
-    
+
     /**
      * Set music album properties.
      *
@@ -342,12 +342,12 @@ class OpenGraph implements OpenGraphContract
             'musician',
             'release_date',
         ];
-        
+
         $this->setProperties('music.album', 'musicAlbumProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
-    
+
     /**
      * Set music playlist properties.
      *
@@ -363,12 +363,12 @@ class OpenGraph implements OpenGraphContract
             'song:track',
             'creator'
         ];
-        
+
         $this->setProperties('music.playlist', 'musicPlaylistProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
-    
+
     /**
      * Set music radio station properties.
      *
@@ -381,12 +381,12 @@ class OpenGraph implements OpenGraphContract
         $validkeys = [
             'creator'
         ];
-        
+
         $this->setProperties('music.radio_station', 'musicRadioStationProperties', $attributes, $validkeys);
-        
+
         return $this;
     }
-    
+
     /**
      * Set video movie properties.
      *
@@ -405,12 +405,12 @@ class OpenGraph implements OpenGraphContract
             'release_date',
             'tag'
         ];
-        
+
         $this->setProperties('video.movie', 'videoMovieProperties', $attributes, $validkeys);
-        
+
         return $this;
-    }    
-    
+    }
+
     /**
      * Set video episode properties.
      *
@@ -430,11 +430,11 @@ class OpenGraph implements OpenGraphContract
             'tag',
             'series'
         ];
-        
+
         $this->setProperties('video.episode', 'videoEpisodeProperties', $attributes, $validkeys);
-        
+
         return $this;
-    }    
+    }
 
     /**
      * Set video episode properties.
@@ -454,11 +454,11 @@ class OpenGraph implements OpenGraphContract
             'release_date',
             'tag'
         ];
-        
+
         $this->setProperties('video.other', 'videoOtherProperties', $attributes, $validkeys);
-        
+
         return $this;
-    }    
+    }
 
     /**
      * Set video episode properties.
@@ -478,11 +478,11 @@ class OpenGraph implements OpenGraphContract
             'release_date',
             'tag'
         ];
-        
+
         $this->setProperties('video.tv_show', 'videoTVShowProperties', $attributes, $validkeys);
-        
+
         return $this;
-    }    
+    }
 
     /**
      * Add video properties.
@@ -500,9 +500,9 @@ class OpenGraph implements OpenGraphContract
             'width',
             'height'
         ];
-        
+
         $this->videoProperties[] = [$source, $this->cleanProperties($attributes, $validkeys)];
-        
+
         return $this;
     }
 
@@ -520,12 +520,12 @@ class OpenGraph implements OpenGraphContract
             'secure_url',
             'type'
         ];
-        
+
         $this->audioProperties[] = [$source, $this->cleanProperties($attributes, $validkeys)];
-        
+
         return $this;
     }
-    
+
     /**
      * Clean invalid properties
      *
@@ -537,16 +537,16 @@ class OpenGraph implements OpenGraphContract
     protected function cleanProperties($attributes = array(), $validkeys = array())
     {
         $array = array();
-        
+
         foreach ($attributes as $attribute => $value) {
             if (in_array($attribute, $validkeys)) {
                 $array[$attribute] = $value;
             }
         }
-        
+
         return $array;
     }
-    
+
     /**
      * Set properties
      *
@@ -567,7 +567,7 @@ class OpenGraph implements OpenGraphContract
             }
         }
     }
-    
+
     /**
      * Remove property.
      *
@@ -622,7 +622,7 @@ class OpenGraph implements OpenGraphContract
 
         return $this;
     }
-    
+
     /**
      * Define title property.
      *
@@ -634,7 +634,7 @@ class OpenGraph implements OpenGraphContract
     {
         return $this->addProperty('type', $type);
     }
-    
+
     /**
      * Define title property.
      *
