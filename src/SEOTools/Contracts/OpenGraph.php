@@ -208,7 +208,6 @@ interface OpenGraph
      */
     public function addVideo($source = null, $attributes = array());
 
-
     /**
      * add audio properties
      *
