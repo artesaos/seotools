@@ -1,6 +1,4 @@
-<?php
-
-namespace Artesaos\SEOTools;
+<?php namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
 
@@ -31,7 +29,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Setup title for all seo providers.
+     * Setup title for all seo providers
      *
      * @param string $title
      *
@@ -47,7 +45,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Setup description for all seo providers.
+     * Setup description for all seo providers
      *
      * @param $description
      *
@@ -70,7 +68,8 @@ class SEOTools implements SEOContract
     public function addImages($urls)
     {
         if (is_array($urls)):
-            $this->opengraph()->addImages($urls); else:
+            $this->opengraph()->addImages($urls);
+        else:
             $this->opengraph()->addImage($urls);
         endif;
 
@@ -80,7 +79,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Generate from all seo providers.
+     * Generate from all seo providers
      *
      * @return string
      */

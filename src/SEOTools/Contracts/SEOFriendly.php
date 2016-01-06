@@ -1,11 +1,9 @@
-<?php
-
-namespace Artesaos\SEOTools\Contracts;
+<?php namespace Artesaos\SEOTools\Contracts;
 
 interface SEOFriendly
 {
     /**
-     * Performs SEO settings.
+     * Performs SEO settings
      *
      * @param SEOTools $SEOTools
      */

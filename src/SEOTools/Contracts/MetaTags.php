@@ -1,15 +1,14 @@
-<?php
-
-namespace Artesaos\SEOTools\Contracts;
+<?php namespace Artesaos\SEOTools\Contracts;
 
 interface MetaTags
 {
+
     /**
      * Configuration.
      *
      * @param array
      */
-    public function __construct(array $config = []);
+    public function __construct(array $config = array());
 
     /**
      * Generates meta tags.
@@ -77,8 +76,8 @@ interface MetaTags
      * Add a custom meta tag.
      *
      * @param string|array $meta
-     * @param string       $value
-     * @param string       $name
+     * @param string $value
+     * @param string $name
      *
      * @return MetaTags
      */
@@ -106,7 +105,7 @@ interface MetaTags
     public function getTitleSeparator();
 
     /**
-     * Get all metatags.
+     * Get all metatags
      *
      * @return array
      */

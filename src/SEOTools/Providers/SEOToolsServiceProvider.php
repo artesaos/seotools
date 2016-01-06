@@ -1,9 +1,7 @@
-<?php
+<?php namespace Artesaos\SEOTools\Providers;
 
-namespace Artesaos\SEOTools\Providers;
-
-use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOMeta;
+use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOTools;
 use Artesaos\SEOTools\TwitterCards;
 use Illuminate\Support\ServiceProvider;
@@ -18,19 +16,21 @@ class SEOToolsServiceProvider extends ServiceProvider
     protected $defer = true;
 
     /**
+     *
      * @return void
      */
     public function boot()
     {
         if ($this->isLumen()):
-            $this->app->configure('seotools'); else:
+            $this->app->configure('seotools');
+        else:
             $this->publishes([
-                __DIR__.'/../../resources/config/seotools.php' => config_path('seotools.php'),
+                __DIR__ . '/../../resources/config/seotools.php' => config_path('seotools.php')
             ]);
         endif;
 
         $this->mergeConfigFrom(
-            __DIR__.'/../../resources/config/seotools.php', 'seotools'
+            __DIR__ . '/../../resources/config/seotools.php', 'seotools'
         );
     }
 
@@ -78,7 +78,7 @@ class SEOToolsServiceProvider extends ServiceProvider
             'seotools',
             'seotools.metatags',
             'seotools.opengraph',
-            'seotools.twitter',
+            'seotools.twitter'
         ];
     }
 

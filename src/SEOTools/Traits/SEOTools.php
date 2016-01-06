@@ -1,6 +1,4 @@
-<?php
-
-namespace Artesaos\SEOTools\Traits;
+<?php namespace Artesaos\SEOTools\Traits;
 
 use Artesaos\SEOTools\Contracts\SEOFriendly;
 

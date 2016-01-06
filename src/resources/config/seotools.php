@@ -20,8 +20,8 @@ return [
             'bing'      => null,
             'alexa'     => null,
             'pinterest' => null,
-            'yandex'    => null,
-        ],
+            'yandex'    => null
+        ]
     ],
     'opengraph' => [
         /*
@@ -34,7 +34,7 @@ return [
             'type'        => false,
             'site_name'   => false,
             'images'      => [],
-        ],
+        ]
     ],
     'twitter' => [
         /*
@@ -43,6 +43,6 @@ return [
         'defaults' => [
           //'card'        => 'summary',
           //'site'        => '@LuizVinicius73',
-        ],
-    ],
+        ]
+    ]
 ];
