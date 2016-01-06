@@ -1,9 +1,10 @@
-<?php namespace Artesaos\SEOTools\Contracts;
+<?php
+
+namespace Artesaos\SEOTools\Contracts;
 
 /**
- * SEOTools
+ * SEOTools.
  *
- * @package SEOTools
  * @author `Vinicius Reis`
  */
 interface SEOTools
@@ -18,22 +19,22 @@ interface SEOTools
      */
     public function opengraph();
 
-     /**
+    /**
      * @return \Artesaos\SEOTools\Contracts\TwitterCards
      */
     public function twitter();
 
-     /**
-      * Setup title for all seo providers
-      * 
-      * @param string $title
-      *
-      * @return  \Artesaos\SEOTools\Contracts\SEOTools
+    /**
+     * Setup title for all seo providers.
+     * 
+     * @param string $title
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function setTitle($title);
 
     /**
-     * Setup description for all seo providers
+     * Setup description for all seo providers.
      *
      * @param string $description
      *
@@ -42,7 +43,7 @@ interface SEOTools
     public function setDescription($description);
 
     /**
-     * Add one or more images urls
+     * Add one or more images urls.
      *
      * @param array|string $urls
      *
@@ -51,7 +52,7 @@ interface SEOTools
     public function addImages($urls);
 
     /**
-     * Generate from all seo providers
+     * Generate from all seo providers.
      *
      * @return string
      */

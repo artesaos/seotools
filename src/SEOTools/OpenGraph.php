@@ -1,10 +1,11 @@
-<?php namespace Artesaos\SEOTools;
+<?php
+
+namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
 
 class OpenGraph implements OpenGraphContract
 {
-
     /**
      * @var string
      */
@@ -28,7 +29,7 @@ class OpenGraph implements OpenGraphContract
     /**
      * @param array $config
      */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [])
     {
         $this->config = $config;
     }
@@ -43,13 +44,13 @@ class OpenGraph implements OpenGraphContract
         $this->setupDefaults();
 
         $properties = $this->eachProperties($this->properties);
-        $images     = $this->eachProperties($this->images, 'image');
+        $images = $this->eachProperties($this->images, 'image');
 
-        return PHP_EOL . $properties . PHP_EOL . $images;
+        return PHP_EOL.$properties.PHP_EOL.$images;
     }
 
     /**
-     * Make list of open graph tags
+     * Make list of open graph tags.
      *
      * @param array       $properties
      * @param null|string $prefix
@@ -65,28 +66,28 @@ class OpenGraph implements OpenGraphContract
             if (is_array($value)):
 
                 $subListPrefix = (is_string($property)) ? $property : $prefix;
-                $subList       = $this->eachProperties($value, $subListPrefix);
+        $subList = $this->eachProperties($value, $subListPrefix);
 
-                $html[] = $subList;
-            else:
+        $html[] = $subList; else:
                 if (is_string($prefix)):
-                    $key = (is_string($property)) ? $prefix . ':' . $property : $prefix;
-                else:
+                    $key = (is_string($property)) ? $prefix.':'.$property : $prefix; else:
                     $key = $property;
-                endif;
+        endif;
 
                 // if empty jump to next
-                if (empty($value)) continue;
+                if (empty($value)) {
+                    continue;
+                }
 
-                $html[] = $this->makeTag($key, $value);
-            endif;
+        $html[] = $this->makeTag($key, $value);
+        endif;
         endforeach;
 
         return implode(PHP_EOL, $html);
     }
 
     /**
-     * Make a og tag
+     * Make a og tag.
      *
      * @param string $key
      * @param string $value
@@ -95,11 +96,11 @@ class OpenGraph implements OpenGraphContract
      */
     protected function makeTag($key, $value)
     {
-        return '<meta property="' . $this->og_prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
+        return '<meta property="'.$this->og_prefix.strip_tags($key).'" content="'.strip_tags($value).'" />';
     }
 
     /**
-     * Setup default values
+     * Setup default values.
      */
     protected function setupDefaults()
     {
@@ -109,10 +110,9 @@ class OpenGraph implements OpenGraphContract
             if ($key == 'images'):
                 if (empty($this->images)):
                     $this->images = $value;
-                endif;
-            elseif (!empty($value) && !array_key_exists($key, $this->properties)):
+        endif; elseif (!empty($value) && !array_key_exists($key, $this->properties)):
                 $this->addProperty($key, $value);
-            endif;
+        endif;
         endforeach;
     }
 
@@ -210,7 +210,7 @@ class OpenGraph implements OpenGraphContract
     }
 
     /**
-     * Define site_name property
+     * Define site_name property.
      *
      * @param string $name
      *

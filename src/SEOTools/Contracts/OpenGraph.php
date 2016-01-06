@@ -1,11 +1,13 @@
-<?php namespace Artesaos\SEOTools\Contracts;
+<?php
+
+namespace Artesaos\SEOTools\Contracts;
 
 interface OpenGraph
 {
     /**
      * @param array $config
      */
-    public function __construct(array $config = array());
+    public function __construct(array $config = []);
 
     /**
      * Generates open graph tags.
@@ -17,7 +19,7 @@ interface OpenGraph
     /**
      * Add or update property.
      *
-     * @param string $key
+     * @param string       $key
      * @param string|array $value
      *
      * @return OpenGraph
@@ -79,7 +81,7 @@ interface OpenGraph
     public function setUrl($url);
 
     /**
-     * Define site_name property
+     * Define site_name property.
      *
      * @param string $name
      *
