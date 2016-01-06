@@ -123,7 +123,7 @@ class SEOMeta implements MetaTagsContract
      * Sets the title.
      *
      * @param string $title
-     * @param bool $appendDefault
+     * @param bool   $appendDefault
      *
      * @return MetaTagsContract
      */
