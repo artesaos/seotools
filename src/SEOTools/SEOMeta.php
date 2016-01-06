@@ -1,4 +1,6 @@
-<?php namespace Artesaos\SEOTools;
+<?php
+
+namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 use Illuminate\Config\Repository as Config;
@@ -41,7 +43,7 @@ class SEOMeta implements MetaTagsContract
     protected $keywords = [];
 
     /**
-     * extra metatags
+     * extra metatags.
      *
      * @var array
      */
@@ -58,23 +60,23 @@ class SEOMeta implements MetaTagsContract
      * @var array
      */
     protected $webmasterTags = [
-        'google'   => "google-site-verification",
-        'bing'     => "msvalidate.01",
-        'alexa'    => "alexaVerifyID",
-        'pintrest' => "p:domain_verify",
-        'yandex'   => "yandex-verification"
+        'google'   => 'google-site-verification',
+        'bing'     => 'msvalidate.01',
+        'alexa'    => 'alexaVerifyID',
+        'pintrest' => 'p:domain_verify',
+        'yandex'   => 'yandex-verification',
     ];
 
     /**
      * @param array $config
      */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [])
     {
         $this->config = new Config($config);
     }
 
     /**
-     * Generates meta tags
+     * Generates meta tags.
      *
      * @return string
      */
@@ -82,10 +84,10 @@ class SEOMeta implements MetaTagsContract
     {
         $this->loadWebMasterTags();
 
-        $title       = $this->getTitle();
+        $title = $this->getTitle();
         $description = $this->getDescription();
-        $keywords    = $this->getKeywords();
-        $metatags    = $this->getMetatags();
+        $keywords = $this->getKeywords();
+        $metatags = $this->getMetatags();
 
         $html = [];
 
@@ -99,24 +101,26 @@ class SEOMeta implements MetaTagsContract
 
         if (!empty($keywords)):
             $keywords = implode(', ', $keywords);
-            $html[]   = "<meta name=\"keywords\" content=\"{$keywords}\">";
+        $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
         endif;
 
         foreach ($metatags as $key => $value):
-            $name    = $value[0];
-            $content = $value[1];
+            $name = $value[0];
+        $content = $value[1];
 
             // if $content is empty jump to nest
-            if (empty($content)) continue;
+            if (empty($content)) {
+                continue;
+            }
 
-            $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
+        $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
         endforeach;
 
         return implode(PHP_EOL, $html);
     }
 
     /**
-     * Sets the title
+     * Sets the title.
      *
      * @param string $title
      *
@@ -166,7 +170,7 @@ class SEOMeta implements MetaTagsContract
 
     /**
      * Sets the list of keywords, you can send an array or string separated with commas
-     * also clears the previously set keywords
+     * also clears the previously set keywords.
      *
      * @param string|array $keywords
      *
@@ -188,7 +192,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Add a keyword
+     * Add a keyword.
      *
      * @param string|array $keyword
      *
@@ -197,8 +201,7 @@ class SEOMeta implements MetaTagsContract
     public function addKeyword($keyword)
     {
         if (is_array($keyword)):
-            $this->keywords = array_merge($keyword, $this->keywords);
-        else:
+            $this->keywords = array_merge($keyword, $this->keywords); else:
             $this->keywords[] = strip_tags($keyword);
         endif;
 
@@ -233,17 +236,16 @@ class SEOMeta implements MetaTagsContract
         // multiple metas
         if (is_array($meta)):
             foreach ($meta as $key => $value):
-                $this->metatags[$key] = array($name, $value);
-            endforeach;
-        else:
-            $this->metatags[$meta] = array($name, $value);
+                $this->metatags[$key] = [$name, $value];
+        endforeach; else:
+            $this->metatags[$meta] = [$name, $value];
         endif;
 
         return $this;
     }
 
     /**
-     * Takes the title formatted for display
+     * Takes the title formatted for display.
      *
      * @return string
      */
@@ -253,7 +255,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * takes the title that was set
+     * takes the title that was set.
      *
      * @return string
      */
@@ -263,7 +265,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * takes the title that was set
+     * takes the title that was set.
      *
      * @return string
      */
@@ -283,7 +285,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Get all metatags
+     * Get all metatags.
      *
      * @return array
      */
@@ -299,7 +301,9 @@ class SEOMeta implements MetaTagsContract
      */
     public function getDescription()
     {
-        if (false === $this->description) return null;
+        if (false === $this->description) {
+            return;
+        }
 
         return $this->description ?: $this->config->get('defaults.description', null);
     }
@@ -311,10 +315,10 @@ class SEOMeta implements MetaTagsContract
      */
     public function reset()
     {
-        $this->description   = null;
+        $this->description = null;
         $this->title_session = null;
-        $this->metatags      = [];
-        $this->keywords      = [];
+        $this->metatags = [];
+        $this->keywords = [];
     }
 
     /**
@@ -328,19 +332,19 @@ class SEOMeta implements MetaTagsContract
     {
         $default = $this->config->get('defaults.title', null);
 
-        return (empty($default)) ? $title : $title . $this->getTitleSeparator() . $default;
+        return (empty($default)) ? $title : $title.$this->getTitleSeparator().$default;
     }
 
     /**
-     * Load webmaster tags from configuration
+     * Load webmaster tags from configuration.
      */
     protected function loadWebMasterTags()
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value):
             if (!empty($value)):
                 $meta = array_get($this->webmasterTags, $name, $name);
-                $this->addMeta($meta, $value);
-            endif;
+        $this->addMeta($meta, $value);
+        endif;
         endforeach;
     }
 }

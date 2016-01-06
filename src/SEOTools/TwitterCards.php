@@ -1,10 +1,11 @@
-<?php namespace Artesaos\SEOTools;
+<?php
+
+namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
 
 class TwitterCards implements TwitterCardsContract
 {
-
     /**
      * @var string
      */
@@ -45,7 +46,7 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
-     * Make tags
+     * Make tags.
      *
      * @param array       $properties
      * @param null|string $prefix
@@ -56,16 +57,14 @@ class TwitterCards implements TwitterCardsContract
     {
         foreach ($values as $key => $value):
             if (is_array($value)):
-                $this->eachValue($value, $key);
-            else:
+                $this->eachValue($value, $key); else:
                 if (is_numeric($key)):
-                    $key = $prefix . $key;
-                elseif (is_string($prefix)):
-                    $key = $prefix . ':' . $key;
-                endif;
+                    $key = $prefix.$key; elseif (is_string($prefix)):
+                    $key = $prefix.':'.$key;
+        endif;
 
-                $this->html[] = $this->makeTag($key, $value);
-            endif;
+        $this->html[] = $this->makeTag($key, $value);
+        endif;
         endforeach;
     }
 
@@ -77,7 +76,7 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
-        return '<meta name="' . $this->prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
+        return '<meta name="'.$this->prefix.strip_tags($key).'" content="'.strip_tags($value).'" />';
     }
 
     /**
@@ -150,7 +149,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function addImage($image)
     {
-        foreach ((array)$image as $url):
+        foreach ((array) $image as $url):
             $this->images[] = $url;
         endforeach;
 
