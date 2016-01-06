@@ -1,4 +1,6 @@
-<?php namespace Artesaos\SEOTools\Facades;
+<?php
+
+namespace Artesaos\SEOTools\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
