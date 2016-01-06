@@ -123,10 +123,11 @@ class SEOMeta implements MetaTagsContract
      * Sets the title.
      *
      * @param string $title
+     * @param bool $appendDefault
      *
      * @return MetaTagsContract
      */
-    public function setTitle($title)
+    public function setTitle($title, $appendDefault = true)
     {
         // clean title
         $title = strip_tags($title);
@@ -135,7 +136,11 @@ class SEOMeta implements MetaTagsContract
         $this->title_session = $title;
 
         // store title
-        $this->title = $this->parseTitle($title);
+        if (true === $appendDefault) {
+            $this->title = $this->parseTitle($title);
+        } else {
+            $this->title = $title;
+        }
 
         return $this;
     }
