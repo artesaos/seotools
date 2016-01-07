@@ -26,7 +26,7 @@ interface SEOTools
 
     /**
      * Setup title for all seo providers.
-     * 
+     *
      * @param string $title
      *
      * @return \Artesaos\SEOTools\Contracts\SEOTools
@@ -50,6 +50,15 @@ interface SEOTools
      * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
     public function addImages($urls);
+
+    /**
+     * Get current title from metatags.
+      *
+     * @param bool $session
+     *
+     * @return string
+     */
+    public function getTitle($session = false);
 
     /**
      * Generate from all seo providers.

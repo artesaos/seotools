@@ -80,6 +80,22 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * Get current title from metatags.
+     *
+     * @param bool $session
+     *
+     * @return string
+     */
+    public function getTitle($session = false)
+    {
+        if($session) {
+            return $this->metatags()->getTitleSession();
+        }
+
+        return $this->metatags()->getTitle();
+    }
+
+    /**
      * Generate from all seo providers.
      *
      * @return string
