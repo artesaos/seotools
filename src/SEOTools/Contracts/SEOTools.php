@@ -53,7 +53,7 @@ interface SEOTools
 
     /**
      * Get current title from metatags.
-      *
+     *
      * @param bool $session
      *
      * @return string
