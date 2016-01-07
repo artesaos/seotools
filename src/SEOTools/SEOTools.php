@@ -88,7 +88,7 @@ class SEOTools implements SEOContract
      */
     public function getTitle($session = false)
     {
-        if($session) {
+        if ($session) {
             return $this->metatags()->getTitleSession();
         }
 
