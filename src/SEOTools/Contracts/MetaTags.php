@@ -22,10 +22,11 @@ interface MetaTags
      * Set the title.
      *
      * @param string $title
+     * @param bool   $appendDefault
      *
      * @return MetaTags
      */
-    public function setTitle($title);
+    public function setTitle($title, $appendDefault = true);
 
     /**
      * Set the title separator.
