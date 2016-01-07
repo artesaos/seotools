@@ -75,11 +75,11 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 
 #### Publish config
 
-In your terminal type 
+In your terminal type
 ```shell
 php artisan vendor:publish
 ```
-or 
+or
 ```shell
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
 ```  
@@ -149,18 +149,18 @@ class CommomController extends Controller
         OpenGraph::setTitle('Home');
         OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'articles');
-        
+
         Twitter::setTitle('Homepage');
         Twitter::setSite('@LuizVinicius73');
-        
+
         ## Or
-        
+
         SEO::setTitle('Home');
         SEO::setDescription('This is my page description');
         SEO::opengraph()->setUrl('http://current.url.com');
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::twitter()->setSite('@LuizVinicius73');
-        
+
         $posts = Post::all();
 
         return view('myindex', compact('posts'));
@@ -204,7 +204,7 @@ class CommomController extends Controller
                 'section' => 'string',
                 'tag' => 'string / array'
             ]);
-            
+
         // Namespace URI: http://ogp.me/ns/book#
         // book
         OpenGraph::setTitle('Book')
@@ -216,7 +216,7 @@ class CommomController extends Controller
                 'release_date' => 'datetime',
                 'tag' => 'string / array'
             ]);
-            
+
         // Namespace URI: http://ogp.me/ns/profile#
         // profile
         OpenGraph::setTitle('Profile')
@@ -228,7 +228,7 @@ class CommomController extends Controller
                 'username' => 'string',
                 'gender' => 'enum(male, female)'
             ]);
-            
+
         // Namespace URI: http://ogp.me/ns/music#
         // music.song
         OpenGraph::setType('music.song')
@@ -239,7 +239,7 @@ class CommomController extends Controller
                 'album:track' => 'integer',
                 'musician' => 'array'
             ]);
-            
+
         // music.album
         OpenGraph::setType('music.album')
             ->setMusicAlbum([
@@ -249,7 +249,7 @@ class CommomController extends Controller
                 'musician' => 'profile',
                 'release_date' => 'datetime'
             ]);
-            
+
          //music.playlist
         OpenGraph::setType('music.playlist')
             ->setMusicPlaylist([
@@ -258,13 +258,13 @@ class CommomController extends Controller
                 'song:track' => 'integer',
                 'creator' => 'profile'
             ]);
-            
+
         // music.radio_station
         OpenGraph::setType('music.radio_station')
             ->setMusicRadioStation([
                 'creator' => 'profile'
             ]);
-            
+
         // Namespace URI: http://ogp.me/ns/video#
         // video.movie
         OpenGraph::setType('video.movie')
@@ -277,7 +277,7 @@ class CommomController extends Controller
                 'release_date' => 'datetime',
                 'tag' => 'string / array'
             ]);
-            
+
         // video.episode
         OpenGraph::setType('video.episode')
             ->setVideoEpisode([
@@ -290,7 +290,7 @@ class CommomController extends Controller
                 'tag' => 'string / array',
                 'series' => 'video.tv_show'
             ]);
-            
+
         // video.tv_show
         OpenGraph::setType('video.tv_show')
             ->setVideoTVShow([
@@ -302,7 +302,7 @@ class CommomController extends Controller
                 'release_date' => 'datetime',
                 'tag' => 'string / array'
             ]);
-            
+
         // video.other
         OpenGraph::setType('video.other')
             ->setVideoOther([
@@ -314,7 +314,7 @@ class CommomController extends Controller
                 'release_date' => 'datetime',
                 'tag' => 'string / array'
             ]);
-            
+
         // og:video
         OpenGraph::addVideo('http://example.com/movie.swf', [
                 'secure_url' => 'https://example.com/movie.swf',
@@ -322,13 +322,13 @@ class CommomController extends Controller
                 'width' => 400,
                 'height' => 300
             ]);
-            
+
         // og:audio
         OpenGraph::addAudio('http://example.com/sound.mp3', [
                 'secure_url' => 'https://secure.example.com/sound.mp3',
                 'type' => 'audio/mpeg'
             ]);
-        
+
         return view('myshow', compact('post'));
     }
 }
@@ -353,7 +353,7 @@ class CommomController extends Controller
         $this->seo()->opengraph()->setUrl('http://current.url.com');
         $this->seo()->opengraph()->addProperty('type', 'articles');
         $this->seo()->twitter()->setSite('@LuizVinicius73');
-        
+
         $posts = Post::all();
 
         return view('myindex', compact('posts'));
@@ -371,7 +371,7 @@ class CommomController extends Controller
 	{!! Twitter::generate() !!}
 	    <!-- OR -->
 	{!! SEO::generate() !!}
-	
+
 	    <!-- LUMEN -->
 	{!! app('seotools')->generate() !!}
 </head>
@@ -404,7 +404,7 @@ class CommomController extends Controller
     <meta property="og:image"content="http://image.url.com/img3.jpg" />
     <meta property="og:image:url"content="http://image.url.com/cover.jpg" />
     <meta property="og:image:size"content="300" />
-    
+
     <meta name="twitter:card"content="summary" />
     <meta name="twitter:title"content="Title" />
     <meta name="twitter:site"content="@LuizVinicius73" />
@@ -501,5 +501,6 @@ SEO::twitter();
 SEO::opengraph();
 
 SEO::setTitle($title);
+SEO::getTitle($session = false);
 SEO::setDescription($description);
 ```
