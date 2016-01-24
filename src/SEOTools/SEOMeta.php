@@ -287,7 +287,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function getDefaultTitle()
     {
-        if(empty($this->title_default)) {
+        if (empty($this->title_default)) {
             return $this->config->get('defaults.title', null);
         }
 
