@@ -29,6 +29,15 @@ interface MetaTags
     public function setTitle($title, $appendDefault = true);
 
     /**
+     * Sets the default title tag.
+     *
+     * @param string $default
+     *
+     * @return MetaTags
+     */
+    public function setTitleDefault($default);
+
+    /**
      * Set the title separator.
      *
      * @param string $separator
@@ -126,6 +135,13 @@ interface MetaTags
      * @return string
      */
     public function getDescription();
+
+    /**
+     * Takes the default title.
+     *
+     * @return string
+     */
+    public function getDefaultTitle();
 
     /**
      * Reset all data.

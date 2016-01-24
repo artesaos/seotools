@@ -22,6 +22,13 @@ class SEOMeta implements MetaTagsContract
     protected $title_session;
 
     /**
+     * The meta title session.
+     *
+     * @var string
+     */
+    protected $title_default;
+
+    /**
      * The title tag separator.
      *
      * @var array
@@ -146,6 +153,20 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Sets the default title tag.
+     *
+     * @param string $default
+     *
+     * @return MetaTagsContract
+     */
+    public function setTitleDefault($default)
+    {
+        $this->title_default = $default;
+
+        return $this;
+    }
+
+    /**
      * Sets the separator for the title tag.
      *
      * @param string $separator
@@ -256,7 +277,21 @@ class SEOMeta implements MetaTagsContract
      */
     public function getTitle()
     {
-        return $this->title ?: $this->config->get('defaults.title', null);
+        return $this->title ?: $this->getDefaultTitle();
+    }
+
+    /**
+     * Takes the default title.
+     *
+     * @return string
+     */
+    public function getDefaultTitle()
+    {
+        if(empty($this->title_default)) {
+            return $this->config->get('defaults.title', null);
+        }
+
+        return $this->title_default;
     }
 
     /**
@@ -335,7 +370,7 @@ class SEOMeta implements MetaTagsContract
      */
     protected function parseTitle($title)
     {
-        $default = $this->config->get('defaults.title', null);
+        $default = $this->getDefaultTitle();
 
         return (empty($default)) ? $title : $title.$this->getTitleSeparator().$default;
     }
@@ -345,11 +380,11 @@ class SEOMeta implements MetaTagsContract
      */
     protected function loadWebMasterTags()
     {
-        foreach ($this->config->get('webmaster_tags', []) as $name => $value):
-            if (!empty($value)):
+        foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
+            if (!empty($value)) {
                 $meta = array_get($this->webmasterTags, $name, $name);
-        $this->addMeta($meta, $value);
-        endif;
-        endforeach;
+                $this->addMeta($meta, $value);
+            }
+        }
     }
 }
