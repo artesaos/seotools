@@ -43,6 +43,15 @@ interface SEOTools
     public function setDescription($description);
 
     /**
+     * Sets the canonical URL.
+     *
+     * @param string $url
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     */
+    public function setCanonical($url);
+
+    /**
      * Add one or more images urls.
      *
      * @param array|string $urls
