@@ -95,6 +95,15 @@ interface MetaTags
     public function addMeta($meta, $value = null, $name = 'name');
 
     /**
+     * Sets the canonical URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setCanonical($url);
+
+    /**
      * Get the title formatted for display.
      *
      * @return string
@@ -135,6 +144,13 @@ interface MetaTags
      * @return string
      */
     public function getDescription();
+
+    /**
+     * Get the canonical URL.
+     *
+     * @return string
+     */
+    public function getCanonical();
 
     /**
      * Takes the default title.

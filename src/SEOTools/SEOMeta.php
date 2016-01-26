@@ -57,6 +57,12 @@ class SEOMeta implements MetaTagsContract
     protected $metatags = [];
 
     /**
+     * The canonical URL
+     * @var string
+     */
+    protected $canonical;
+
+    /**
      * @var Config
      */
     protected $config;
@@ -95,6 +101,7 @@ class SEOMeta implements MetaTagsContract
         $description = $this->getDescription();
         $keywords = $this->getKeywords();
         $metatags = $this->getMetatags();
+        $canonical = $this->getCanonical();
 
         $html = [];
 
@@ -122,6 +129,10 @@ class SEOMeta implements MetaTagsContract
 
         $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
         endforeach;
+
+        if ($canonical):
+            $html[] = "<link rel=\"canonical\" href=\"{$canonical}\"/>";
+        endif;
 
         return implode(PHP_EOL, $html);
     }
@@ -271,6 +282,20 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Sets the canonical URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setCanonical($url)
+    {
+        $this->canonical = $url;
+
+        return $this;
+    }
+
+    /**
      * Takes the title formatted for display.
      *
      * @return string
@@ -346,6 +371,16 @@ class SEOMeta implements MetaTagsContract
         }
 
         return $this->description ?: $this->config->get('defaults.description', null);
+    }
+
+    /**
+     * Get the canonical URL.
+     *
+     * @return string
+     */
+    public function getCanonical()
+    {
+        return $this->canonical;
     }
 
     /**

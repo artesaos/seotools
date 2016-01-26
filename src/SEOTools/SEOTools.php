@@ -63,6 +63,20 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * Sets the canonical URL.
+     *
+     * @param string $url
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     */
+    public function setCanonical($url)
+    {
+        $this->metatags()->setCanonical($url);
+
+        return $this;
+    }
+
+    /**
      * @param array|string $urls
      *
      * @return \Artesaos\SEOTools\Contracts\SEOTools
