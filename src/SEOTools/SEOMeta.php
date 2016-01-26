@@ -57,7 +57,8 @@ class SEOMeta implements MetaTagsContract
     protected $metatags = [];
 
     /**
-     * The canonical URL
+     * The canonical URL.
+     *
      * @var string
      */
     protected $canonical;
