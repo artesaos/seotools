@@ -104,6 +104,24 @@ interface MetaTags
     public function setCanonical($url);
 
     /**
+     * Sets the prev URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setPrev($url);
+
+    /**
+     * Sets the next URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setNext($url);
+
+    /**
      * Get the title formatted for display.
      *
      * @return string
@@ -151,6 +169,20 @@ interface MetaTags
      * @return string
      */
     public function getCanonical();
+
+    /**
+     * Get the prev URL.
+     *
+     * @return string
+     */
+    public function getPrev();
+
+    /**
+     * Get the next URL.
+     *
+     * @return string
+     */
+    public function getNext();
 
     /**
      * Takes the default title.

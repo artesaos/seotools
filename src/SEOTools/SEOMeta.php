@@ -64,6 +64,20 @@ class SEOMeta implements MetaTagsContract
     protected $canonical;
 
     /**
+     * The prev URL in pagination.
+     *
+     * @var string
+     */
+    protected $prev;
+
+    /**
+     * The next URL in pagination.
+     *
+     * @var string
+     */
+    protected $next;
+
+    /**
      * @var Config
      */
     protected $config;
@@ -103,6 +117,8 @@ class SEOMeta implements MetaTagsContract
         $keywords = $this->getKeywords();
         $metatags = $this->getMetatags();
         $canonical = $this->getCanonical();
+        $prev = $this->getPrev();
+        $next = $this->getNext();
 
         $html = [];
 
@@ -133,6 +149,14 @@ class SEOMeta implements MetaTagsContract
 
         if ($canonical):
             $html[] = "<link rel=\"canonical\" href=\"{$canonical}\"/>";
+        endif;
+
+        if ($prev):
+            $html[] = "<link rel=\"prev\" href=\"{$prev}\"/>";
+        endif;
+
+        if ($next):
+            $html[] = "<link rel=\"next\" href=\"{$next}\"/>";
         endif;
 
         return implode(PHP_EOL, $html);
@@ -297,6 +321,34 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Sets the prev URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setPrev($url)
+    {
+        $this->prev = $url;
+
+        return $this;
+    }
+
+    /**
+     * Sets the next URL.
+     *
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function setNext($url)
+    {
+        $this->next = $url;
+
+        return $this;
+    }
+
+    /**
      * Takes the title formatted for display.
      *
      * @return string
@@ -382,6 +434,26 @@ class SEOMeta implements MetaTagsContract
     public function getCanonical()
     {
         return $this->canonical;
+    }
+
+    /**
+     * Get the prev URL.
+     *
+     * @return string
+     */
+    public function getPrev()
+    {
+        return $this->prev;
+    }
+
+    /**
+     * Get the next URL.
+     *
+     * @return string
+     */
+    public function getNext()
+    {
+        return $this->next;
     }
 
     /**
