@@ -122,6 +122,23 @@ interface MetaTags
     public function setNext($url);
 
     /**
+     * Add an alternate language.
+     *
+     * @param string $lang language code in format ISO 639-1
+     * @param string $url
+     */
+    public function addAlternateLanguage($lang, $url);
+
+    /**
+     * Add alternate languages.
+     *
+     * @param array $languages
+     *
+     * @return MetaTagsContract
+     */
+    public function addAlternateLanguages(array $languages);
+
+    /**
      * Get the title formatted for display.
      *
      * @return string
@@ -183,6 +200,13 @@ interface MetaTags
      * @return string
      */
     public function getNext();
+
+    /**
+     * Get alternate languages.
+     *
+     * @return array
+     */
+    public function getAlternateLanguages();
 
     /**
      * Takes the default title.
