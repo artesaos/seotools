@@ -330,6 +330,7 @@ class SEOMeta implements MetaTagsContract
     public function setPrev($url)
     {
         $this->prev = $url;
+
         return $this;
     }
 
@@ -343,6 +344,7 @@ class SEOMeta implements MetaTagsContract
     public function setNext($url)
     {
         $this->next = $url;
+
         return $this;
     }
 
