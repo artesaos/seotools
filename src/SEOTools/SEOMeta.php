@@ -78,6 +78,13 @@ class SEOMeta implements MetaTagsContract
     protected $next;
 
     /**
+     * The alternate languages.
+     *
+     * @var array
+     */
+    protected $alternateLanguages = [];
+
+    /**
      * @var Config
      */
     protected $config;
@@ -119,6 +126,7 @@ class SEOMeta implements MetaTagsContract
         $canonical = $this->getCanonical();
         $prev = $this->getPrev();
         $next = $this->getNext();
+        $languages = $this->getAlternateLanguages();
 
         $html = [];
 
@@ -158,6 +166,10 @@ class SEOMeta implements MetaTagsContract
         if ($next):
             $html[] = "<link rel=\"next\" href=\"{$next}\"/>";
         endif;
+
+        foreach ($languages as $lang):
+            $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\"/>";
+        endforeach;
 
         return implode(PHP_EOL, $html);
     }
@@ -349,6 +361,35 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Add an alternate language.
+     *
+     * @param string $lang language code in ISO 639-1 format
+     * @param string $url
+     *
+     * @return MetaTagsContract
+     */
+    public function addAlternateLanguage($lang, $url)
+    {
+        $this->alternateLanguages[] = ['lang' => $lang, 'url' => $url];
+
+        return $this;
+    }
+
+    /**
+     * Add alternate languages.
+     *
+     * @param array $langs
+     *
+     * @return MetaTagsContract
+     */
+    public function addAlternateLanguages(array $languages)
+    {
+        $this->alternateLanguages = array_merge($this->alternateLanguages, $languages);
+
+        return $this;
+    }
+
+    /**
      * Takes the title formatted for display.
      *
      * @return string
@@ -454,6 +495,16 @@ class SEOMeta implements MetaTagsContract
     public function getNext()
     {
         return $this->next;
+    }
+
+    /**
+     * Get alternate languages.
+     *
+     * @return array
+     */
+    public function getAlternateLanguages()
+    {
+        return $this->alternateLanguages;
     }
 
     /**
