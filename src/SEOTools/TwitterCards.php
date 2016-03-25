@@ -48,10 +48,10 @@ class TwitterCards implements TwitterCardsContract
     /**
      * Make tags.
      *
-     * @param array       $properties
+     * @param array $values
      * @param null|string $prefix
      *
-     * @return void
+     * @internal param array $properties
      */
     protected function eachValue(array $values, $prefix = null)
     {
@@ -70,9 +70,10 @@ class TwitterCards implements TwitterCardsContract
 
     /**
      * @param string $key
-     * @param string $values
-     *
+     * @param $value
      * @return string
+     *
+     * @internal param string $values
      */
     private function makeTag($key, $value)
     {
@@ -80,8 +81,8 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
-     * @oaram string $key
-     * @oaram string|array $key
+     * @param string $key
+     * @param string|array $value
      *
      * @return TwitterCardsContract
      */
@@ -133,7 +134,7 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
-     * @param string $description
+     * @param string $url
      *
      * @return TwitterCardsContract
      */
