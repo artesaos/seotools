@@ -144,6 +144,7 @@ class CommomController extends Controller
     {
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
         OpenGraph::setDescription('This is my page description');
         OpenGraph::setTitle('Home');
@@ -158,6 +159,7 @@ class CommomController extends Controller
         SEO::setTitle('Home');
         SEO::setDescription('This is my page description');
         SEO::opengraph()->setUrl('http://current.url.com');
+        SEO::setCanonical('https://codecasts.com.br/lesson');
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::twitter()->setSite('@LuizVinicius73');
 
@@ -418,12 +420,20 @@ class CommomController extends Controller
 
 #### API (SEOMeta)
 ```php
-SEOMeta::SetTitleSeparator($separator);
-SEOMeta::setTitle($title);
-SEOMeta::setDescription($description);
-SEOMeta::setKeywords($keywords);
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
+SEOMeta::addAlternateLanguage($lang, $url);
+SEOMeta::addAlternateLanguages(array $languages);
+SEOMeta::setTitleSeparator($separator);
+SEOMeta::setTitle($title);
+SEOMeta::setTitleDefault($default);
+SEOMeta::setDescription($description);
+SEOMeta::setKeywords($keywords);
+SEOMeta::setTitleSeparator($separator);
+SEOMeta::setCanonical($url);
+SEOMeta::setPrev($url);
+SEOMeta::setNext($url);
+SEOMeta::removeMeta($key);
 
 // You can chain methods
 SEOMeta::setTitle($title)
@@ -438,6 +448,9 @@ SEOMeta::getTitleSession();
 SEOMeta::getTitleSeparator();
 SEOMeta::getKeywords();
 SEOMeta::getDescription();
+SEOMeta::getCanonical($url);
+SEOMeta::getPrev($url);
+SEOMeta::getNext($url);
 SEOMeta::reset();
 
 SEOMeta::generate();
@@ -503,4 +516,6 @@ SEO::opengraph();
 SEO::setTitle($title);
 SEO::getTitle($session = false);
 SEO::setDescription($description);
+SEO::setCanonical($url);
+SEO::addImages($urls);
 ```
