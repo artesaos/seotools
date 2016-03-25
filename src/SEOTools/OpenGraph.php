@@ -180,8 +180,8 @@ class OpenGraph implements OpenGraphContract
      * Make list of open graph tags.
      *
      * @param array       $properties array of properties
-     * @param null|string $prefix     perfix of property
-     * @param bool        $ogPrefix   opengraph perfix
+     * @param null|string $prefix     prefix of property
+     * @param bool        $ogPrefix   opengraph prefix
      *
      * @return string
      */
@@ -225,7 +225,7 @@ class OpenGraph implements OpenGraphContract
      *
      * @param string $key      meta property key
      * @param string $value    meta property value
-     * @param bool   $ogPrefix opengraph perfix
+     * @param bool   $ogPrefix opengraph prefix
      *
      * @return string
      */
@@ -582,7 +582,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function addVideo($source = null, $attributes = [])
     {
-        $validkeys = [
+        $validKeys = [
             'url',
             'secure_url',
             'type',
@@ -592,7 +592,7 @@ class OpenGraph implements OpenGraphContract
 
         $this->videoProperties[] = [
             $source,
-            $this->cleanProperties($attributes, $validkeys),
+            $this->cleanProperties($attributes, $validKeys),
         ];
 
         return $this;
@@ -608,7 +608,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function addAudio($source = null, $attributes = [])
     {
-        $validkeys = [
+        $validKeys = [
             'url',
             'secure_url',
             'type',
@@ -616,7 +616,7 @@ class OpenGraph implements OpenGraphContract
 
         $this->audioProperties[] = [
             $source,
-            $this->cleanProperties($attributes, $validkeys),
+            $this->cleanProperties($attributes, $validKeys),
         ];
 
         return $this;
@@ -626,16 +626,16 @@ class OpenGraph implements OpenGraphContract
      * Clean invalid properties.
      *
      * @param array $attributes attributes input
-     * @param array $validkeys  keys that are allowed
+     * @param array $validKeys  keys that are allowed
      *
-     * @return void
+     * @return array
      */
-    protected function cleanProperties($attributes = [], $validkeys = [])
+    protected function cleanProperties($attributes = [], $validKeys = [])
     {
         $array = [];
 
         foreach ($attributes as $attribute => $value) {
-            if (in_array($attribute, $validkeys)) {
+            if (in_array($attribute, $validKeys)) {
                 $array[$attribute] = $value;
             }
         }
@@ -649,7 +649,7 @@ class OpenGraph implements OpenGraphContract
      * @param string $type       type of og:type
      * @param string $key        variable key
      * @param array  $attributes inputted opengraph attributes
-     * @param array  $validkeys  valid opengraph attributes
+     * @param array  $validKeys  valid opengraph attributes
      *
      * @return void
      */
@@ -657,11 +657,11 @@ class OpenGraph implements OpenGraphContract
         $type = null,
         $key = null,
         $attributes = [],
-        $validkeys = []
+        $validKeys = []
     ) {
         if (isset($this->properties['type']) && $this->properties['type'] == $type) {
             foreach ($attributes as $attribute => $value) {
-                if (in_array($attribute, $validkeys)) {
+                if (in_array($attribute, $validKeys)) {
                     $this->{$key}[$attribute] = $value;
                 }
             }
@@ -692,7 +692,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function addImage($source = null, $attributes = [])
     {
-        $validkeys = [
+        $validKeys = [
             'url',
             'secure_url',
             'type',
@@ -701,11 +701,11 @@ class OpenGraph implements OpenGraphContract
         ];
 
         if (is_array($source)) {
-            $this->images[] = $this->cleanProperties($source, $validkeys);
+            $this->images[] = $this->cleanProperties($source, $validKeys);
         } else {
             $this->images[] = [
                 $source,
-                $this->cleanProperties($attributes, $validkeys),
+                $this->cleanProperties($attributes, $validKeys),
             ];
         }
 
