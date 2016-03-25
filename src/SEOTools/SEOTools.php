@@ -83,10 +83,11 @@ class SEOTools implements SEOContract
      */
     public function addImages($urls)
     {
-        if (is_array($urls)):
-            $this->opengraph()->addImages($urls); else:
+        if (is_array($urls)) {
+            $this->opengraph()->addImages($urls);
+        } else {
             $this->opengraph()->addImage($urls);
-        endif;
+        }
 
         $this->twitter()->addImage($urls);
 

@@ -55,8 +55,8 @@ class SEOToolsServiceProvider extends ServiceProvider
             return new TwitterCards($app['config']->get('seotools.twitter.defaults', []));
         });
 
-        $this->app->singleton('seotools', function ($app) {
-            return new SEOTools($app);
+        $this->app->singleton('seotools', function () {
+            return new SEOTools();
         });
 
         $this->app->bind(Contracts\MetaTags::class, 'seotools.metatags');
