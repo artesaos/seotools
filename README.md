@@ -1,6 +1,6 @@
 # SEOTools - SEO Tools for Laravel and Lumen
 
-SEOTools is a package for **Laravel 5** and **Lumen** that provides helpers for some common SEO techniques.
+SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for some common SEO techniques.
 
 > Current Build Status
 
@@ -37,7 +37,7 @@ You need to update your application configuration in order to register the packa
 // file START ommited
     'providers' => [
         // other providers ommited
-        'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 // file END ommited
 ```
@@ -47,7 +47,7 @@ Go to `/bootstrap/app.php` file and add this line:
 
 ```php
 // file START ommited
-	$app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+	$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
 // file END ommited
 ```
 
@@ -61,11 +61,11 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 // file START ommited
     'aliases' => [
         // other Facades ommited
-        'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
-        'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
-        'Twitter'   => 'Artesaos\SEOTools\Facades\TwitterCard',
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // or
-        'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 // file END ommited
 ```
@@ -82,7 +82,7 @@ php artisan vendor:publish
 or
 ```shell
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
-```  
+```
 
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
 
