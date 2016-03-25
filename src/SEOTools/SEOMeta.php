@@ -130,46 +130,46 @@ class SEOMeta implements MetaTagsContract
 
         $html = [];
 
-        if ($title):
+        if ($title) {
             $html[] = "<title>$title</title>";
-        endif;
+        }
 
-        if ($description):
+        if ($description) {
             $html[] = "<meta name=\"description\" content=\"{$description}\">";
-        endif;
+        }
 
-        if (!empty($keywords)):
+        if (!empty($keywords)) {
             $keywords = implode(', ', $keywords);
-        $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
-        endif;
+            $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
+        }
 
-        foreach ($metatags as $key => $value):
+        foreach ($metatags as $key => $value) {
             $name = $value[0];
-        $content = $value[1];
+            $content = $value[1];
 
             // if $content is empty jump to nest
             if (empty($content)) {
                 continue;
             }
 
-        $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
-        endforeach;
+            $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
+        }
 
-        if ($canonical):
+        if ($canonical) {
             $html[] = "<link rel=\"canonical\" href=\"{$canonical}\"/>";
-        endif;
+        }
 
-        if ($prev):
+        if ($prev) {
             $html[] = "<link rel=\"prev\" href=\"{$prev}\"/>";
-        endif;
+        }
 
-        if ($next):
+        if ($next) {
             $html[] = "<link rel=\"next\" href=\"{$next}\"/>";
-        endif;
+        }
 
-        foreach ($languages as $lang):
+        foreach ($languages as $lang) {
             $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\"/>";
-        endforeach;
+        }
 
         return implode(PHP_EOL, $html);
     }
@@ -252,9 +252,9 @@ class SEOMeta implements MetaTagsContract
      */
     public function setKeywords($keywords)
     {
-        if (!is_array($keywords)):
+        if (!is_array($keywords)) {
             $keywords = explode(', ', $keywords);
-        endif;
+        }
 
         // clean keywords
         $keywords = array_map('strip_tags', $keywords);
@@ -274,10 +274,11 @@ class SEOMeta implements MetaTagsContract
      */
     public function addKeyword($keyword)
     {
-        if (is_array($keyword)):
-            $this->keywords = array_merge($keyword, $this->keywords); else:
+        if (is_array($keyword)) {
+            $this->keywords = array_merge($keyword, $this->keywords);
+        } else {
             $this->keywords[] = strip_tags($keyword);
-        endif;
+        }
 
         return $this;
     }
@@ -308,12 +309,13 @@ class SEOMeta implements MetaTagsContract
     public function addMeta($meta, $value = null, $name = 'name')
     {
         // multiple metas
-        if (is_array($meta)):
-            foreach ($meta as $key => $value):
+        if (is_array($meta)) {
+            foreach ($meta as $key => $value){
                 $this->metatags[$key] = [$name, $value];
-        endforeach; else:
+            }
+        } else {
             $this->metatags[$meta] = [$name, $value];
-        endif;
+        }
 
         return $this;
     }
@@ -378,7 +380,7 @@ class SEOMeta implements MetaTagsContract
     /**
      * Add alternate languages.
      *
-     * @param array $langs
+     * @param array $languages
      *
      * @return MetaTagsContract
      */
@@ -456,12 +458,12 @@ class SEOMeta implements MetaTagsContract
     /**
      * Get the Meta description.
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
         if (false === $this->description) {
-            return;
+            return null;
         }
 
         return $this->description ?: $this->config->get('defaults.description', null);
@@ -516,8 +518,12 @@ class SEOMeta implements MetaTagsContract
     {
         $this->description = null;
         $this->title_session = null;
+        $this->next = null;
+        $this->prev = null;
+        $this->canonical = null;
         $this->metatags = [];
         $this->keywords = [];
+        $this->alternateLanguages = [];
     }
 
     /**
