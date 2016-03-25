@@ -15,7 +15,7 @@ interface TwitterCards
     public function generate();
 
     /**
-     * @param string $key
+     * @param string       $key
      * @param string|array $value
      *
      * @return TwitterCards

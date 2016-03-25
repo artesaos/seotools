@@ -310,7 +310,7 @@ class SEOMeta implements MetaTagsContract
     {
         // multiple metas
         if (is_array($meta)) {
-            foreach ($meta as $key => $value){
+            foreach ($meta as $key => $value) {
                 $this->metatags[$key] = [$name, $value];
             }
         } else {
@@ -463,7 +463,7 @@ class SEOMeta implements MetaTagsContract
     public function getDescription()
     {
         if (false === $this->description) {
-            return null;
+            return;
         }
 
         return $this->description ?: $this->config->get('defaults.description', null);

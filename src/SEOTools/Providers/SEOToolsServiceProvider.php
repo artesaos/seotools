@@ -2,12 +2,12 @@
 
 namespace Artesaos\SEOTools\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Artesaos\SEOTools\Contracts;
 use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\SEOTools;
 use Artesaos\SEOTools\TwitterCards;
-use Artesaos\SEOTools\Contracts;
+use Illuminate\Support\ServiceProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configFile = __DIR__ . '/../../resources/config/seotools.php';
+        $configFile = __DIR__.'/../../resources/config/seotools.php';
 
         if ($this->isLumen()) {
             $this->app->configure('seotools');
@@ -33,7 +33,7 @@ class SEOToolsServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->mergeConfigFrom($configFile , 'seotools');
+        $this->mergeConfigFrom($configFile, 'seotools');
     }
 
     /**

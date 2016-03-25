@@ -48,7 +48,7 @@ class TwitterCards implements TwitterCardsContract
     /**
      * Make tags.
      *
-     * @param array $values
+     * @param array       $values
      * @param null|string $prefix
      *
      * @internal param array $properties
@@ -71,6 +71,7 @@ class TwitterCards implements TwitterCardsContract
     /**
      * @param string $key
      * @param $value
+     *
      * @return string
      *
      * @internal param string $values
@@ -81,7 +82,7 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
-     * @param string $key
+     * @param string       $key
      * @param string|array $value
      *
      * @return TwitterCardsContract
