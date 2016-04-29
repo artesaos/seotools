@@ -476,7 +476,9 @@ class SEOMeta implements MetaTagsContract
      */
     public function getCanonical()
     {
-        return $this->canonical;
+        $canonical_config = $this->config->get('defaults.canonical', false);
+
+        return $this->canonical ?: (($canonical_config === null) ? app('url')->current() : $canonical_config);
     }
 
     /**
@@ -524,6 +526,7 @@ class SEOMeta implements MetaTagsContract
         $this->metatags = [];
         $this->keywords = [];
         $this->alternateLanguages = [];
+        $this->canonical = null;
     }
 
     /**

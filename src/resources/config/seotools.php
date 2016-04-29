@@ -6,10 +6,11 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'       => "It's Over 9000!", // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
-            'separator'   => ' - ',
-            'keywords'    => [],
+            'title'        => "It's Over 9000!", // set false to total remove
+            'description'  => 'For those who helped create the Genki Dama', // set false to total remove
+            'separator'    => ' - ',
+            'keywords'     => [],
+            'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 
         /*
