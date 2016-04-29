@@ -1,6 +1,6 @@
 # SEOTools - SEO Tools for Laravel and Lumen
 
-SEOTools is a package for **Laravel 5** and **Lumen** that provides helpers for some common SEO techniques.
+SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for some common SEO techniques.
 
 > Current Build Status
 
@@ -37,7 +37,7 @@ You need to update your application configuration in order to register the packa
 // file START ommited
     'providers' => [
         // other providers ommited
-        'Artesaos\SEOTools\Providers\SEOToolsServiceProvider',
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 // file END ommited
 ```
@@ -47,7 +47,7 @@ Go to `/bootstrap/app.php` file and add this line:
 
 ```php
 // file START ommited
-	$app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+	$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
 // file END ommited
 ```
 
@@ -61,11 +61,11 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 // file START ommited
     'aliases' => [
         // other Facades ommited
-        'SEOMeta'   => 'Artesaos\SEOTools\Facades\SEOMeta',
-        'OpenGraph' => 'Artesaos\SEOTools\Facades\OpenGraph',
-        'Twitter'   => 'Artesaos\SEOTools\Facades\TwitterCard',
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // or
-        'SEO' => 'Artesaos\SEOTools\Facades\SEOTools',
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 // file END ommited
 ```
@@ -82,7 +82,7 @@ php artisan vendor:publish
 or
 ```shell
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
-```  
+```
 
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
 
@@ -144,6 +144,7 @@ class CommomController extends Controller
     {
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
         OpenGraph::setDescription('This is my page description');
         OpenGraph::setTitle('Home');
@@ -158,6 +159,7 @@ class CommomController extends Controller
         SEO::setTitle('Home');
         SEO::setDescription('This is my page description');
         SEO::opengraph()->setUrl('http://current.url.com');
+        SEO::setCanonical('https://codecasts.com.br/lesson');
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::twitter()->setSite('@LuizVinicius73');
 
@@ -418,12 +420,20 @@ class CommomController extends Controller
 
 #### API (SEOMeta)
 ```php
-SEOMeta::SetTitleSeparator($separator);
-SEOMeta::setTitle($title);
-SEOMeta::setDescription($description);
-SEOMeta::setKeywords($keywords);
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
+SEOMeta::addAlternateLanguage($lang, $url);
+SEOMeta::addAlternateLanguages(array $languages);
+SEOMeta::setTitleSeparator($separator);
+SEOMeta::setTitle($title);
+SEOMeta::setTitleDefault($default);
+SEOMeta::setDescription($description);
+SEOMeta::setKeywords($keywords);
+SEOMeta::setTitleSeparator($separator);
+SEOMeta::setCanonical($url);
+SEOMeta::setPrev($url);
+SEOMeta::setNext($url);
+SEOMeta::removeMeta($key);
 
 // You can chain methods
 SEOMeta::setTitle($title)
@@ -438,6 +448,9 @@ SEOMeta::getTitleSession();
 SEOMeta::getTitleSeparator();
 SEOMeta::getKeywords();
 SEOMeta::getDescription();
+SEOMeta::getCanonical($url);
+SEOMeta::getPrev($url);
+SEOMeta::getNext($url);
 SEOMeta::reset();
 
 SEOMeta::generate();
@@ -503,4 +516,6 @@ SEO::opengraph();
 SEO::setTitle($title);
 SEO::getTitle($session = false);
 SEO::setDescription($description);
+SEO::setCanonical($url);
+SEO::addImages($urls);
 ```

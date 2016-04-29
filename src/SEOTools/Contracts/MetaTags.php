@@ -99,7 +99,7 @@ interface MetaTags
      *
      * @param string $url
      *
-     * @return MetaTagsContract
+     * @return MetaTags
      */
     public function setCanonical($url);
 
@@ -108,7 +108,7 @@ interface MetaTags
      *
      * @param string $url
      *
-     * @return MetaTagsContract
+     * @return MetaTags
      */
     public function setPrev($url);
 
@@ -117,7 +117,7 @@ interface MetaTags
      *
      * @param string $url
      *
-     * @return MetaTagsContract
+     * @return MetaTags
      */
     public function setNext($url);
 
@@ -134,7 +134,7 @@ interface MetaTags
      *
      * @param array $languages
      *
-     * @return MetaTagsContract
+     * @return MetaTags
      */
     public function addAlternateLanguages(array $languages);
 

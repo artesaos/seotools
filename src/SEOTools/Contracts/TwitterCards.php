@@ -15,16 +15,16 @@ interface TwitterCards
     public function generate();
 
     /**
-     * @oaram string $key
-     * @oaram string|array $key
-     * 
+     * @param string       $key
+     * @param string|array $value
+     *
      * @return TwitterCards
      */
     public function addValue($key, $value);
 
     /**
      * @param string $type
-     * 
+     *
      * @return TwitterCards
      */
     public function setType($type);
@@ -38,35 +38,35 @@ interface TwitterCards
 
     /**
      * @param string $site
-     * 
+     *
      * @return TwitterCards
      */
     public function setSite($site);
 
     /**
      * @param string $description
-     * 
+     *
      * @return TwitterCards
      */
     public function setDescription($description);
 
     /**
      * @param string $url
-     * 
+     *
      * @return TwitterCards
      */
     public function setUrl($url);
 
     /**
      * @param string|array $image
-     * 
+     *
      * @return TwitterCards
      */
     public function addImage($image);
 
     /**
      * @param string|array $images
-     * 
+     *
      * @return TwitterCards
      */
     public function setImages($images);

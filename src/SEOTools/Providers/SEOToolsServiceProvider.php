@@ -2,6 +2,7 @@
 
 namespace Artesaos\SEOTools\Providers;
 
+use Artesaos\SEOTools\Contracts;
 use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\SEOTools;
@@ -22,16 +23,17 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->isLumen()):
-            $this->app->configure('seotools'); else:
-            $this->publishes([
-                __DIR__.'/../../resources/config/seotools.php' => config_path('seotools.php'),
-            ]);
-        endif;
+        $configFile = __DIR__.'/../../resources/config/seotools.php';
 
-        $this->mergeConfigFrom(
-            __DIR__.'/../../resources/config/seotools.php', 'seotools'
-        );
+        if ($this->isLumen()) {
+            $this->app->configure('seotools');
+        } else {
+            $this->publishes([
+                $configFile => config_path('seotools.php'),
+            ]);
+        }
+
+        $this->mergeConfigFrom($configFile, 'seotools');
     }
 
     /**
@@ -53,14 +55,14 @@ class SEOToolsServiceProvider extends ServiceProvider
             return new TwitterCards($app['config']->get('seotools.twitter.defaults', []));
         });
 
-        $this->app->singleton('seotools', function ($app) {
-            return new SEOTools($app);
+        $this->app->singleton('seotools', function () {
+            return new SEOTools();
         });
 
-        $this->app->bind('Artesaos\SEOTools\Contracts\MetaTags', 'seotools.metatags');
-        $this->app->bind('Artesaos\SEOTools\Contracts\OpenGraph', 'seotools.opengraph');
-        $this->app->bind('Artesaos\SEOTools\Contracts\Twitter', 'seotools.twitter');
-        $this->app->bind('Artesaos\SEOTools\Contracts\SEOTools', 'seotools');
+        $this->app->bind(Contracts\MetaTags::class, 'seotools.metatags');
+        $this->app->bind(Contracts\OpenGraph::class, 'seotools.opengraph');
+        $this->app->bind(Contracts\TwitterCards::class, 'seotools.twitter');
+        $this->app->bind(Contracts\SEOTools::class, 'seotools');
     }
 
     /**
@@ -71,10 +73,10 @@ class SEOToolsServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'Artesaos\SEOTools\Contracts\SEOTools',
-            'Artesaos\SEOTools\Contracts\MetaTags',
-            'Artesaos\SEOTools\Contracts\Twitter',
-            'Artesaos\SEOTools\Contracts\OpenGraph',
+            Contracts\SEOTools::class,
+            Contracts\MetaTags::class,
+            Contracts\TwitterCards::class,
+            Contracts\OpenGraph::class,
             'seotools',
             'seotools.metatags',
             'seotools.opengraph',
