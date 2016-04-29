@@ -16,7 +16,9 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^4.0|^5.0",
-    "phpspec/phpspec": "2.1.x"
+    "phpspec/phpspec": "2.1.x",
+    "orchestra/testbench": "~3.0",
+    "mockery/mockery": "^0.9.4"
   },
   "autoload": {
     "psr-4": {
@@ -26,5 +28,6 @@
   "config": {
     "preferred-install": "dist"
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
