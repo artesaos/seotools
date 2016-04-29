@@ -2,7 +2,8 @@
 
 namespace Artesaos\SEOTools\Tests;
 
-use Mockery as m;
+use Artesaos\SEOTools\Contracts\MetaTags;
+use Artesaos\SEOTools\SEOMeta;
 
 /**
  * Class SEOToolsServiceProviderTest
@@ -16,8 +17,8 @@ class SEOToolsServiceProviderTest extends BaseTest
     public function test_container_are_provided()
     {
         $this->assertInstanceOf(
-            \Artesaos\SEOTools\Contracts\MetaTags::class,
-            $this->app[\Artesaos\SEOTools\SEOMeta::class]
+            MetaTags::class,
+            $this->app[SEOMeta::class]
         );
     }
 
