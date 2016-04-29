@@ -25,6 +25,11 @@
       "Artesaos\\SEOTools\\": "src/SEOTools/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Artesaos\\SEOTools\\Test\\": "tests/"
+    }
+  },
   "config": {
     "preferred-install": "dist"
   },
