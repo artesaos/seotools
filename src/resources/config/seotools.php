@@ -10,7 +10,7 @@ return [
             'description'  => 'For those who helped create the Genki Dama', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => false, // Leave blank for using Url::current(), set false to total remove
+            'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 
         /*
