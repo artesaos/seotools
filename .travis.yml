@@ -11,7 +11,7 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: hhvm
-    
+
 before_script:
   - travis_retry composer install --prefer-source --no-interaction
 
