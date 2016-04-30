@@ -1,6 +1,7 @@
 <?php
 
 namespace Artesaos\SEOTools\Tests;
+
 use Orchestra\Testbench\TestCase;
 use Mockery as m;
 
@@ -9,11 +10,6 @@ use Mockery as m;
  */
 abstract class BaseTest extends TestCase
 {
-    /**
-     * @var FacebookAds
-     */
-    protected $laravelFacebookAds;
-
     public function tearDown()
     {
         parent::tearDown();
