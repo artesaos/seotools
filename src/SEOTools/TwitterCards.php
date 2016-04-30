@@ -29,7 +29,7 @@ class TwitterCards implements TwitterCardsContract
     /**
      * @param array $defaults
      */
-    public function __construct(array $defaults)
+    public function __construct(array $defaults = [])
     {
         $this->values = $defaults;
     }

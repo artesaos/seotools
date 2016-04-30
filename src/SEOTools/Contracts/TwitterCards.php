@@ -7,7 +7,7 @@ interface TwitterCards
     /**
      * @param array $defaults
      */
-    public function __construct(array $defaults);
+    public function __construct(array $defaults = []);
 
     /**
      * @return string
