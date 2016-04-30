@@ -20,4 +20,9 @@ abstract class BaseTest extends TestCase
     {
         parent::setUp();
     }
+
+    protected function getPackageProviders($app)
+    {
+        return ['Artesaos\SEOTools\Providers\SEOToolsServiceProvider'];
+    }
 }
