@@ -256,6 +256,8 @@ class OpenGraph implements OpenGraphContract
                 if (empty($this->images)) {
                     $this->images = $value;
                 }
+            } elseif ($key == 'url' && $value === null) {
+                $this->setUrl(app('url')->current());
             } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
