@@ -74,7 +74,8 @@ class TwitterCardsTest extends BaseTest
         $this->twitterCards->setImages(['sayajin.png', 'namekusei.png']);
 
         $expected = "<meta name=\"twitter:images0\" content=\"sayajin.png\" />";
-        $expected .= "\n<meta name=\"twitter:images1\" content=\"namekusei.png\" />";
+        $expected .= PHP_EOL;
+        $expected .= "<meta name=\"twitter:images1\" content=\"namekusei.png\" />";
 
         $this->assertEquals($expected, $this->twitterCards->generate());
     }
