@@ -141,8 +141,8 @@ class SEOMetaTest extends BaseTest
     public function test_set_canonical()
     {
         $fullHeader = "<title>It's Over 9000!</title>\n<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "\n<link rel=\"canonical\" href=\"http://localhost\"/>";
-        $canonical = 'http://localhost';
+        $fullHeader .= "\n<link rel=\"canonical\" href=\"http://domain.com\"/>";
+        $canonical = 'http://domain.com';
 
         $this->seoMeta->setCanonical($canonical);
 
@@ -153,8 +153,8 @@ class SEOMetaTest extends BaseTest
     public function test_set_next()
     {
         $fullHeader = "<title>It's Over 9000!</title>\n<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "\n<link rel=\"next\" href=\"http://localhost\"/>";
-        $next = 'http://localhost';
+        $fullHeader .= "\n<link rel=\"next\" href=\"http://domain.com\"/>";
+        $next = 'http://domain.com';
 
         $this->seoMeta->setNext($next);
 
@@ -165,8 +165,8 @@ class SEOMetaTest extends BaseTest
     public function test_set_prev()
     {
         $fullHeader = "<title>It's Over 9000!</title>\n<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "\n<link rel=\"prev\" href=\"http://localhost\"/>";
-        $prev = 'http://localhost';
+        $fullHeader .= "\n<link rel=\"prev\" href=\"http://domain.com\"/>";
+        $prev = 'http://domain.com';
 
         $this->seoMeta->setPrev($prev);
 
@@ -177,9 +177,9 @@ class SEOMetaTest extends BaseTest
     public function test_set_alternate_languages()
     {
         $fullHeader = "<title>It's Over 9000!</title>\n<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "\n<link rel=\"alternate\" hreflang=\"en\" href=\"http://localhost\"/>";
+        $fullHeader .= "\n<link rel=\"alternate\" hreflang=\"en\" href=\"http://domain.com\"/>";
         $lang = 'en';
-        $langUrl = 'http://localhost';
+        $langUrl = 'http://domain.com';
 
         $expectedLangs = [['lang' => $lang, 'url' => $langUrl]];
         $this->seoMeta->addAlternateLanguage($lang, $langUrl);
