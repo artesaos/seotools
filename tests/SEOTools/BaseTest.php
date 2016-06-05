@@ -25,4 +25,13 @@ abstract class BaseTest extends TestCase
     {
         return ['Artesaos\SEOTools\Providers\SEOToolsServiceProvider'];
     }
+
+    /**
+     * @param $str
+     * @return string
+     */
+    protected function removeBreakLines($str)
+    {
+        return str_replace(array("\r", "\n"), '', $str);
+    }
 }
