@@ -30,7 +30,10 @@ class TwitterCardsTest extends BaseTest
 
         $expected = '<meta name="twitter:title" content="Kamehamehaaaaaaaa" />';
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 
     public function test_set_site()
@@ -39,7 +42,10 @@ class TwitterCardsTest extends BaseTest
 
         $expected = '<meta name="twitter:site" content="http://kakaroto.9000" />';
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 
     public function test_set_url()
@@ -48,7 +54,10 @@ class TwitterCardsTest extends BaseTest
 
         $expected = '<meta name="twitter:url" content="http://kakaroto.9000" />';
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 
     public function test_set_description()
@@ -57,7 +66,10 @@ class TwitterCardsTest extends BaseTest
 
         $expected = '<meta name="twitter:description" content="Kamehamehaaaaaaaa" />';
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 
     public function test_set_type()
@@ -66,7 +78,10 @@ class TwitterCardsTest extends BaseTest
 
         $expected = '<meta name="twitter:type" content="sayajin" />';
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 
     public function test_set_image()
@@ -74,9 +89,11 @@ class TwitterCardsTest extends BaseTest
         $this->twitterCards->setImages(['sayajin.png', 'namekusei.png']);
 
         $expected = "<meta name=\"twitter:images0\" content=\"sayajin.png\" />";
-        $expected .= PHP_EOL;
         $expected .= "<meta name=\"twitter:images1\" content=\"namekusei.png\" />";
 
-        $this->assertEquals($expected, $this->twitterCards->generate());
+        $expectedDom = $this->makeDomDocument($expected);
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 }
