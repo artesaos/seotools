@@ -46,57 +46,41 @@ class SEOToolsTest extends BaseTest
     {
         $this->seoTools->setTitle('Kamehamehaaaaaaa');
 
-        $expected = '<title>Kamehamehaaaaaaa - It\'s Over 9000!</title>';
-        $expected .= PHP_EOL;
+        $expected = "<title>Kamehamehaaaaaaa - It's Over 9000!</title>";
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:title" content="Kamehamehaaaaaaa" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
-        $expected .= PHP_EOL;
-        $expected .= PHP_EOL;
         $expected .= '<meta name="twitter:title" content="Kamehamehaaaaaaa" />';
 
-        $this->assertEquals($expected, $this->seoTools->generate());
         $this->assertEquals('Kamehamehaaaaaaa - It\'s Over 9000!', $this->seoTools->getTitle());
+        $this->setRightAssertion($expected);
     }
 
     public function test_set_description()
     {
         $this->seoTools->setDescription('Kamehamehaaaaaaa');
 
-        $expected = '<title>It\'s Over 9000!</title>';
-        $expected .= PHP_EOL;
+        $expected = "<title>It's Over 9000!</title>";
         $expected .= '<meta name="description" content="Kamehamehaaaaaaa">';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:description" content="Kamehamehaaaaaaa" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
-        $expected .= PHP_EOL;
-        $expected .= PHP_EOL;
         $expected .= '<meta name="twitter:description" content="Kamehamehaaaaaaa" />';
 
 
-        $this->assertEquals($expected, $this->seoTools->generate());
+        $this->setRightAssertion($expected);
     }
 
     public function test_set_canonical()
     {
         $this->seoTools->setCanonical('http://domain.com');
 
-        $expected = '<title>It\'s Over 9000!</title>';
-        $expected .= PHP_EOL;
+        $expected = "<title>It's Over 9000!</title>";
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
-        $expected .= PHP_EOL;
         $expected .= '<link rel="canonical" href="http://domain.com"/>';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
-        $expected .= PHP_EOL;
-        $expected .= PHP_EOL;
 
-        $this->assertEquals($expected, $this->seoTools->generate());
+        $this->setRightAssertion($expected);
     }
 
     public function test_add_images()
@@ -104,38 +88,36 @@ class SEOToolsTest extends BaseTest
         $this->seoTools->addImages(['Kamehamehaaaaaaa.png']);
         $this->seoTools->addImages('Kamehamehaaaaaaa.png');
 
-        $expected = '<title>It\'s Over 9000!</title>';
-        $expected .= PHP_EOL;
+        $expected = "<title>It's Over 9000!</title>";
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:image" content="Kamehamehaaaaaaa.png" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:image" content="Kamehamehaaaaaaa.png" />';
-        $expected .= PHP_EOL;
-        $expected .= PHP_EOL;
         $expected .= '<meta name="twitter:images0" content="Kamehamehaaaaaaa.png" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta name="twitter:images1" content="Kamehamehaaaaaaa.png" />';
 
-        $this->assertEquals($expected, $this->seoTools->generate());
+        $this->setRightAssertion($expected);
     }
 
     public function test_generate()
     {
-        $expected = '<title>It\'s Over 9000!</title>';
-        $expected .= PHP_EOL;
+        $expected = "<title>It's Over 9000!</title>";
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
-        $expected .= PHP_EOL;
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
-        $expected .= PHP_EOL;
-        $expected .= PHP_EOL;
 
-        $this->assertEquals($expected, $this->seoTools->generate());
+        $this->setRightAssertion($expected);
+    }
+
+    /**
+     * @param $expectedString
+     */
+    protected function setRightAssertion($expectedString)
+    {
+        $expectedDom = $this->makeDomDocument($expectedString);
+        $actualDom = $this->makeDomDocument($this->seoTools->generate());
+
+        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
 }
