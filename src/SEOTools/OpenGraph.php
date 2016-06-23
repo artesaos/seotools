@@ -139,10 +139,12 @@ class OpenGraph implements OpenGraphContract
 
     /**
      * Generates open graph tags.
+     * 
+     * @param bool $minify
      *
      * @return string
      */
-    public function generate()
+    public function generate($minify = false)
     {
         $this->setupDefaults();
 
@@ -173,7 +175,7 @@ class OpenGraph implements OpenGraphContract
             );
         }
 
-        return $output;
+        return ($minify) ? str_replace(PHP_EOL, '', $output) : $output;
     }
 
     /**
