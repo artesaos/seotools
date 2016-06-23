@@ -71,8 +71,10 @@ interface SEOTools
 
     /**
      * Generate from all seo providers.
+     * 
+     * @param bool $minify
      *
      * @return string
      */
-    public function generate();
+    public function generate($minify = false);
 }
