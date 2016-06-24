@@ -13,10 +13,12 @@ interface MetaTags
 
     /**
      * Generates meta tags.
+     * 
+     * @param bool $minify
      *
      * @return string
      */
-    public function generate();
+    public function generate($minify = false);
 
     /**
      * Set the title.
