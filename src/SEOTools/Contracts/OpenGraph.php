@@ -11,10 +11,12 @@ interface OpenGraph
 
     /**
      * Generates open graph tags.
+     * 
+     * @param bool $minify
      *
      * @return string
      */
-    public function generate();
+    public function generate($minify = false);
 
     /**
      * Add or update property.
