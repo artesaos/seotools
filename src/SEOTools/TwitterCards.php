@@ -35,14 +35,16 @@ class TwitterCards implements TwitterCardsContract
     }
 
     /**
+     * @param bool $minify
+     * 
      * @return string
      */
-    public function generate()
+    public function generate($minify = false)
     {
         $this->eachValue($this->values);
         $this->eachValue($this->images, 'images');
 
-        return implode(PHP_EOL, $this->html);
+        return ($minify) ? implode('', $this->html) : implode(PHP_EOL, $this->html);
     }
 
     /**

@@ -365,6 +365,8 @@ class CommomController extends Controller
 
 ### In Your View
 
+> **Pro Tip**: Pass the parameter `true` to get minified code and reduce filesize.
+
 ```html
 <html>
 <head>
@@ -373,6 +375,10 @@ class CommomController extends Controller
 	{!! Twitter::generate() !!}
 	    <!-- OR -->
 	{!! SEO::generate() !!}
+	
+	  <!-- MINIFIED -->
+	{!! SEO::generate(true) !!}
+	
 
 	    <!-- LUMEN -->
 	{!! app('seotools')->generate() !!}

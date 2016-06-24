@@ -112,10 +112,12 @@ class SEOMeta implements MetaTagsContract
 
     /**
      * Generates meta tags.
+     * 
+     * @param bool $minify
      *
      * @return string
      */
-    public function generate()
+    public function generate($minify = false)
     {
         $this->loadWebMasterTags();
 
@@ -171,7 +173,7 @@ class SEOMeta implements MetaTagsContract
             $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\"/>";
         }
 
-        return implode(PHP_EOL, $html);
+        return ($minify) ? implode('', $html) : implode(PHP_EOL, $html);
     }
 
     /**

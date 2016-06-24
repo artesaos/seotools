@@ -112,10 +112,12 @@ class SEOTools implements SEOContract
 
     /**
      * Generate from all seo providers.
-     *
+     * 
+     * @param bool $minify
+     * 
      * @return string
      */
-    public function generate()
+    public function generate($minify = false)
     {
         $html = $this->metatags()->generate();
         $html .= PHP_EOL;
@@ -123,6 +125,6 @@ class SEOTools implements SEOContract
         $html .= PHP_EOL;
         $html .= $this->twitter()->generate();
 
-        return $html;
+        return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }
 }
