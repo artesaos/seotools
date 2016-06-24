@@ -10,9 +10,11 @@ interface TwitterCards
     public function __construct(array $defaults = []);
 
     /**
+     * @param bool $minify
+     * 
      * @return string
      */
-    public function generate();
+    public function generate($minify = false);
 
     /**
      * @param string       $key
