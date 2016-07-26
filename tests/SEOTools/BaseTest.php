@@ -25,4 +25,15 @@ abstract class BaseTest extends TestCase
     {
         return ['Artesaos\SEOTools\Providers\SEOToolsServiceProvider'];
     }
+
+    /**
+     * @param $string
+     * @return \DOMDocument
+     */
+    protected function makeDomDocument($string)
+    {
+        $dom = new \DOMDocument();
+        $dom->loadHTML($string);
+        return $dom;
+    }
 }
