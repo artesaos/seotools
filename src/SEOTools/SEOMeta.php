@@ -188,11 +188,7 @@ class SEOMeta implements MetaTagsContract
     {
 
     	if (false === $title) {
-<<<<<<< HEAD
             return $this;
-=======
-            return;
->>>>>>> 4c070b83910fc682c0a0042b8d6ac75b0631e520
         }
 
         // clean title
