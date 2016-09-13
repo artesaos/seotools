@@ -186,6 +186,11 @@ class SEOMeta implements MetaTagsContract
      */
     public function setTitle($title, $appendDefault = true)
     {
+
+    	if (false === $title) {
+            return $this;
+        }
+
         // clean title
         $title = strip_tags($title);
 
