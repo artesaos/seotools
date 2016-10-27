@@ -36,7 +36,7 @@ class TwitterCards implements TwitterCardsContract
 
     /**
      * @param bool $minify
-     * 
+     *
      * @return string
      */
     public function generate($minify = false)
@@ -150,6 +150,8 @@ class TwitterCards implements TwitterCardsContract
      * @param string|array $image
      *
      * @return TwitterCardsContract
+     *
+     * @deprecated use setImage($image) instead
      */
     public function addImage($image)
     {
@@ -164,11 +166,22 @@ class TwitterCards implements TwitterCardsContract
      * @param string|array $images
      *
      * @return TwitterCardsContract
+     *
+     * @deprecated use setImage($image) instead
      */
     public function setImages($images)
     {
         $this->images = [];
 
         return $this->addImage($images);
+    }
+
+    /**
+     * @param $image
+     * @return TwitterCardsContract
+     */
+    public function setImage($image)
+    {
+        return $this->addValue('image', $image);
     }
 }
