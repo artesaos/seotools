@@ -12,7 +12,8 @@ matrix:
     - php: hhvm
 
 before_script:
-  - travis_retry composer install --prefer-source --no-interaction
+  - phpenv config-rm xdebug.ini
+  - travis_retry composer install --prefer-dist --no-interaction
 
 script:
   - mkdir -p build/logs
