@@ -17,7 +17,7 @@ SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for
 <a href="http://zenhub.io" target="_blank"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px" alt="Powered by ZenHub"/></a>
 
 ## Features
-- friendly interface
+- Friendly Interface
 - Ease of set titles and meta tags
 - Ease of set metas for twitter and opengraph
 
