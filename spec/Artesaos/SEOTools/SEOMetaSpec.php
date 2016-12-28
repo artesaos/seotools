@@ -2,6 +2,7 @@
 
 namespace spec\Artesaos\SEOTools;
 
+use Illuminate\Config\Repository as Config;
 use PhpSpec\ObjectBehavior;
 
 class SEOMetaSpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class SEOMetaSpec extends ObjectBehavior
                 ],
             ];
 
-        $this->beConstructedWith($config);
+        $this->beConstructedWith(new Config($config));
     }
 
     public function it_is_initializable()
