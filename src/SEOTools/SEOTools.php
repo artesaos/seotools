@@ -2,6 +2,7 @@
 
 namespace Artesaos\SEOTools;
 
+use Artesaos\SEOTools\Contracts\MetaTags;
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
 
 class SEOTools implements SEOContract
