@@ -7,6 +7,7 @@ use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\SEOTools;
 use Artesaos\SEOTools\TwitterCards;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider
@@ -44,7 +45,7 @@ class SEOToolsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('seotools.metatags', function ($app) {
-            return new SEOMeta($app['config']->get('seotools.meta', []));
+            return new SEOMeta(new Config($app['config']->get('seotools.meta', [])));
         });
 
         $this->app->singleton('seotools.opengraph', function ($app) {

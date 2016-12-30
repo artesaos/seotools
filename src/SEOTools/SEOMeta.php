@@ -103,11 +103,11 @@ class SEOMeta implements MetaTagsContract
     ];
 
     /**
-     * @param array $config
+     * @param Config $config
      */
-    public function __construct(array $config = [])
+    public function __construct(Config $config)
     {
-        $this->config = new Config($config);
+        $this->config = $config;
     }
 
     /**
