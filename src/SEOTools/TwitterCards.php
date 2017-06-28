@@ -113,7 +113,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setType($type)
     {
-        return $this->addValue('type', $type);
+        return $this->addValue('card', $type);
     }
 
     /**

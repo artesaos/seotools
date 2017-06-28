@@ -64,7 +64,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setType('sayajin');
 
-        $expected = '<meta name="twitter:type" content="sayajin" />';
+        $expected = '<meta name="twitter:card" content="sayajin" />';
 
         $this->setRightAssertion($expected);
     }
