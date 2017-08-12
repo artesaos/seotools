@@ -40,9 +40,9 @@
       "providers": [
           "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
       ],
-      "aliases": [
+      "aliases": {
         "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
-      ]
+      }
     }
   }
 }
