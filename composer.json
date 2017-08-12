@@ -34,5 +34,15 @@
     "preferred-install": "dist"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+          "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+      ],
+      "aliases": [
+        "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
+      ]
+    }
+  }
 }
