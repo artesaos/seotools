@@ -31,7 +31,8 @@ ok 29 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_title
 ok 30 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_site
 ok 31 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_url
 ok 32 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_description
-ok 33 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_type
-ok 34 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_images
-ok 35 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_image
-1..35
+ok 33 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_cleans_description
+ok 34 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_type
+ok 35 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_images
+ok 36 - Artesaos\SEOTools\Tests\TwitterCardsTest::test_set_image
+1..36
