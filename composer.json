@@ -33,6 +33,19 @@
   "config": {
     "preferred-install": "dist"
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+      ],
+      "aliases": {
+        "SEOMeta": "Artesaos\\SEOTools\\Facades\\SEOMeta",
+        "OpenGraph": "Artesaos\\SEOTools\\Facades\\OpenGraph",
+        "Twitter": "Artesaos\\SEOTools\\Facades\\TwitterCard",
+        "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
+      }
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }
