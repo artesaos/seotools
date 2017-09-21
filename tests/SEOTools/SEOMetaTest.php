@@ -97,6 +97,15 @@ class SEOMetaTest extends BaseTest
         $this->assertNull($this->seoMeta->getDescription());
     }
 
+    public function test_cleans_description()
+    {
+        $description = '"Foo bar" -> abc';
+
+        $this->seoMeta->setDescription($description);
+
+        $this->assertEquals("&quot;Foo bar&quot; -&gt; abc", $this->seoMeta->getDescription());
+    }
+
     public function test_set_keywords()
     {
         $fullHeader = "<title>It's Over 9000!</title>";

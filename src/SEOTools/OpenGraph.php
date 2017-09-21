@@ -763,7 +763,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function setDescription($description = null)
     {
-        return $this->addProperty('description', $description);
+        return $this->addProperty('description', htmlentities($description));
     }
 
     /**

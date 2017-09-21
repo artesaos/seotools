@@ -60,6 +60,17 @@ class TwitterCardsTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_cleans_description()
+    {
+        $description = '"Foo bar" -> abc';
+
+        $this->twitterCards->setDescription($description);
+
+        $expected = '<meta name="twitter:description" content="&quot;Foo bar&quot; -&gt; abc" />';
+
+        $this->setRightAssertion($expected);
+    }
+
     public function test_set_type()
     {
         $this->twitterCards->setType('sayajin');
