@@ -510,7 +510,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Get the canonical URL.
+     * Get the AMP html URL.
      *
      * @return string
      */
