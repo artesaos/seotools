@@ -36,13 +36,13 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+        "Tsawler\\SEOTools\\Providers\\SEOToolsServiceProvider"
       ],
       "aliases": {
-        "SEOMeta": "Artesaos\\SEOTools\\Facades\\SEOMeta",
-        "OpenGraph": "Artesaos\\SEOTools\\Facades\\OpenGraph",
-        "Twitter": "Artesaos\\SEOTools\\Facades\\TwitterCard",
-        "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
+        "SEOMeta": "Tsawler\\SEOTools\\Facades\\SEOMeta",
+        "OpenGraph": "Tsawler\\SEOTools\\Facades\\OpenGraph",
+        "Twitter": "Tsawler\\SEOTools\\Facades\\TwitterCard",
+        "SEO": "Tsawler\\SEOTools\\Facades\\SEOTools"
       }
     }
   },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Tsawler\SEOTools\Tests;
 
 /**
  * Class SEOToolsServiceProviderTest.
@@ -30,20 +30,20 @@ class SEOToolsServiceProviderTest extends BaseTest
     {
         return [
             [
-                'Artesaos\SEOTools\Contracts\MetaTags',
-                'Artesaos\SEOTools\SEOMeta',
+                'Tsawler\SEOTools\Contracts\MetaTags',
+                'Tsawler\SEOTools\SEOMeta',
             ],
             [
-                'Artesaos\SEOTools\Contracts\OpenGraph',
-                'Artesaos\SEOTools\OpenGraph',
+                'Tsawler\SEOTools\Contracts\OpenGraph',
+                'Tsawler\SEOTools\OpenGraph',
             ],
             [
-                'Artesaos\SEOTools\Contracts\SEOTools',
-                'Artesaos\SEOTools\SEOTools',
+                'Tsawler\SEOTools\Contracts\SEOTools',
+                'Tsawler\SEOTools\SEOTools',
             ],
             [
-                'Artesaos\SEOTools\Contracts\TwitterCards',
-                'Artesaos\SEOTools\TwitterCards',
+                'Tsawler\SEOTools\Contracts\TwitterCards',
+                'Tsawler\SEOTools\TwitterCards',
             ],
         ];
     }

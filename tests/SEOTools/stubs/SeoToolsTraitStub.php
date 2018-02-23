@@ -1,7 +1,7 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests\stubs;
-use Artesaos\SEOTools\Traits\SEOTools;
+namespace Tsawler\SEOTools\Tests\stubs;
+use Tsawler\SEOTools\Traits\SEOTools;
 
 /**
  * Class SeoToolsTraitStub
