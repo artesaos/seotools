@@ -117,6 +117,20 @@ class OpenGraph implements OpenGraphContract
      * @var array
      */
     protected $audioProperties = [];
+    
+    /**
+     * Array of Place Properties.
+     *
+     * @var array
+     */
+    protected $placeProperties = [];
+    
+    /**
+     * Array of Product Properties.
+     *
+     * @var array
+     */
+    protected $productProperties = [];
 
     /**
      * Array of Image Properties.
@@ -139,7 +153,7 @@ class OpenGraph implements OpenGraphContract
 
     /**
      * Generates open graph tags.
-     * 
+     *
      * @param bool $minify
      *
      * @return string
@@ -165,6 +179,8 @@ class OpenGraph implements OpenGraphContract
             'videoOtherProperties'        => ['video',   false],
             'videoProperties'             => ['video',   true],
             'audioProperties'             => ['audio',   true],
+            'placeProperties'             => ['place',   false],
+            'productProperties'           => ['product', false],
         ];
 
         foreach ($props as $prop => $options) {
@@ -623,6 +639,58 @@ class OpenGraph implements OpenGraphContract
             $this->cleanProperties($attributes, $validKeys),
         ];
 
+        return $this;
+    }
+    
+    /**
+     * Set place properties.
+     *
+     * @param array $attributes opengraph place attributes
+     *
+     * @return OpenGraphContract
+     */
+    public function setPlace($attributes = [])
+    {
+        $validkeys = [
+            'place:latitude',
+            'place:longitude',
+            
+        ];
+
+        $this->setProperties('place', 'placeProperties', $attributes, $validkeys);
+
+        return $this;
+    }
+    
+    /**
+     * Set product properties.
+     *
+     * @param array $attributes opengraph product attributes
+     *
+     * @return OpenGraphContract
+     */
+    public function setProduct($attributes = [])
+    {
+        $validkeys = [
+            'original_price:amount',
+            'original_price:currency',
+            'pretax_price:amount',
+            'pretax_price:currency',
+            'price:amount',
+            'price:currency',
+            'shipping_cost:amount',
+            'shipping_cost:currency',
+            'weight:value',
+            'weight:units',
+            'shipping_weight:value',
+            'shipping_weight:units',
+            'sale_price:amount',
+            'sale_price:currency',
+            'sale_price_dates:start',
+            'sale_price_dates:end'
+        ];
+
+        $this->setProperties('product', 'productProperties', $attributes, $validkeys);
         return $this;
     }
 
