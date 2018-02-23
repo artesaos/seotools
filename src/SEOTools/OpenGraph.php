@@ -236,7 +236,6 @@ class OpenGraph implements OpenGraphContract
         if ($key === 'article:published_time') {
             return sprintf(
                 '<meta property="%s%s" content="%s" />%s',
-                $ogPrefix ? $this->og_prefix : '',
                 strip_tags($key),
                 strip_tags($value),
                 PHP_EOL
