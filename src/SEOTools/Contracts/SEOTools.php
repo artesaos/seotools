@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Contracts;
+namespace Tsawler\SEOTools\Contracts;
 
 /**
  * SEOTools.
@@ -10,17 +10,17 @@ namespace Artesaos\SEOTools\Contracts;
 interface SEOTools
 {
     /**
-     * @return \Artesaos\SEOTools\Contracts\MetaTags
+     * @return \Tsawler\SEOTools\Contracts\MetaTags
      */
     public function metatags();
 
     /**
-     * @return \Artesaos\SEOTools\Contracts\OpenGraph
+     * @return \Tsawler\SEOTools\Contracts\OpenGraph
      */
     public function opengraph();
 
     /**
-     * @return \Artesaos\SEOTools\Contracts\TwitterCards
+     * @return \Tsawler\SEOTools\Contracts\TwitterCards
      */
     public function twitter();
 
@@ -29,7 +29,7 @@ interface SEOTools
      *
      * @param string $title
      *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * @return \Tsawler\SEOTools\Contracts\SEOTools
      */
     public function setTitle($title);
 
@@ -38,7 +38,7 @@ interface SEOTools
      *
      * @param string $description
      *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * @return \Tsawler\SEOTools\Contracts\SEOTools
      */
     public function setDescription($description);
 
@@ -47,7 +47,7 @@ interface SEOTools
      *
      * @param string $url
      *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * @return \Tsawler\SEOTools\Contracts\SEOTools
      */
     public function setCanonical($url);
 
@@ -56,7 +56,7 @@ interface SEOTools
      *
      * @param array|string $urls
      *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * @return \Tsawler\SEOTools\Contracts\SEOTools
      */
     public function addImages($urls);
 

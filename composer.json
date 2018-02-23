@@ -1,12 +1,12 @@
 {
-  "name": "artesaos/seotools",
+  "name": "tsawler/seotools",
   "description": "SEO Tools for Laravel and Lumen",
   "keywords": ["laravel5", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph"],
   "license": "MIT",
   "authors": [
     {
-      "name": "Vinicius",
-      "email": "luiz.vinicius73@gmail.com"
+      "name": "tsawler",
+      "email": "trevor.sawler@gmail.com"
     }
   ],
   "require": {
@@ -22,12 +22,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Artesaos\\SEOTools\\": "src/SEOTools/"
+      "Tsawler\\SEOTools\\": "src/SEOTools/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Artesaos\\SEOTools\\Test\\": "tests/"
+      "Tsawler\\SEOTools\\Test\\": "tests/"
     }
   },
   "config": {

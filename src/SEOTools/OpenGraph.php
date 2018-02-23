@@ -1,8 +1,8 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Tsawler\SEOTools;
 
-use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
+use Tsawler\SEOTools\Contracts\OpenGraph as OpenGraphContract;
 
 class OpenGraph implements OpenGraphContract
 {
