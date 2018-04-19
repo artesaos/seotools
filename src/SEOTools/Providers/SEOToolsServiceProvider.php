@@ -44,19 +44,19 @@ class SEOToolsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('seotools.metatags', function ($app) {
+        $this->app->singleton('seotools.metatags', function($app) {
             return new SEOMeta(new Config($app['config']->get('seotools.meta', [])));
         });
 
-        $this->app->singleton('seotools.opengraph', function ($app) {
+        $this->app->singleton('seotools.opengraph', function($app) {
             return new OpenGraph($app['config']->get('seotools.opengraph', []));
         });
 
-        $this->app->singleton('seotools.twitter', function ($app) {
+        $this->app->singleton('seotools.twitter', function($app) {
             return new TwitterCards($app['config']->get('seotools.twitter.defaults', []));
         });
 
-        $this->app->singleton('seotools', function () {
+        $this->app->singleton('seotools', function() {
             return new SEOTools();
         });
 
@@ -69,7 +69,7 @@ class SEOToolsServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return string[]
      */
     public function provides()
     {

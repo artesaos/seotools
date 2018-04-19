@@ -698,7 +698,7 @@ class OpenGraph implements OpenGraphContract
      * Clean invalid properties.
      *
      * @param array $attributes attributes input
-     * @param array $validKeys  keys that are allowed
+     * @param string[] $validKeys  keys that are allowed
      *
      * @return array
      */
@@ -721,7 +721,7 @@ class OpenGraph implements OpenGraphContract
      * @param string $type       type of og:type
      * @param string $key        variable key
      * @param array  $attributes inputted opengraph attributes
-     * @param array  $validKeys  valid opengraph attributes
+     * @param string[]  $validKeys  valid opengraph attributes
      *
      * @return void
      */

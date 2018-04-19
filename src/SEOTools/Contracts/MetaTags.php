@@ -10,6 +10,7 @@ interface MetaTags
      * Configuration.
      *
      * @param Config $config
+     * @return void
      */
     public function __construct(Config $config);
 
@@ -130,6 +131,7 @@ interface MetaTags
      *
      * @param string $lang language code in format ISO 639-1
      * @param string $url
+     * @return MetaTags
      */
     public function addAlternateLanguage($lang, $url);
 

@@ -148,7 +148,7 @@ class SEOMeta implements MetaTagsContract
             $html[] = "<meta name=\"description\" content=\"{$description}\">";
         }
 
-        if (! empty($keywords)) {
+        if (!empty($keywords)) {
             $keywords = implode(', ', $keywords);
             $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
         }
@@ -266,7 +266,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function setKeywords($keywords)
     {
-        if (! is_array($keywords)) {
+        if (!is_array($keywords)) {
             $keywords = explode(', ', $keywords);
         }
 
@@ -587,7 +587,7 @@ class SEOMeta implements MetaTagsContract
     protected function loadWebMasterTags()
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
-            if (! empty($value)) {
+            if (!empty($value)) {
                 $meta = array_get($this->webmasterTags, $name, $name);
                 $this->addMeta($meta, $value);
             }
