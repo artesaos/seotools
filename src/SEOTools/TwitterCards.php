@@ -155,7 +155,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function addImage($image)
     {
-        foreach ((array) $image as $url):
+        foreach ((array)$image as $url):
             $this->images[] = $url;
         endforeach;
 

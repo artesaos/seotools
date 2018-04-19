@@ -6,6 +6,7 @@ interface OpenGraph
 {
     /**
      * @param array $config
+     * @return void
      */
     public function __construct(array $config = []);
 
@@ -59,7 +60,7 @@ interface OpenGraph
     /**
      * Define title property.
      *
-     * @param $title
+     * @param string $title
      *
      * @return OpenGraph
      */
@@ -95,7 +96,6 @@ interface OpenGraph
     /**
      * Define type property.
      *
-     * @param string $name
      *
      * @return OpenGraph
      */
