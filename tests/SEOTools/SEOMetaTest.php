@@ -169,6 +169,19 @@ class SEOMetaTest extends BaseTest
         $this->assertEquals($canonical, $this->seoMeta->getCanonical());
     }
 
+    public function test_set_amp()
+    {
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+        $fullHeader .= "<link rel=\"amphtml\" href=\"http://domain.com/amp\"/>";
+        $amphtml = 'http://domain.com/amp';
+
+        $this->seoMeta->setAmpHtml($amphtml);
+
+        $this->setRightAssertion($fullHeader);
+        $this->assertEquals($amphtml, $this->seoMeta->getAmpHtml());
+    }
+
     public function test_set_next()
     {
         $fullHeader = "<title>It's Over 9000!</title>";
