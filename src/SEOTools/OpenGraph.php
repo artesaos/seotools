@@ -117,14 +117,14 @@ class OpenGraph implements OpenGraphContract
      * @var array
      */
     protected $audioProperties = [];
-    
+
     /**
      * Array of Place Properties.
      *
      * @var array
      */
     protected $placeProperties = [];
-    
+
     /**
      * Array of Product Properties.
      *
@@ -641,7 +641,7 @@ class OpenGraph implements OpenGraphContract
 
         return $this;
     }
-    
+
     /**
      * Set place properties.
      *
@@ -654,14 +654,14 @@ class OpenGraph implements OpenGraphContract
         $validkeys = [
             'place:latitude',
             'place:longitude',
-            
+
         ];
 
         $this->setProperties('place', 'placeProperties', $attributes, $validkeys);
 
         return $this;
     }
-    
+
     /**
      * Set product properties.
      *
@@ -794,6 +794,34 @@ class OpenGraph implements OpenGraphContract
     public function addImages(array $urls)
     {
         array_push($this->images, $urls);
+
+        return $this;
+    }
+
+    /**
+     * Replace array of images.
+     *
+     * @param mixed $source     URL of image source
+     * @param array $attributes Object type attributes
+     *
+     * @return OpenGraph
+     */
+    public function replaceImages($source = null, $attributes = [])
+    {
+        $validKeys = [
+            'url',
+            'secure_url',
+            'type',
+            'width',
+            'height',
+        ];
+
+        $this->images = [
+            $source,
+            $this->cleanProperties(
+                is_array($source) ? $source : $attributes, $validKeys
+            )
+        ];
 
         return $this;
     }

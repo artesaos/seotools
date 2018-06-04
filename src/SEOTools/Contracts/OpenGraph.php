@@ -12,7 +12,7 @@ interface OpenGraph
 
     /**
      * Generates open graph tags.
-     * 
+     *
      * @param bool $minify
      *
      * @return string
@@ -56,6 +56,16 @@ interface OpenGraph
      * @return OpenGraph
      */
     public function addImages(array $urls);
+
+    /**
+     * Replace array of images.
+     *
+     * @param string $url
+     * @param array  $attributes
+     *
+     * @return OpenGraph
+     */
+    public function replaceImages($urls, $attributes = []);
 
     /**
      * Define title property.
