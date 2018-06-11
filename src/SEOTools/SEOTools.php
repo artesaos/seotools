@@ -35,12 +35,13 @@ class SEOTools implements SEOContract
      * Setup title for all seo providers.
      *
      * @param string $title
+     * @param bool   $appendDefault
      *
      * @return \Artesaos\SEOTools\Contracts\SEOTools
      */
-    public function setTitle($title)
+    public function setTitle($title, $appendDefault = true)
     {
-        $this->metatags()->setTitle($title);
+        $this->metatags()->setTitle($title, $appendDefault);
         $this->opengraph()->setTitle($title);
         $this->twitter()->setTitle($title);
 
