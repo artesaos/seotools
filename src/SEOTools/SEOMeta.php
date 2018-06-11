@@ -1,8 +1,8 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Tsawler\SEOTools;
 
-use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
+use Tsawler\SEOTools\Contracts\MetaTags as MetaTagsContract;
 use Illuminate\Config\Repository as Config;
 
 class SEOMeta implements MetaTagsContract

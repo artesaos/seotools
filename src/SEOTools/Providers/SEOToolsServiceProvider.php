@@ -1,12 +1,12 @@
 <?php
 
-namespace Artesaos\SEOTools\Providers;
+namespace Tsawler\SEOTools\Providers;
 
-use Artesaos\SEOTools\Contracts;
-use Artesaos\SEOTools\OpenGraph;
-use Artesaos\SEOTools\SEOMeta;
-use Artesaos\SEOTools\SEOTools;
-use Artesaos\SEOTools\TwitterCards;
+use Tsawler\SEOTools\Contracts;
+use Tsawler\SEOTools\OpenGraph;
+use Tsawler\SEOTools\SEOMeta;
+use Tsawler\SEOTools\SEOTools;
+use Tsawler\SEOTools\TwitterCards;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 

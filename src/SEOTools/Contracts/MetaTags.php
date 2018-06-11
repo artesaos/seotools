@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Contracts;
+namespace Tsawler\SEOTools\Contracts;
 
 use Illuminate\Config\Repository as Config;
 

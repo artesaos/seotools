@@ -1,20 +1,6 @@
 # SEOTools - SEO Tools for Laravel and Lumen
 
-SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for some common SEO techniques.
-
-> Current Build Status
-
-[![Build Status](https://travis-ci.org/artesaos/seotools.svg)](https://travis-ci.org/artesaos/seotools)
-[![Code Climate](https://codeclimate.com/github/artesaos/seotools/badges/gpa.svg)](https://codeclimate.com/github/artesaos/seotools)
-[![Codacy Badge](https://www.codacy.com/project/badge/36bce2b4929e4f3387d26b8a26e5c667)](https://www.codacy.com/app/luiz-vinicius73/seotools)
-
-> Statistics
-
-[![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
-
-> Tips
-
-<a href="http://zenhub.io" target="_blank"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png" height="18px" alt="Powered by ZenHub"/></a>
+SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for some common SEO techniques. This is forked from [artesaos/seotools](https://github.com/artesaos/seotools).
 
 ## Features
 - Friendly Interface
@@ -25,9 +11,9 @@ SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for
 ### 1 - Dependency
 The first step is using composer to install the package and automatically update your `composer.json` file, you can do this by running:
 ```shell
-composer require artesaos/seotools
+composer require tsawler/seotools
 ```
-> **Note**: If you are using Laravel 5.5, the steps 2 and 3, for providers and aliases, are unnecessaries. SEOTools supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
+> **Note**: If you are using Laravel 5.5 or greater, the steps 2 and 3, for providers and aliases, are unnecessary. SEOTools supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
 
 ### 2 - Provider
 You need to update your application configuration in order to register the package so it can be loaded by Laravel, just update your `config/app.php` file adding the following code at the end of your `'providers'` section:
@@ -38,7 +24,7 @@ You need to update your application configuration in order to register the packa
 // file START ommited
     'providers' => [
         // other providers ommited
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Tsawler\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 // file END ommited
 ```
@@ -48,7 +34,7 @@ Go to `/bootstrap/app.php` file and add this line:
 
 ```php
 // file START ommited
-	$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
+	$app->register(Tsawler\SEOTools\Providers\SEOToolsServiceProvider::class);
 // file END ommited
 ```
 
@@ -62,11 +48,11 @@ In order to use the `SEOMeta` facade, you need to register it on the `config/app
 // file START ommited
     'aliases' => [
         // other Facades ommited
-        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'SEOMeta'   => Tsawler\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Tsawler\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Tsawler\SEOTools\Facades\TwitterCard::class,
         // or
-        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'SEO' => Tsawler\SEOTools\Facades\SEOTools::class,
     ],
 // file END ommited
 ```
@@ -82,7 +68,7 @@ php artisan vendor:publish
 ```
 or
 ```shell
-php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
+php artisan vendor:publish --provider="Tsawler\SEOTools\Providers\SEOToolsServiceProvider"
 ```
 
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
@@ -340,7 +326,7 @@ class CommomController extends Controller
 #### SEOTrait
 
 ```php
-use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Tsawler\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class CommomController extends Controller
 {

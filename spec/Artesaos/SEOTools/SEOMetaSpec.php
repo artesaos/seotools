@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Artesaos\SEOTools;
+namespace spec\Tsawler\SEOTools;
 
 use Illuminate\Config\Repository as Config;
 use PhpSpec\ObjectBehavior;
@@ -23,7 +23,7 @@ class SEOMetaSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Artesaos\SEOTools\SEOMeta');
+        $this->shouldHaveType('Tsawler\SEOTools\SEOMeta');
     }
 
     public function it_return_empty_when_title_and_description_is_false()

@@ -1,8 +1,8 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Tsawler\SEOTools\Tests;
 
-use Artesaos\SEOTools\SEOMeta;
+use Tsawler\SEOTools\SEOMeta;
 
 /**
  * Class SEOMetaTest.

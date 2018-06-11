@@ -1,8 +1,8 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Tsawler\SEOTools;
 
-use Artesaos\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
+use Tsawler\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
 
 class TwitterCards implements TwitterCardsContract
 {
