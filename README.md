@@ -436,6 +436,7 @@ SEOMeta::setTitle($title);
 SEOMeta::setTitleDefault($default);
 SEOMeta::setDescription($description);
 SEOMeta::setKeywords($keywords);
+SEOMeta::setRobots($robots);
 SEOMeta::setTitleSeparator($separator);
 SEOMeta::setCanonical($url);
 SEOMeta::setPrev($url);
@@ -458,6 +459,7 @@ SEOMeta::getDescription();
 SEOMeta::getCanonical($url);
 SEOMeta::getPrev($url);
 SEOMeta::getNext($url);
+SEOMeta::getRobots();
 SEOMeta::reset();
 
 SEOMeta::generate();
