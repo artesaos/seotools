@@ -332,6 +332,15 @@ class CommomController extends Controller
                 'type' => 'audio/mpeg'
             ]);
 
+        // og:place
+        OpenGraph::setTitle('Place')
+             ->setDescription('Some Place')
+            ->setType('place')
+            ->setPlace([
+                'location:latitude' => 'float',
+                'location:longitude' => 'float',
+            ]);
+
         return view('myshow', compact('post'));
     }
 }
@@ -376,10 +385,10 @@ class CommomController extends Controller
 	{!! Twitter::generate() !!}
 	    <!-- OR -->
 	{!! SEO::generate() !!}
-	
+
 	  <!-- MINIFIED -->
 	{!! SEO::generate(true) !!}
-	
+
 
 	    <!-- LUMEN -->
 	{!! app('seotools')->generate() !!}

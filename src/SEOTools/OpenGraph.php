@@ -117,14 +117,14 @@ class OpenGraph implements OpenGraphContract
      * @var array
      */
     protected $audioProperties = [];
-    
+
     /**
      * Array of Place Properties.
      *
      * @var array
      */
     protected $placeProperties = [];
-    
+
     /**
      * Array of Product Properties.
      *
@@ -641,7 +641,7 @@ class OpenGraph implements OpenGraphContract
 
         return $this;
     }
-    
+
     /**
      * Set place properties.
      *
@@ -652,16 +652,16 @@ class OpenGraph implements OpenGraphContract
     public function setPlace($attributes = [])
     {
         $validkeys = [
-            'place:latitude',
-            'place:longitude',
-            
+            'location:latitude',
+            'location:longitude',
+
         ];
 
         $this->setProperties('place', 'placeProperties', $attributes, $validkeys);
 
         return $this;
     }
-    
+
     /**
      * Set product properties.
      *
