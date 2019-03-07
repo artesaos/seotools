@@ -506,14 +506,13 @@ Twitter::setTitle($type); // title of twitter card tag
 Twitter::setSite($type); // site of twitter card tag
 Twitter::setDescription($type); // description of twitter card tag
 Twitter::setUrl($type); // url of twitter card tag
-Twitter::addImage($url); // add image url
-Twitter::addImages($url); // add an array of url images
+Twitter::setImage($url); // add image url
+
 
 // You can chain methods
 Twitter::addValue($key, $value)
             ->setType($type)
-            ->addImage($url)
-            ->addImages($url)
+            ->setImage($url)
             ->setTitle($title)
             ->setDescription($description)
             ->setUrl($url)
