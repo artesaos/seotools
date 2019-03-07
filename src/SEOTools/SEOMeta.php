@@ -92,6 +92,13 @@ class SEOMeta implements MetaTagsContract
     protected $alternateLanguages = [];
 
     /**
+     * The meta robots.
+     *
+     * @var string
+     */
+    protected $robots;
+
+    /**
      * @var Config
      */
     protected $config;
@@ -137,6 +144,7 @@ class SEOMeta implements MetaTagsContract
         $prev = $this->getPrev();
         $next = $this->getNext();
         $languages = $this->getAlternateLanguages();
+        $robots = $this->getRobots();
 
         $html = [];
 
@@ -183,6 +191,10 @@ class SEOMeta implements MetaTagsContract
 
         foreach ($languages as $lang) {
             $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\"/>";
+        }
+
+        if ($robots) {
+            $html[] = "<meta name=\"robots\" content=\"{$robots}\">";
         }
 
         return ($minify) ? implode('', $html) : implode(PHP_EOL, $html);
@@ -420,6 +432,20 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Sets the meta robots.
+     *
+     * @param string $robots
+     *
+     * @return MetaTagsContract
+     */
+    public function setRobots($robots)
+    {
+        $this->robots = $robots;
+
+        return $this;
+    }
+
+    /**
      * Takes the title formatted for display.
      *
      * @return string
@@ -550,6 +576,16 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Get meta robots.
+     *
+     * @return string
+     */
+    public function getRobots()
+    {
+        return $this->robots ?: $this->config->get('defaults.robots', null);
+    }
+
+    /**
      * Reset all data.
      *
      * @return void
@@ -565,6 +601,7 @@ class SEOMeta implements MetaTagsContract
         $this->metatags = [];
         $this->keywords = [];
         $this->alternateLanguages = [];
+        $this->robots = null;
     }
 
     /**

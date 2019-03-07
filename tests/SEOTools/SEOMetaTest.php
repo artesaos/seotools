@@ -239,6 +239,7 @@ class SEOMetaTest extends BaseTest
         $this->seoMeta->setCanonical('test');
         $this->seoMeta->addMeta('test');
         $this->seoMeta->addAlternateLanguage('test', 'test');
+        $this->seoMeta->setRobots('all');
         $this->seoMeta->reset();
 
         $this->setRightAssertion($expected);
@@ -254,4 +255,23 @@ class SEOMetaTest extends BaseTest
 
         $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
+
+    public function test_it_sets_default_meta_robots_to_none()
+    {
+        $this->assertEquals(null, $this->seoMeta->getRobots());
+    }
+
+    public function test_it_allows_setting_meta_robots()
+    {
+        $this->seoMeta->setRobots('all');
+        $this->assertEquals('all', $this->seoMeta->getRobots());
+
+        $expected = "<title>It's Over 9000!</title>";
+        $expected .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+        $expected .= "<meta name=\"robots\" content=\"all\">";
+
+        $this->setRightAssertion($expected);
+    }
+
+
 }
