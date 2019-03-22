@@ -3,6 +3,8 @@ language: php
 php:
   - 7.0
   - 7.1
+  - 7.2
+  - 7.3
   - hhvm
 
 matrix:
@@ -11,7 +13,8 @@ matrix:
     - php: hhvm
 
 before_script:
-  - travis_retry composer install --prefer-dist --no-interaction
+  - travis_retry composer self-update
+  - travis_retry composer update --no-interaction --prefer-source
 
 script:
   - mkdir -p build/logs
