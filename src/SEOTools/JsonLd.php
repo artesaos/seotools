@@ -53,14 +53,33 @@ class JsonLd implements JsonLdContract
     {
         $generated = [
             '@context' => 'https://schema.org',
-            '@type' => $this->type,
-            'name' => $this->title,
-            'description' => $this->description,
-            'url' => $this->url,
-            'image' => count($this->images) === 1 ? reset($this->images) : json_encode($this->images),
-        ] + $this->values;
+        ];
 
-        return json_encode($generated);
+        if (!empty($this->type)) {
+            $generated['@type'] = $this->type;
+        }
+
+
+        if (!empty($this->title)) {
+            $generated['name'] = $this->title;
+        }
+
+
+        if (!empty($this->description)) {
+            $generated['@description'] = $this->description;
+        }
+
+        if (!empty($this->url)) {
+            $generated['url'] = $this->url;
+        }
+
+        if (!empty($this->images)) {
+            $generated['image'] = count($this->images) === 1 ? reset($this->images) : json_encode($this->images);
+        }
+
+        $generated = array_merge($generated, $this->values);
+
+        return '<script type="application/ld+json">' . json_encode($generated) . '</script>';
     }
 
     /**
@@ -72,6 +91,8 @@ class JsonLd implements JsonLdContract
     public function addValue($key, $value)
     {
         $this->values[$key] = $value;
+
+        return $this;
     }
 
     /**
@@ -105,7 +126,9 @@ class JsonLd implements JsonLdContract
      */
     public function setSite($site)
     {
-        // TODO: Implement setSite() method.
+        $this->url = $site;
+
+        return $this;
     }
 
     /**
@@ -151,7 +174,22 @@ class JsonLd implements JsonLdContract
      */
     public function addImage($image)
     {
-        $this->images[] = $image;
+        if (is_array($image)) {
+            $this->images = array_merge($this->images, $image);
+        } elseif (is_string($image)) {
+            $this->images[] = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param $image
+     * @return JsonLdContract
+     */
+    public function setImage($image)
+    {
+        $this->images = [$image];
 
         return $this;
     }
