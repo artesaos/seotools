@@ -80,6 +80,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
         $expected .= '<link rel="canonical" href="http://domain.com"/>';
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
+        $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
         $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org"}</script>';
 
         $this->setRightAssertion($expected);
