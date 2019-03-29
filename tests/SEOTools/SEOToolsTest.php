@@ -51,6 +51,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta property="og:title" content="Kamehamehaaaaaaa" />';
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
         $expected .= '<meta name="twitter:title" content="Kamehamehaaaaaaa" />';
+        $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org","name":"Kamehamehaaaaaaa"}</script>';
 
         $this->assertEquals('Kamehamehaaaaaaa - It\'s Over 9000!', $this->seoTools->getTitle());
         $this->setRightAssertion($expected);
@@ -65,6 +66,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta property="og:description" content="Kamehamehaaaaaaa" />';
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
         $expected .= '<meta name="twitter:description" content="Kamehamehaaaaaaa" />';
+        $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org","@description":"Kamehamehaaaaaaa"}</script>';
 
 
         $this->setRightAssertion($expected);
@@ -78,7 +80,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
         $expected .= '<link rel="canonical" href="http://domain.com"/>';
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
-        $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
+        $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org"}</script>';
 
         $this->setRightAssertion($expected);
     }
@@ -96,6 +98,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta property="og:image" content="Kamehamehaaaaaaa.png" />';
         $expected .= '<meta name="twitter:images0" content="Kamehamehaaaaaaa.png" />';
         $expected .= '<meta name="twitter:images1" content="Kamehamehaaaaaaa.png" />';
+        $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org","image":"[\"Kamehamehaaaaaaa.png\",\"Kamehamehaaaaaaa.png\"]"}</script>';
 
         $this->setRightAssertion($expected);
     }
@@ -106,6 +109,7 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta name="description" content="For those who helped create the Genki Dama">';
         $expected .= '<meta property="og:title" content="Over 9000 Thousand!" />';
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
+        $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org"}</script>';
 
         $this->setRightAssertion($expected);
     }
