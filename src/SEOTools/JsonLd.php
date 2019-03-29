@@ -66,7 +66,7 @@ class JsonLd implements JsonLdContract
 
 
         if (!empty($this->description)) {
-            $generated['@description'] = $this->description;
+            $generated['description'] = $this->description;
         }
 
         if (!empty($this->url)) {
