@@ -58,7 +58,7 @@ class SEOToolsServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('seotools.json-ld', function($app) {
-            return new JsonLd($app['config']->get('seotools.twitter.json-ld', []));
+            return new JsonLd($app['config']->get('seotools.json-ld.defaults', []));
         });
 
         $this->app->singleton('seotools', function() {

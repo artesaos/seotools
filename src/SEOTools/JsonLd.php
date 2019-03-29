@@ -41,6 +41,21 @@ class JsonLd implements JsonLdContract
      */
     public function __construct(array $defaults = [])
     {
+        $this->setTitle($defaults['title']);
+        unset($defaults['title']);
+
+        $this->setDescription($defaults['description']);
+        unset($defaults['description']);
+
+        $this->setType($defaults['type']);
+        unset($defaults['type']);
+
+        $this->setUrl($defaults['url']);
+        unset($defaults['url']);
+
+        $this->setImages($defaults['images']);
+        unset($defaults['images']);
+
         $this->values = $defaults;
     }
 
