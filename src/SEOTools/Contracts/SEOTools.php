@@ -25,6 +25,11 @@ interface SEOTools
     public function twitter();
 
     /**
+     * @return \Artesaos\SEOTools\Contracts\JsonLd
+     */
+    public function jsonLd();
+
+    /**
      * Setup title for all seo providers.
      *
      * @param string $title

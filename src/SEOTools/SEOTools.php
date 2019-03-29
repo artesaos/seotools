@@ -32,6 +32,14 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * @return \Artesaos\SEOTools\Contracts\JsonLd
+     */
+    public function jsonLd()
+    {
+        return app('seotools.json-ld');
+    }
+
+    /**
      * Setup title for all seo providers.
      *
      * @param string $title
@@ -44,6 +52,7 @@ class SEOTools implements SEOContract
         $this->metatags()->setTitle($title, $appendDefault);
         $this->opengraph()->setTitle($title);
         $this->twitter()->setTitle($title);
+        $this->jsonLd()->setTitle($title);
 
         return $this;
     }
