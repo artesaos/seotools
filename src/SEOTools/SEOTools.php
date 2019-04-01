@@ -32,6 +32,14 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * @return \Artesaos\SEOTools\Contracts\JsonLd
+     */
+    public function jsonLd()
+    {
+        return app('seotools.json-ld');
+    }
+
+    /**
      * Setup title for all seo providers.
      *
      * @param string $title
@@ -44,6 +52,7 @@ class SEOTools implements SEOContract
         $this->metatags()->setTitle($title, $appendDefault);
         $this->opengraph()->setTitle($title);
         $this->twitter()->setTitle($title);
+        $this->jsonLd()->setTitle($title);
 
         return $this;
     }
@@ -60,6 +69,7 @@ class SEOTools implements SEOContract
         $this->metatags()->setDescription($description);
         $this->opengraph()->setDescription($description);
         $this->twitter()->setDescription($description);
+        $this->jsonLd()->setDescription($description);
 
         return $this;
     }
@@ -92,6 +102,8 @@ class SEOTools implements SEOContract
         }
 
         $this->twitter()->addImage($urls);
+
+        $this->jsonLd()->addImage($urls);
 
         return $this;
     }
@@ -126,6 +138,8 @@ class SEOTools implements SEOContract
         $html .= $this->opengraph()->generate();
         $html .= PHP_EOL;
         $html .= $this->twitter()->generate();
+        $html .= PHP_EOL;
+        $html .= $this->jsonLd()->generate();
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }
