@@ -86,7 +86,7 @@ class SEOMetaTest extends BaseTest
     {
         $description = 'Kamehamehaaaaaaaa';
         $fullHeader = "<title>It's Over 9000!</title>";
-        $fullHeader .= "<meta name=\"description\" content=\"".$description.'">';
+        $fullHeader .= "<meta name=\"description\" content=\"".$description.'">";
 
         $this->seoMeta->setDescription($description);
 
