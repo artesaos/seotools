@@ -441,7 +441,6 @@ SEOMeta::setTitleDefault($default);
 SEOMeta::setDescription($description);
 SEOMeta::setKeywords($keywords);
 SEOMeta::setRobots($robots);
-SEOMeta::setTitleSeparator($separator);
 SEOMeta::setCanonical($url);
 SEOMeta::setPrev($url);
 SEOMeta::setNext($url);
