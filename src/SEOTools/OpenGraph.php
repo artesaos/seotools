@@ -21,6 +21,13 @@ class OpenGraph implements OpenGraphContract
     protected $config;
 
     /**
+     * Url property
+     *
+     * @var string
+     */
+    protected $url = '';
+
+    /**
      * Array of Properties.
      *
      * @var array
@@ -275,7 +282,10 @@ class OpenGraph implements OpenGraphContract
                     $this->images = $value;
                 }
             } elseif ($key == 'url' && $value === null) {
-                $this->setUrl(app('url')->current());
+                $this->addProperty('url', $this->url ?: (($value === null)
+                    ? app('url')->current()
+                    : $this->config['defaults.url'])
+                );
             } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
@@ -843,7 +853,9 @@ class OpenGraph implements OpenGraphContract
      */
     public function setUrl($url)
     {
-        return $this->addProperty('url', $url);
+        $this->url = $url;
+
+        return $this;
     }
 
     /**
