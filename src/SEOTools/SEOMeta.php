@@ -615,7 +615,12 @@ class SEOMeta implements MetaTagsContract
     {
         $default = $this->getDefaultTitle();
 
-        return (empty($default)) ? $title : $title.$this->getTitleSeparator().$default;
+        if (empty($default)) {
+            return $title;
+        }
+        $defaultBefore = $this->config->get('defaults.titleBefore', false);
+
+        return $defaultBefore ? $default.$this->getTitleSeparator().$title : $title.$this->getTitleSeparator().$default;
     }
 
     /**

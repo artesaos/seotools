@@ -7,6 +7,7 @@ return [
          */
         'defaults'       => [
             'title'        => "It's Over 9000!", // set false to total remove
+            'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
             'description'  => 'For those who helped create the Genki Dama', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
