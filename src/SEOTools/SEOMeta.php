@@ -126,7 +126,7 @@ class SEOMeta implements MetaTagsContract
 
     /**
      * Generates meta tags.
-     * 
+     *
      * @param bool $minify
      *
      * @return string
@@ -263,7 +263,7 @@ class SEOMeta implements MetaTagsContract
     {
         // clean and store description
         // if is false, set false
-        $this->description = (false == $description) ? $description : strip_tags(htmlentities($description));
+        $this->description = (false == $description) ? $description : htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false);
 
         return $this;
     }
