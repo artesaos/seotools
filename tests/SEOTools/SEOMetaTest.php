@@ -17,7 +17,7 @@ class SEOMetaTest extends BaseTest
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
