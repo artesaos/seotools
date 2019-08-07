@@ -11,7 +11,7 @@ interface TwitterCards
 
     /**
      * @param bool $minify
-     * 
+     *
      * @return string
      */
     public function generate($minify = false);
@@ -20,56 +20,56 @@ interface TwitterCards
      * @param string       $key
      * @param string|array $value
      *
-     * @return TwitterCards
+     * @return static
      */
     public function addValue($key, $value);
 
     /**
      * @param string $type
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setType($type);
 
     /**
      * @param string $title
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setTitle($title);
 
     /**
      * @param string $site
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setSite($site);
 
     /**
      * @param string $description
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setDescription($description);
 
     /**
      * @param string $url
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setUrl($url);
 
     /**
      * @param string|array $image
      *
-     * @return TwitterCards
+     * @return static
      */
     public function addImage($image);
 
     /**
      * @param string|array $images
      *
-     * @return TwitterCards
+     * @return static
      */
     public function setImages($images);
 }
