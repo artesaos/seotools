@@ -273,5 +273,20 @@ class SEOMetaTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    /**
+     * @depends test_set_description
+     *
+     * @see https://github.com/artesaos/seotools/issues/122
+     */
+    public function test_utf8()
+    {
+        $description = 'de fidélisation des salariés';
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"".$description.'">';
 
+        $this->seoMeta->setDescription($description);
+
+        $this->assertEquals($description, $this->seoMeta->getDescription());
+        $this->setRightAssertion($fullHeader);
+    }
 }
