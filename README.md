@@ -1,6 +1,7 @@
-# SEOTools - SEO Tools for Laravel and Lumen
+SEOTools - SEO Tools for Laravel and Lumen
+==========================================
 
-SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for some common SEO techniques.
+SEOTools is a package for [Laravel 5+](https://laravel.com/) and [Lumen](https://lumen.laravel.com/) that provides helpers for some common SEO techniques.
 
 > Current Build Status
 
@@ -11,71 +12,111 @@ SEOTools is a package for **Laravel 5+** and **Lumen** that provides helpers for
 
 [![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
 
-## Features
-- Friendly Interface
-- Ease of set titles and meta tags
-- Ease of set metas for twitter and opengraph
+Features
+--------
 
-## Installation
+- Friendly simple interface
+- Easy of set titles and meta tags
+- Easy of set metas for [Twitter Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards) and [Open Graph](https://ogp.me/)
+- Easy of set for [JSON Linked Data](https://json-ld.org/)
+
+Installation
+------------
+
 ### 1 - Dependency
+
 The first step is using composer to install the package and automatically update your `composer.json` file, you can do this by running:
+
 ```shell
 composer require artesaos/seotools
 ```
+
 > **Note**: If you are using Laravel 5.5, the steps 2 and 3, for providers and aliases, are unnecessaries. SEOTools supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
 
 ### 2 - Provider
+
 You need to update your application configuration in order to register the package so it can be loaded by Laravel, just update your `config/app.php` file adding the following code at the end of your `'providers'` section:
 
 > `config/app.php`
 
 ```php
-// file START ommited
+<?php
+
+return [
+    // ...
     'providers' => [
-        // other providers ommited
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        // ...
     ],
-// file END ommited
+    // ...
+];
 ```
 
 #### Lumen
+
 Go to `/bootstrap/app.php` file and add this line:
 
 ```php
-// file START ommited
-	$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
-// file END ommited
+<?php
+// ...
+
+$app = new Laravel\Lumen\Application(
+    dirname(__DIR__)
+);
+
+// ...
+
+$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
+
+// ...
+
+return $app;
 ```
 
-### 3 - Facade
+### 3 - Facades
 
-> Facades are not supported in Lumen.
+> Note: facades are not supported in Lumen.
 
-In order to use the `SEOMeta` facade, you need to register it on the `config/app.php` file, you can do that the following way:
+You may get access to the SEO tool services using following facades:
+
+ - `Artesaos\SEOTools\Facades\SEOMeta`
+ - `Artesaos\SEOTools\Facades\OpenGraph`
+ - `Artesaos\SEOTools\Facades\TwitterCard`
+ - `Artesaos\SEOTools\Facades\JsonLd`
+ - `Artesaos\SEOTools\Facades\SEOTools`
+
+You can setup a short-version aliases for these facades in your `config/app.php` file. For example:
 
 ```php
-// file START ommited
+<?php
+
+return [
+    // ...
     'aliases' => [
-        // other Facades ommited
         'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        // ...
     ],
-// file END ommited
+    // ...
+];
 ```
-
 
 ### 4 Configuration
 
 #### Publish config
 
 In your terminal type
+
 ```shell
 php artisan vendor:publish
 ```
+
 or
+
 ```shell
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
 ```
@@ -93,49 +134,58 @@ In `seotools.php` configuration file you can determine the properties of the def
  - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
 - twitter
  - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- json-ld
+ - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
 
-## 5 - Usage
-
-> Facades are not supported in Lumen.
+Usage
+-----
 
 ### Lumen Usage
 
+> Note: facades are not supported in Lumen.
+
 ```php
+<?php
+
 $seotools = app('seotools');
 $metatags = app('seotools.metatags');
 $twitter = app('seotools.twitter');
 $opengraph = app('seotools.opengraph');
+$jsonld = app('seotools.json-ld');
 
 // The behavior is the same as the facade
-// --------
 
 echo app('seotools')->generate();
-
 ```
 
 ### Meta tags Generator
+
 With **SEOMeta** you can create meta tags to the `head`
 
 ### Opengraph tags Generator
-With **OpenGraph** you can create opengraph tags to the `head`
+
+With **OpenGraph** you can create OpenGraph tags to the `head`
 
 ### Twitter for Twitter Cards tags Generator
-With **Twitter** you can create opengraph tags to the `head`
+
+With **Twitter** you can create OpenGraph tags to the `head`
 
 #### In your controller
+
 ```php
-use SEOMeta;
-use OpenGraph;
-use Twitter;
-## or
-use SEO;
+<?php
+
+namespace App\Http\Controllers;
+
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+// OR
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class CommomController extends Controller
 {
-
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         SEOMeta::setTitle('Home');
@@ -147,26 +197,28 @@ class CommomController extends Controller
         OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'articles');
 
-        Twitter::setTitle('Homepage');
-        Twitter::setSite('@LuizVinicius73');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
 
-        ## Or
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
 
-        SEO::setTitle('Home');
-        SEO::setDescription('This is my page description');
-        SEO::opengraph()->setUrl('http://current.url.com');
-        SEO::setCanonical('https://codecasts.com.br/lesson');
-        SEO::opengraph()->addProperty('type', 'articles');
-        SEO::twitter()->setSite('@LuizVinicius73');
+        // OR
+
+        SEOTools::setTitle('Home');
+        SEOTools::setDescription('This is my page description');
+        SEOTools::opengraph()->setUrl('http://current.url.com');
+        SEOTools::setCanonical('https://codecasts.com.br/lesson');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 
         $posts = Post::all();
 
         return view('myindex', compact('posts'));
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function show($id)
     {
         $post = Post::find($id);
@@ -188,6 +240,12 @@ class CommomController extends Controller
         OpenGraph::addImage($post->images->list('url'));
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
         OpenGraph::addImage('http://image.url.com/cover.jpg', ['height' => 300, 'width' => 300]);
+        
+        JsonLd::setTitle($post->title);
+        JsonLd::setDescription($post->resume);
+        JsonLd::setType('Article');
+        JsonLd::addImage($post->images->list('url'));
+
 
         // Namespace URI: http://ogp.me/ns/article#
         // article
@@ -344,15 +402,16 @@ class CommomController extends Controller
 #### SEOTrait
 
 ```php
+<?php
+
+namespace App\Http\Controllers;
+
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class CommomController extends Controller
 {
     use SEOToolsTrait;
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         $this->seo()->setTitle('Home');
@@ -360,6 +419,7 @@ class CommomController extends Controller
         $this->seo()->opengraph()->setUrl('http://current.url.com');
         $this->seo()->opengraph()->addProperty('type', 'articles');
         $this->seo()->twitter()->setSite('@LuizVinicius73');
+        $this->seo()->jsonLd()->setType('Article');
 
         $posts = Post::all();
 
@@ -375,18 +435,18 @@ class CommomController extends Controller
 ```html
 <html>
 <head>
-	{!! SEOMeta::generate() !!}
-	{!! OpenGraph::generate() !!}
-	{!! Twitter::generate() !!}
-	    <!-- OR -->
-	{!! SEO::generate() !!}
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
+    <!-- OR -->
+    {!! SEO::generate() !!}
 
-	  <!-- MINIFIED -->
-	{!! SEO::generate(true) !!}
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
 
-
-	    <!-- LUMEN -->
-	{!! app('seotools')->generate() !!}
+    <!-- LUMEN -->
+    {!! app('seotools')->generate() !!}
 </head>
 <body>
 
@@ -421,7 +481,8 @@ class CommomController extends Controller
     <meta name="twitter:card"content="summary" />
     <meta name="twitter:title"content="Title" />
     <meta name="twitter:site"content="@LuizVinicius73" />
-
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
 </head>
 <body>
 
@@ -430,7 +491,12 @@ class CommomController extends Controller
 ```
 
 #### API (SEOMeta)
+
 ```php
+<?php
+
+use Artesaos\SEOTools\Facades\SEOMeta;
+
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
 SEOMeta::addAlternateLanguage($lang, $url);
@@ -469,7 +535,12 @@ SEOMeta::generate();
 ```
 
 #### API (OpenGraph)
+
 ```php
+<?php
+
+use Artesaos\SEOTools\Facades\OpenGraph;
+
 OpenGraph::addProperty($key, $value); // value can be string or array
 OpenGraph::addImage($url); // add image url
 OpenGraph::addImages($url); // add an array of url images
@@ -494,17 +565,20 @@ OpenGraph::generate();
 ### API (TwitterCard)
 
 ```php
-Twitter::addValue($key, $value); // value can be string or array
-Twitter::setType($type); // type of twitter card tag
-Twitter::setTitle($type); // title of twitter card tag
-Twitter::setSite($type); // site of twitter card tag
-Twitter::setDescription($type); // description of twitter card tag
-Twitter::setUrl($type); // url of twitter card tag
-Twitter::setImage($url); // add image url
+<?php
 
+use Artesaos\SEOTools\Facades\TwitterCard;
+
+TwitterCard::addValue($key, $value); // value can be string or array
+TwitterCard::setType($type); // type of twitter card tag
+TwitterCard::setTitle($type); // title of twitter card tag
+TwitterCard::setSite($type); // site of twitter card tag
+TwitterCard::setDescription($type); // description of twitter card tag
+TwitterCard::setUrl($type); // url of twitter card tag
+TwitterCard::setImage($url); // add image url
 
 // You can chain methods
-Twitter::addValue($key, $value)
+TwitterCard::addValue($key, $value)
             ->setType($type)
             ->setImage($url)
             ->setTitle($title)
@@ -513,20 +587,54 @@ Twitter::addValue($key, $value)
             ->setSite($name);
 
 // Generate html tags
-Twitter::generate();
+TwitterCard::generate();
+```
+
+### API (JsonLd)
+
+```php
+<?php
+
+use Artesaos\SEOTools\Facades\JsonLd;
+
+JsonLd::addValue($key, $value); // value can be string or array
+JsonLd::setType($type); // type of twitter card tag
+JsonLd::setTitle($type); // title of twitter card tag
+JsonLd::setSite($type); // site of twitter card tag
+JsonLd::setDescription($type); // description of twitter card tag
+JsonLd::setUrl($type); // url of twitter card tag
+JsonLd::setImage($url); // add image url
+
+// You can chain methods
+JsonLd::addValue($key, $value)
+    ->setType($type)
+    ->setImage($url)
+    ->setTitle($title)
+    ->setDescription($description)
+    ->setUrl($url)
+    ->setSite($name);
+
+// Generate html tags
+JsonLd::generate();
 ```
 
 #### API (SEO)
+
 > Facilitates access to all the SEO Providers
 
 ```php
-SEO::metatags();
-SEO::twitter();
-SEO::opengraph();
+<?php
 
-SEO::setTitle($title);
-SEO::getTitle($session = false);
-SEO::setDescription($description);
-SEO::setCanonical($url);
-SEO::addImages($urls);
+use Artesaos\SEOTools\Facades\SEOTools;
+
+SEOTools::metatags();
+SEOTools::twitter();
+SEOTools::opengraph();
+SEOTools::jsonLd();
+
+SEOTools::setTitle($title);
+SEOTools::getTitle($session = false);
+SEOTools::setDescription($description);
+SEOTools::setCanonical($url);
+SEOTools::addImages($urls);
 ```
