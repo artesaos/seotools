@@ -2,24 +2,19 @@
 
 namespace Artesaos\SEOTools\Providers;
 
-use Artesaos\SEOTools\Contracts;
+use Illuminate\Support\Str;
 use Artesaos\SEOTools\JsonLd;
-use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\SEOMeta;
 use Artesaos\SEOTools\SEOTools;
+use Artesaos\SEOTools\Contracts;
+use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\TwitterCards;
-use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Config\Repository as Config;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
-class SEOToolsServiceProvider extends ServiceProvider
+class SEOToolsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * @return void
      */
@@ -73,9 +68,7 @@ class SEOToolsServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
-     *
-     * @return string[]
+     * {@inheritdoc}
      */
     public function provides()
     {
@@ -96,8 +89,8 @@ class SEOToolsServiceProvider extends ServiceProvider
     /**
      * @return bool
      */
-    private function isLumen()
+    private function isLumen(): bool
     {
-        return true === str_contains($this->app->version(), 'Lumen');
+        return Str::contains($this->app->version(), 'Lumen');
     }
 }
