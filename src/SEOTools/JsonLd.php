@@ -60,9 +60,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param bool $minify
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function generate($minify = false)
     {
@@ -98,10 +96,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $key
-     * @param string|array $value
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function addValue($key, $value)
     {
@@ -111,9 +106,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $type
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setType($type)
     {
@@ -123,9 +116,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $title
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -135,9 +126,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $site
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setSite($site)
     {
@@ -147,9 +136,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $description
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -159,9 +146,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string $url
-     *
-     * @return JsonLdContract
+     *{@inheritdoc}
      */
     public function setUrl($url)
     {
@@ -171,9 +156,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string|array $images
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setImages($images)
     {
@@ -183,9 +166,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param string|array $image
-     *
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function addImage($image)
     {
@@ -199,8 +180,7 @@ class JsonLd implements JsonLdContract
     }
 
     /**
-     * @param $image
-     * @return JsonLdContract
+     * {@inheritdoc}
      */
     public function setImage($image)
     {

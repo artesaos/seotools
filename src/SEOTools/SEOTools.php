@@ -2,13 +2,12 @@
 
 namespace Artesaos\SEOTools;
 
-use Artesaos\SEOTools\Contracts\MetaTags;
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
 
 class SEOTools implements SEOContract
 {
     /**
-     * @return \Artesaos\SEOTools\Contracts\MetaTags
+     * {@inheritdoc}
      */
     public function metatags()
     {
@@ -16,7 +15,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * @return \Artesaos\SEOTools\Contracts\OpenGraph
+     * {@inheritdoc}
      */
     public function opengraph()
     {
@@ -24,7 +23,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * @return \Artesaos\SEOTools\Contracts\TwitterCards
+     * {@inheritdoc}
      */
     public function twitter()
     {
@@ -32,7 +31,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * @return \Artesaos\SEOTools\Contracts\JsonLd
+     * {@inheritdoc}
      */
     public function jsonLd()
     {
@@ -40,12 +39,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Setup title for all seo providers.
-     *
-     * @param string $title
-     * @param bool   $appendDefault
-     *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * {@inheritdoc}
      */
     public function setTitle($title, $appendDefault = true)
     {
@@ -58,11 +52,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Setup description for all seo providers.
-     *
-     * @param $description
-     *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -75,11 +65,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Sets the canonical URL.
-     *
-     * @param string $url
-     *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * {@inheritdoc}
      */
     public function setCanonical($url)
     {
@@ -89,9 +75,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * @param array|string $urls
-     *
-     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     * {@inheritdoc}
      */
     public function addImages($urls)
     {
@@ -109,11 +93,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Get current title from metatags.
-     *
-     * @param bool $session
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle($session = false)
     {
@@ -125,11 +105,7 @@ class SEOTools implements SEOContract
     }
 
     /**
-     * Generate from all seo providers.
-     * 
-     * @param bool $minify
-     * 
-     * @return string
+     * {@inheritdoc}
      */
     public function generate($minify = false)
     {

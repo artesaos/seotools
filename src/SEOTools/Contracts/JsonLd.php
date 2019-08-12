@@ -10,8 +10,10 @@ interface JsonLd
     public function __construct(array $defaults = []);
 
     /**
+     * Generates linked data script tag.
+     *
      * @param bool $minify
-     * 
+     *
      * @return string
      */
     public function generate($minify = false);
@@ -20,56 +22,56 @@ interface JsonLd
      * @param string       $key
      * @param string|array $value
      *
-     * @return JsonLd
+     * @return static
      */
     public function addValue($key, $value);
 
     /**
      * @param string $type
      *
-     * @return JsonLd
+     * @return static
      */
     public function setType($type);
 
     /**
      * @param string $title
      *
-     * @return JsonLd
+     * @return static
      */
     public function setTitle($title);
 
     /**
      * @param string $site
      *
-     * @return JsonLd
+     * @return static
      */
     public function setSite($site);
 
     /**
      * @param string $description
      *
-     * @return JsonLd
+     * @return static
      */
     public function setDescription($description);
 
     /**
      * @param string $url
      *
-     * @return JsonLd
+     * @return static
      */
     public function setUrl($url);
 
     /**
      * @param string|array $image
      *
-     * @return JsonLd
+     * @return static
      */
     public function addImage($image);
 
     /**
      * @param string|array $images
      *
-     * @return JsonLd
+     * @return static
      */
     public function setImages($images);
 }
