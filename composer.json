@@ -3,6 +3,10 @@
   "description": "SEO Tools for Laravel and Lumen",
   "keywords": ["laravel5", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph", "json-ld"],
   "license": "MIT",
+  "support": {
+    "issues": "https://github.com/artesaos/seotools/issues",
+    "source": "https://github.com/artesaos/seotools"
+  },
   "authors": [
     {
       "name": "Vinicius",
