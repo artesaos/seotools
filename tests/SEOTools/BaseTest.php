@@ -2,28 +2,31 @@
 
 namespace Artesaos\SEOTools\Tests;
 
+use Mockery;
+use DOMDocument;
 use Orchestra\Testbench\TestCase;
-use Mockery as m;
 
 /**
  * Class BaseTest.
  */
 abstract class BaseTest extends TestCase
 {
-    public function tearDown()
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown(): void
     {
         parent::tearDown();
-        m::close();
+
+        Mockery::close();
     }
 
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     protected function getPackageProviders($app)
     {
-        return ['Artesaos\SEOTools\Providers\SEOToolsServiceProvider'];
+        return [\Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class];
     }
 
     /**
@@ -32,8 +35,9 @@ abstract class BaseTest extends TestCase
      */
     protected function makeDomDocument($string)
     {
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $dom->loadHTML($string);
+
         return $dom;
     }
 }

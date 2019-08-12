@@ -120,7 +120,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setDescription($description)
     {
-        return $this->addValue('description', htmlentities($description));
+        return $this->addValue('description', htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false));
     }
 
     /**
@@ -138,9 +138,9 @@ class TwitterCards implements TwitterCardsContract
      */
     public function addImage($image)
     {
-        foreach ((array)$image as $url):
+        foreach ((array) $image as $url) {
             $this->images[] = $url;
-        endforeach;
+        }
 
         return $this;
     }

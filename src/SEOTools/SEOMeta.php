@@ -2,6 +2,7 @@
 
 namespace Artesaos\SEOTools;
 
+use Illuminate\Support\Arr;
 use Illuminate\Config\Repository as Config;
 use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 
@@ -125,7 +126,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritdoc}/
      */
     public function generate($minify = false)
     {
@@ -244,7 +245,7 @@ class SEOMeta implements MetaTagsContract
     {
         // clean and store description
         // if is false, set false
-        $this->description = (false == $description) ? $description : strip_tags(htmlentities($description));
+        $this->description = (false == $description) ? $description : htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false);
 
         return $this;
     }
@@ -286,7 +287,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function removeMeta($key)
     {
-        array_forget($this->metatags, $key);
+        Arr::forget($this->metatags, $key);
 
         return $this;
     }
@@ -542,7 +543,7 @@ class SEOMeta implements MetaTagsContract
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
             if (!empty($value)) {
-                $meta = array_get($this->webmasterTags, $name, $name);
+                $meta = Arr::get($this->webmasterTags, $name, $name);
                 $this->addMeta($meta, $value);
             }
         }

@@ -1,8 +1,12 @@
 {
   "name": "artesaos/seotools",
   "description": "SEO Tools for Laravel and Lumen",
-  "keywords": ["laravel5", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph"],
+  "keywords": ["laravel5", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph", "json-ld"],
   "license": "MIT",
+  "support": {
+    "issues": "https://github.com/artesaos/seotools/issues",
+    "source": "https://github.com/artesaos/seotools"
+  },
   "authors": [
     {
       "name": "Vinicius",
@@ -10,16 +14,14 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.1",
     "ext-json": "*",
-    "illuminate/config": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.*",
-    "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.*"
+    "illuminate/config": "5.8.*",
+    "illuminate/support": "5.8.*"
   },
   "require-dev": {
-    "mockery/mockery": "~1.0",
-    "orchestra/testbench": "~3.0",
-    "phpspec/phpspec": "~4.0",
-    "phpunit/phpunit": "~6.0"
+    "orchestra/testbench": "~3.8.4",
+    "phpspec/phpspec": "~5.1.1"
   },
   "autoload": {
     "psr-4": {

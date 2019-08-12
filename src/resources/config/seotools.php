@@ -1,7 +1,10 @@
 <?php
+/**
+ * @see https://github.com/artesaos/seotools
+ */
 
 return [
-    'meta'      => [
+    'meta' => [
         /*
          * The default configurations to be used by the meta generator.
          */
@@ -13,7 +16,6 @@ return [
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
-
         /*
          * Webmaster tags are always added.
          */
@@ -43,8 +45,8 @@ return [
          * The default values to be used by the twitter cards generator.
          */
         'defaults' => [
-          //'card'        => 'summary',
-          //'site'        => '@LuizVinicius73',
+            //'card'        => 'summary',
+            //'site'        => '@LuizVinicius73',
         ],
     ],
     'json-ld' => [
