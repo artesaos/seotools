@@ -2,18 +2,8 @@
 
 namespace Artesaos\SEOTools\Contracts;
 
-use Illuminate\Config\Repository as Config;
-
 interface MetaTags
 {
-    /**
-     * Configuration.
-     *
-     * @param \Illuminate\Config\Repository $config
-     * @return void
-     */
-    public function __construct(Config $config);
-
     /**
      * Generates meta tags.
      *

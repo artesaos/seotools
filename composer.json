@@ -16,7 +16,6 @@
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
-    "illuminate/config": "5.8.*",
     "illuminate/support": "5.8.*"
   },
   "require-dev": {

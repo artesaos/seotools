@@ -10,7 +10,6 @@ use Artesaos\SEOTools\Contracts;
 use Artesaos\SEOTools\OpenGraph;
 use Artesaos\SEOTools\TwitterCards;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
 class SEOToolsServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -41,7 +40,7 @@ class SEOToolsServiceProvider extends ServiceProvider implements DeferrableProvi
     public function register()
     {
         $this->app->singleton('seotools.metatags', function($app) {
-            return new SEOMeta(new Config($app['config']->get('seotools.meta', [])));
+            return new SEOMeta($app['config']->get('seotools.meta', []));
         });
 
         $this->app->singleton('seotools.opengraph', function($app) {
