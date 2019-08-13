@@ -3,7 +3,6 @@
 namespace Artesaos\SEOTools;
 
 use Illuminate\Support\Arr;
-use Illuminate\Config\Repository as Config;
 use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 
 class SEOMeta implements MetaTagsContract
@@ -100,7 +99,7 @@ class SEOMeta implements MetaTagsContract
     protected $robots;
 
     /**
-     * @var Config
+     * @var array
      */
     protected $config;
 
@@ -118,9 +117,9 @@ class SEOMeta implements MetaTagsContract
     ];
 
     /**
-     * @param \Illuminate\Config\Repository $config
+     * @param array $config
      */
-    public function __construct(Config $config)
+    public function __construct(array $config = [])
     {
         $this->config = $config;
     }
@@ -401,7 +400,7 @@ class SEOMeta implements MetaTagsContract
     public function getDefaultTitle()
     {
         if (empty($this->title_default)) {
-            return $this->config->get('defaults.title', null);
+            return Arr::get($this->config, 'defaults.title', null);
         }
 
         return $this->title_default;
@@ -420,7 +419,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function getTitleSeparator()
     {
-        return $this->title_separator ?: $this->config->get('defaults.separator', ' - ');
+        return $this->title_separator ?: Arr::get($this->config, 'defaults.separator', ' - ');
     }
 
     /**
@@ -428,7 +427,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function getKeywords()
     {
-        return $this->keywords ?: $this->config->get('defaults.keywords', []);
+        return $this->keywords ?: Arr::get($this->config, 'defaults.keywords', []);
     }
 
     /**
@@ -448,7 +447,7 @@ class SEOMeta implements MetaTagsContract
             return;
         }
 
-        return $this->description ?: $this->config->get('defaults.description', null);
+        return $this->description ?: Arr::get($this->config, 'defaults.description', null);
     }
 
     /**
@@ -456,7 +455,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function getCanonical()
     {
-        $canonical_config = $this->config->get('defaults.canonical', false);
+        $canonical_config = Arr::get($this->config, 'defaults.canonical', false);
 
         return $this->canonical ?: (($canonical_config === null) ? app('url')->full() : $canonical_config);
     }
@@ -502,7 +501,7 @@ class SEOMeta implements MetaTagsContract
      */
     public function getRobots()
     {
-        return $this->robots ?: $this->config->get('defaults.robots', null);
+        return $this->robots ?: Arr::get($this->config, 'defaults.robots', null);
     }
 
     /**
@@ -536,7 +535,7 @@ class SEOMeta implements MetaTagsContract
         if (empty($default)) {
             return $title;
         }
-        $defaultBefore = $this->config->get('defaults.titleBefore', false);
+        $defaultBefore = Arr::get($this->config, 'defaults.titleBefore', false);
 
         return $defaultBefore ? $default.$this->getTitleSeparator().$title : $title.$this->getTitleSeparator().$default;
     }
@@ -546,7 +545,7 @@ class SEOMeta implements MetaTagsContract
      */
     protected function loadWebMasterTags()
     {
-        foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
+        foreach (Arr::get($this->config, 'webmaster_tags', []) as $name => $value) {
             if (!empty($value)) {
                 $meta = Arr::get($this->webmasterTags, $name, $name);
                 $this->addMeta($meta, $value);
