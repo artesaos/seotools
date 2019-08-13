@@ -2,6 +2,7 @@
 
 namespace Artesaos\SEOTools;
 
+use Illuminate\Support\Arr;
 use Artesaos\SEOTools\Contracts\JsonLd as JsonLdContract;
 
 class JsonLd implements JsonLdContract
@@ -41,20 +42,15 @@ class JsonLd implements JsonLdContract
      */
     public function __construct(array $defaults = [])
     {
-        $this->setTitle($defaults['title']);
-        unset($defaults['title']);
+        $this->setTitle(Arr::pull($defaults, 'title', ''));
 
-        $this->setDescription($defaults['description']);
-        unset($defaults['description']);
+        $this->setDescription(Arr::pull($defaults, 'description', ''));
 
-        $this->setType($defaults['type']);
-        unset($defaults['type']);
+        $this->setType(Arr::pull($defaults, 'type', ''));
 
-        $this->setUrl($defaults['url']);
-        unset($defaults['url']);
+        $this->setUrl(Arr::pull($defaults, 'url', false));
 
-        $this->setImages($defaults['images']);
-        unset($defaults['images']);
+        $this->setImages(Arr::pull($defaults, 'images', []));
 
         $this->values = $defaults;
     }

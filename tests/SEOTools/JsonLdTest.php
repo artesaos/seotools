@@ -122,6 +122,16 @@ class JsonLdTest extends BaseTest
     }
 
     /**
+     * @see https://github.com/artesaos/seotools/issues/169
+     */
+    public function test_clear_construct()
+    {
+        $jsonLd = new JsonLd();
+
+        $this->assertTrue(is_object($jsonLd)); // no exception should occur so far
+    }
+
+    /**
      * @param $expectedString
      */
     protected function setRightAssertion($expectedString)
