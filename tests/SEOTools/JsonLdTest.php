@@ -121,8 +121,23 @@ class JsonLdTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_add_values()
+    {
+        $this->jsonLd->addValues([
+            'test' => '1-2-3',
+            'author' => [
+                '@type' => 'Organization',
+                'name' => 'SeoTools',
+            ],
+        ]);
+
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","test":"1-2-3","author":{"@type":"Organization","name":"SeoTools"}}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
+
     /**
-     * @param $expectedString
+     * @param string $expectedString
      */
     protected function setRightAssertion($expectedString)
     {
