@@ -4,6 +4,11 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\JsonLd as JsonLdContract;
 
+/**
+ * JsonLd provides implementation for `JsonLd` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\JsonLd
+ */
 class JsonLd implements JsonLdContract
 {
     /**

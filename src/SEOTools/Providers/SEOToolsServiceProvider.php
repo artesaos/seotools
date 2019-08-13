@@ -13,6 +13,36 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
+/**
+ * SEOToolsServiceProvider bootstraps SEO tools services to the application.
+ *
+ * This service provider will be automatically discovered by Laravel after this package installed.
+ *
+ * For Lumen it should be registered manually at 'bootstrap/app.php'. For example:
+ *
+ * ```php
+ * <?php
+ * // ...
+ *
+ * $app = new Laravel\Lumen\Application(
+ *     dirname(__DIR__)
+ * );
+ *
+ * // ...
+ *
+ * $app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
+ *
+ * // ...
+ *
+ * return $app;
+ * ```
+ *
+ * @see \Artesaos\SEOTools\Contracts\SEOTools
+ * @see \Artesaos\SEOTools\Contracts\MetaTags
+ * @see \Artesaos\SEOTools\Contracts\OpenGraph
+ * @see \Artesaos\SEOTools\Contracts\TwitterCards
+ * @see \Artesaos\SEOTools\Contracts\JsonLd
+ */
 class SEOToolsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**

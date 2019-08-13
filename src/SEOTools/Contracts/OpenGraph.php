@@ -2,6 +2,61 @@
 
 namespace Artesaos\SEOTools\Contracts;
 
+/**
+ * OpenGraph defines contract for the "OpenGraph" meta tags container.
+ *
+ * "OpenGraph" meta tags are widely used among social networks like Facebook during the "sharing" process.
+ *
+ * Usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\OpenGraph; // implements `Artesaos\SEOTools\Contracts\OpenGraph`
+ *
+ * $openGraph = new OpenGraph();
+ *
+ * // specify meta info
+ * $openGraph->setTitle('Home');
+ * $openGraph->setDescription('This is my page description');
+ * $openGraph->setUrl('http://current.url.com');
+ * $openGraph->addProperty('type', 'articles');
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo $openGraph->generate();
+ * ```
+ *
+ * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\OpenGraph} facade.
+ * Facade usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\Facades\OpenGraph;
+ *
+ * // specify meta info
+ * OpenGraph::setTitle('Home');
+ * OpenGraph::setDescription('This is my page description');
+ * OpenGraph::setUrl('http://current.url.com');
+ * OpenGraph::addProperty('type', 'articles');
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo OpenGraph::generate();
+ * ```
+ *
+ * > Attention: namespace 'http://ogp.me/ns#' should appear at the HTML declaration tag in order for the "OpenGraph" tags
+ *   be recognized properly. You'll have to do this manually, so your HTML page structure should look like following:
+ *
+ * ```html
+ * <html prefix="og: http://ogp.me/ns#">
+ * <head>
+ * <title>...</title>
+ * ...
+ * </head>
+ * ...
+ * </html>
+ * ```
+ *
+ * @see https://ogp.me/
+ * @see \Artesaos\SEOTools\OpenGraph
+ * @see \Artesaos\SEOTools\Facades\OpenGraph
+ */
 interface OpenGraph
 {
     /**

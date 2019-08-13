@@ -6,6 +6,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Config\Repository as Config;
 use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 
+/**
+ * SEOMeta provides implementation for `MetaTags` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\MetaTags
+ */
 class SEOMeta implements MetaTagsContract
 {
     /**

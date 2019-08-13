@@ -4,6 +4,48 @@ namespace Artesaos\SEOTools\Contracts;
 
 use Illuminate\Config\Repository as Config;
 
+/**
+ * MetaTags defines contract for the HTML meta tags container.
+ *
+ * Meta tags container allows specification and rendering of HTML page title and meta tags.
+ *
+ * Usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\SEOMeta; // implements `Artesaos\SEOTools\Contracts\MetaTags`
+ *
+ * $metaTags = new SEOMeta();
+ *
+ * // specify meta info
+ * $metaTags->setTitle('Home');
+ * $metaTags->setDescription('This is my page description');
+ * $metaTags->setCanonical('https://codecasts.com.br/lesson');
+ * $metaTags->addMeta('author', 'John Doe');
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo $metaTags->generate();
+ * ```
+ *
+ * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\SEOMeta} facade.
+ * Facade usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\Facades\SEOMeta;
+ *
+ * // specify meta info
+ * SEOMeta::setTitle('Home');
+ * SEOMeta::setDescription('This is my page description');
+ * SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+ * SEOMeta::addMeta('author', 'John Doe');
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo SEOMeta::generate();
+ * ```
+ *
+ * @see https://www.w3schools.com/tags/tag_meta.asp
+ * @see \Artesaos\SEOTools\SEOMeta
+ * @see \Artesaos\SEOTools\Facades\SEOMeta
+ */
 interface MetaTags
 {
     /**
@@ -15,7 +57,7 @@ interface MetaTags
     public function __construct(Config $config);
 
     /**
-     * Generates meta tags.
+     * Generates meta tags HTML.
      *
      * @param bool $minify
      *

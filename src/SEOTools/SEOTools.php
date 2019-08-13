@@ -4,6 +4,11 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
 
+/**
+ * SEOTools provides implementation for `SEOTools` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\SEOTools
+ */
 class SEOTools implements SEOContract
 {
     /**

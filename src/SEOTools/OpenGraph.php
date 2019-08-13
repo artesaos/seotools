@@ -4,6 +4,11 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
 
+/**
+ * OpenGraph provides implementation for `OpenGraph` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\OpenGraph
+ */
 class OpenGraph implements OpenGraphContract
 {
     /**

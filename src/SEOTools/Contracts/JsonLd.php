@@ -2,6 +2,50 @@
 
 namespace Artesaos\SEOTools\Contracts;
 
+/**
+ * JsonLd defines contract for the JSON Linked Data container.
+ *
+ * Usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\JsonLd; // implements `Artesaos\SEOTools\Contracts\JsonLd`
+ *
+ * $jsonLd = new JsonLd();
+ *
+ * // specify JSON data
+ * $jsonLd->setName('Home');
+ * $jsonLd->setDescription('This is my page description');
+ * $jsonLd->addValue('author', [
+ *     '@type' => 'Organization',
+ *     'name' => 'Artesaos',
+ * ]));
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo $jsonLd->generate();
+ * ```
+ *
+ * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\JsonLd} facade.
+ * Facade usage example:
+ *
+ * ```php
+ * use Artesaos\SEOTools\Facades\JsonLd;
+ *
+ * // specify JSON data
+ * JsonLd::setName('Homepage');
+ * JsonLd::setDescription('This is my page description');
+ * JsonLd::addValue('author', [
+ *     '@type' => 'Organization',
+ *     'name' => 'Artesaos',
+ * ]));
+ *
+ * // render HTML, it should be placed within 'head' HTML tag
+ * echo JsonLd::generate();
+ * ```
+ *
+ * @see https://json-ld.org/
+ * @see \Artesaos\SEOTools\JsonLd
+ * @see \Artesaos\SEOTools\Facades\JsonLd
+ */
 interface JsonLd
 {
     /**
