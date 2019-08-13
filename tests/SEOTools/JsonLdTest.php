@@ -24,6 +24,18 @@ class JsonLdTest extends BaseTest
         $this->jsonLd = $this->app->make('seotools.json-ld');
     }
 
+    public function test_set_name()
+    {
+        $this->jsonLd->setName('Kamehamehaaaaaaaa');
+
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Kamehamehaaaaaaaa","description":"For those who helped create the Genki Dama"}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
+
+    /**
+     * @depends test_set_name
+     */
     public function test_set_title()
     {
         $this->jsonLd->setTitle('Kamehamehaaaaaaaa');

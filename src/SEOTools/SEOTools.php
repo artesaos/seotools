@@ -46,7 +46,7 @@ class SEOTools implements SEOContract
         $this->metatags()->setTitle($title, $appendDefault);
         $this->opengraph()->setTitle($title);
         $this->twitter()->setTitle($title);
-        $this->jsonLd()->setTitle($title);
+        $this->jsonLd()->setName($title);
 
         return $this;
     }

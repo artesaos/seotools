@@ -34,6 +34,15 @@ interface JsonLd
     public function setType($type);
 
     /**
+     * @param string $name
+     *
+     * @return static
+     */
+    public function setName($name);
+
+    /**
+     * Alias of {@see setName()}.
+     *
      * @param string $title
      *
      * @return static

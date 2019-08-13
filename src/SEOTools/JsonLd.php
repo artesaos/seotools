@@ -19,7 +19,7 @@ class JsonLd implements JsonLdContract
     /**
      * @var string
      */
-    protected $title = '';
+    protected $name = '';
 
     /**
      * @var string
@@ -73,8 +73,8 @@ class JsonLd implements JsonLdContract
         }
 
 
-        if (!empty($this->title)) {
-            $generated['name'] = $this->title;
+        if (!empty($this->name)) {
+            $generated['name'] = $this->name;
         }
 
 
@@ -118,11 +118,19 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        return $this->setName($title);
     }
 
     /**
