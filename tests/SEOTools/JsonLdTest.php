@@ -51,6 +51,18 @@ class JsonLdTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    /**
+     * @depends test_set_url
+     */
+    public function test_use_current_url()
+    {
+        $this->jsonLd->setUrl(null);
+
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http:\/\/localhost"}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
+
     public function test_set_description()
     {
         $this->jsonLd->setDescription('Kamehamehaaaaaaaa');
