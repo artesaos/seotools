@@ -638,3 +638,23 @@ SEOTools::setDescription($description);
 SEOTools::setCanonical($url);
 SEOTools::addImages($urls);
 ```
+
+Missing Features
+----------------
+
+There are many SEO-related features, which you may need for your project. While this package provides support for the basic ones,
+other are out of its scope. You'll have to use separated packages fot their integration.
+
+### SiteMap
+
+This package does not support sitemap files generation. Please consider usage one of the following packages for it:
+
+- [laravelium/sitemap](https://packagist.org/packages/laravelium/sitemap)
+
+- [spatie/laravel-sitemap](https://packagist.org/packages/spatie/laravel-sitemap)
+
+### RSS
+
+This package does not support RSS feed generation. Please consider usage one of the following packages for it:
+
+- [spatie/laravel-feed](https://packagist.org/packages/spatie/laravel-feed)
