@@ -1,5 +1,10 @@
-SEOTools - SEO Tools for Laravel and Lumen
-==========================================
+<p align="center">
+    <a href="https://github.com/artesaos" target="_blank">
+        <img src="https://avatars3.githubusercontent.com/u/11164074" height="100px">
+    </a>
+    <h1 align="center">SEOTools - SEO Tools for Laravel and Lumen</h1>
+    <br>
+</p>
 
 SEOTools is a package for [Laravel 5.8+](https://laravel.com/) and [Lumen](https://lumen.laravel.com/) that provides helpers for some common SEO techniques.
 
