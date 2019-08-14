@@ -653,8 +653,17 @@ This package does not support sitemap files generation. Please consider usage on
 
 - [spatie/laravel-sitemap](https://packagist.org/packages/spatie/laravel-sitemap)
 
+### URL Trailing Slash
+
+This package does not handle URL consistency regardless absence or presence of the slash symbol at its end.
+Please consider usage one of the following packages if you need it:
+
+- [illuminatech/url-trailing-slash](https://packagist.org/packages/illuminatech/url-trailing-slash)
+
+- [fsasvari/laravel-trailing-slash](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+
 ### RSS
 
-This package does not support RSS feed generation. Please consider usage one of the following packages for it:
+This package does not support RSS feed generation or related meta data composition. Please consider usage one of the following packages for it:
 
 - [spatie/laravel-feed](https://packagist.org/packages/spatie/laravel-feed)
