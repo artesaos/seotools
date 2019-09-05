@@ -12,6 +12,8 @@ SEOTools is a package for [Laravel 5.8+](https://laravel.com/) and [Lumen](https
 
 [![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
 
+For license information check the [LICENSE](LICENSE.md)-file.
+
 Features
 --------
 
