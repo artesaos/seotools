@@ -4,6 +4,11 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
 
+/**
+ * TwitterCards provides implementation for `TwitterCards` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\TwitterCards
+ */
 class TwitterCards implements TwitterCardsContract
 {
     /**
