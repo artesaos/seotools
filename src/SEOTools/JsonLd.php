@@ -108,6 +108,18 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
+    public function addValues(array $values)
+    {
+        foreach ($values as $key => $value) {
+            $this->addValue($key, $value);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setType($type)
     {
         $this->type = $type;

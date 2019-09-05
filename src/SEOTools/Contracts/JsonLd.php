@@ -27,6 +27,13 @@ interface JsonLd
     public function addValue($key, $value);
 
     /**
+     * @param array $values
+     *
+     * @return static
+     */
+    public function addValues(array $values);
+
+    /**
      * @param string $type
      *
      * @return static
