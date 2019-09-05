@@ -62,7 +62,7 @@ interface JsonLd
     public function setDescription($description);
 
     /**
-     * @param string $url
+     * @param string|null|bool $url
      *
      * @return static
      */
