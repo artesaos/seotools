@@ -289,4 +289,20 @@ class SEOMetaTest extends BaseTest
         $this->assertEquals($description, $this->seoMeta->getDescription());
         $this->setRightAssertion($fullHeader);
     }
+
+    public function test_it_can_add_notranslate_class_to_title()
+    {
+        $this->seoMeta = new SEOMeta(new \Illuminate\Config\Repository([
+            'add_notranslate_class' => true,
+            'defaults' => [
+                'title' => 'It\'s Over 9000!',
+                'description' => 'For those who helped create the Genki Dama',
+            ],
+        ]));
+        
+        $expected = "<title class=\"notranslate\">It's Over 9000!</title>";
+        $expected .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+
+        $this->setRightAssertion($expected);
+    }
 }
