@@ -154,7 +154,7 @@ class JsonLdTest extends BaseTest
     protected function setRightAssertion($expectedString)
     {
         $expectedDom = $this->makeDomDocument($expectedString);
-        $actualDom = $this->makeDomDocument($this->jsonLd->generate());
+        $actualDom = $this->makeDomDocument($this->jsonLd->generate(true));
 
         $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }

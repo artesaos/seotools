@@ -251,7 +251,7 @@ class SEOMetaTest extends BaseTest
     protected function setRightAssertion($expectedString)
     {
         $expectedDom = $this->makeDomDocument($expectedString);
-        $actualDom = $this->makeDomDocument($this->seoMeta->generate());
+        $actualDom = $this->makeDomDocument($this->seoMeta->generate(true));
 
         $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
     }
@@ -299,7 +299,7 @@ class SEOMetaTest extends BaseTest
                 'description' => 'For those who helped create the Genki Dama',
             ],
         ]));
-        
+
         $expected = "<title class=\"notranslate\">It's Over 9000!</title>";
         $expected .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
 
