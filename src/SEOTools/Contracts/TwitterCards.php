@@ -112,4 +112,11 @@ interface TwitterCards
      * @return static
      */
     public function setImages($images);
+
+    /**
+     * @param string|array $image
+     *
+     * @return static
+     */
+    public function setImage($image);
 }

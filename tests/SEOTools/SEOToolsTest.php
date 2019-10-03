@@ -97,8 +97,8 @@ class SEOToolsTest extends BaseTest
         $expected .= '<meta property="og:description" content="For those who helped create the Genki Dama" />';
         $expected .= '<meta property="og:image" content="Kamehamehaaaaaaa.png" />';
         $expected .= '<meta property="og:image" content="Kamehamehaaaaaaa.png" />';
-        $expected .= '<meta name="twitter:images0" content="Kamehamehaaaaaaa.png" />';
-        $expected .= '<meta name="twitter:images1" content="Kamehamehaaaaaaa.png" />';
+        $expected .= '<meta name="twitter:image" content="Kamehamehaaaaaaa.png" />';
+        $expected .= '<meta name="twitter:image" content="Kamehamehaaaaaaa.png" />';
         $expected .= '<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","image":"[\"Kamehamehaaaaaaa.png\",\"Kamehamehaaaaaaa.png\"]"}</script>';
 
         $this->setRightAssertion($expected);
