@@ -90,7 +90,7 @@ class SEOTools implements SEOContract
             $this->opengraph()->addImage($urls);
         }
 
-        $this->twitter()->addImage($urls);
+        $this->twitter()->setImage($urls);
 
         $this->jsonLd()->addImage($urls);
 
