@@ -159,6 +159,11 @@ class SEOMeta implements MetaTagsContract
         }
 
         if (!empty($keywords)) {
+            
+            if($keywords instanceof \Illuminate\Support\Collection){
+                $keywords = $keywords->toArray();
+            }
+            
             $keywords = implode(', ', $keywords);
             $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
         }
