@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph opengraph()
  * @method static \Artesaos\SEOTools\Contracts\TwitterCards twitter()
  * @method static \Artesaos\SEOTools\Contracts\JsonLd jsonLd()
+ * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti jsonLdMulti()
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setTitle(string $title, bool $appendDefault = true)
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setDescription(string $description)
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setCanonical(string $url)

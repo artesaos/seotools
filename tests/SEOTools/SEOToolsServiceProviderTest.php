@@ -45,6 +45,14 @@ class SEOToolsServiceProviderTest extends BaseTest
                 'Artesaos\SEOTools\Contracts\TwitterCards',
                 'Artesaos\SEOTools\TwitterCards',
             ],
+            [
+                'Artesaos\SEOTools\Contracts\JsonLd',
+                'Artesaos\SEOTools\JsonLd',
+            ],
+            [
+                'Artesaos\SEOTools\Contracts\JsonLdMulti',
+                'Artesaos\SEOTools\JsonLdMulti',
+            ],
         ];
     }
 }

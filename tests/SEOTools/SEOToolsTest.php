@@ -122,6 +122,6 @@ class SEOToolsTest extends BaseTest
         $expectedDom = $this->makeDomDocument($expectedString);
         $actualDom = $this->makeDomDocument($this->seoTools->generate());
 
-        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
+        $this->assertEquals($expectedDom->C14N(), str_replace(["\n", "\r"], '', $actualDom->C14N()));
     }
 }
