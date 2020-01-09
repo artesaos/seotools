@@ -49,7 +49,7 @@ class JsonLdMulti implements JsonLdMultiContract
     {
         if (count($this->list) > 1) {
             return array_reduce($this->list, function (string $output, JsonLd $jsonLd) {
-                return $output . $jsonLd->generate();
+                return $output . (! $jsonLd->isEmpty() ? $jsonLd->generate() : '');
             }, '');
         }
     }
@@ -63,6 +63,14 @@ class JsonLdMulti implements JsonLdMultiContract
         $this->list[] = new JsonLd($this->defaultJsonLdData);
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEmpty()
+    {
+        return $this->list[$this->index]->isEmpty();
     }
 
     /**

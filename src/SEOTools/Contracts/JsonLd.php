@@ -63,6 +63,13 @@ interface JsonLd
     public function generate($minify = false);
 
     /**
+     *  Check if all attribute are empty
+     *
+     * @return static
+     */
+    public function isEmpty();
+
+    /**
      * @param string       $key
      * @param string|array $value
      *

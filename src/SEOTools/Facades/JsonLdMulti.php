@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @see \Artesaos\SEOTools\Contracts\JsonLdMulti
  * @method static string generate(bool $minify = false)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti newJsonLd()
+ * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti isEmpty()
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti select(int $index)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti addValue(string $key, array|string $value)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setType(string $type)

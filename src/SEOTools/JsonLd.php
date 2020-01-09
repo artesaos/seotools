@@ -72,6 +72,19 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
+    public function isEmpty()
+    {
+        return empty($this->values)
+            && empty($this->type)
+            && empty($this->title)
+            && empty($this->description)
+            && empty($url)
+            && empty($this->images);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function generate($minify = false)
     {
         $generated = [

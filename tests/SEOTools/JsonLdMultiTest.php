@@ -176,6 +176,16 @@ class JsonLdMultiTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_is_empty()
+    {
+        // make default json-ld data as empty on create
+        config()->set('seotools.json-ld.defaults',[]);
+        $this->jsonLdMulti = new JsonLdMulti();
+        $this->jsonLdMulti->newJsonLd();
+
+        $this->assertTrue($this->jsonLdMulti->isEmpty());
+    }
+
     /**
      * @depends test_new_json_ld
      * @depends test_set_title

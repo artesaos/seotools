@@ -265,9 +265,11 @@ class CommomController extends Controller
         JsonLdMulti::setDescription($post->resume);
         JsonLdMulti::setType('Article');
         JsonLdMulti::addImage($post->images->list('url'));
-        JsonLdMulti::newJsonLd();
-        JsonLdMulti::setType('WebPage');
-        JsonLdMulti::setTitle('Page Article - '.$post->title);
+        if(! JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('WebPage');
+            JsonLdMulti::setTitle('Page Article - '.$post->title);
+        }
 
         // Namespace URI: http://ogp.me/ns/article#
         // article
@@ -654,6 +656,7 @@ JsonLd::generate();
 use Artesaos\SEOTools\Facades\JsonLdMulti;
 
 JsonLdMulti::newJsonLd(); // create a new JsonLd group
+JsonLdMulti::isEmpty(); // check if the current JsonLd group is empty
 JsonLdMulti::select($index); // choose the JsonLd group that will be edited by the methods below
 JsonLdMulti::addValue($key, $value); // value can be string or array
 JsonLdMulti::setType($type); // type of twitter card tag
@@ -672,13 +675,15 @@ JsonLdMulti::addValue($key, $value)
     ->setUrl($url)
     ->setSite($name);
 // You can add an other group
-JsonMulti::newJsonLd()
-    ->setType($type)
-    ->setImage($url)
-    ->setTitle($title)
-    ->setDescription($description)
-    ->setUrl($url)
-    ->setSite($name);
+if(! JsonLdMulti::isEmpty()) {
+    JsonLdMulti::newJsonLd()
+        ->setType($type)
+        ->setImage($url)
+        ->setTitle($title)
+        ->setDescription($description)
+        ->setUrl($url)
+        ->setSite($name);
+}
 // Generate html tags
 JsonLdMulti::generate();
 // You will have retrieve <script content="application/ld+json"/>

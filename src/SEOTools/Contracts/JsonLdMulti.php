@@ -69,6 +69,13 @@ interface JsonLdMulti
     public function newJsonLd();
 
     /**
+     *  Check if the current JsonLd group is empty
+     *
+     * @return static
+     */
+    public function isEmpty();
+
+    /**
      * Target a JsonLd group that will be edited in the next methods
      *
      * @param int $index

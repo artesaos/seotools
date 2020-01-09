@@ -3,6 +3,7 @@
 namespace Artesaos\SEOTools\Tests;
 
 use Artesaos\SEOTools\JsonLd;
+use Artesaos\SEOTools\JsonLdMulti;
 
 /**
  * Class TwitterCardsTest.
@@ -146,6 +147,15 @@ class JsonLdTest extends BaseTest
         $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","test":"1-2-3","author":{"@type":"Organization","name":"SeoTools"}}</script></head></html>';
 
         $this->setRightAssertion($expected);
+    }
+
+    public function test_is_empty()
+    {
+        // make default json-ld data as empty on create
+        config()->set('seotools.json-ld.defaults',[]);
+        $this->jsonLd = new JsonLd();
+
+        $this->assertTrue($this->jsonLd->isEmpty());
     }
 
     /**
