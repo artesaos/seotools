@@ -213,7 +213,7 @@ class SEOMeta implements MetaTagsContract
     public function setTitle($title, $appendDefault = true)
     {
         // open redirect vulnerability fix
-        $title = preg_replace(array('http-equiv', 'url='), '', $title);
+        $title = str_replace(['http-equiv=', 'url='], '', $title);
         
         // clean title
         $title = strip_tags($title);
