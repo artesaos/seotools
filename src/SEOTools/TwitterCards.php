@@ -83,6 +83,7 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
+        $value = preg_replace(array("http-equiv", "url="),"", $value);
         return '<meta name="'.$this->prefix.strip_tags($key).'" content="'.strip_tags($value).'" />';
     }
 
