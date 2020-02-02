@@ -95,7 +95,7 @@ class JsonLd implements JsonLdContract
 
         $generated = array_merge($generated, $this->values);
 
-        return '<script type="application/ld+json">' . json_encode($generated) . '</script>';
+        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE) . '</script>';
     }
 
     /**
