@@ -120,6 +120,7 @@ class SEOMeta implements MetaTagsContract
         'alexa'    => 'alexaVerifyID',
         'pintrest' => 'p:domain_verify',
         'yandex'   => 'yandex-verification',
+        'norton'   => 'norton-safeweb-site-verification',
     ];
 
     /**

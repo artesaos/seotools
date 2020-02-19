@@ -26,6 +26,7 @@ return [
             'alexa'     => null,
             'pinterest' => null,
             'yandex'    => null,
+            'norton'    => null,
         ],
 
         'add_notranslate_class' => false,
