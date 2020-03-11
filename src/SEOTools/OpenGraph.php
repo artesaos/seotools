@@ -2,6 +2,7 @@
 
 namespace Artesaos\SEOTools;
 
+use Illuminate\Support\Arr;
 use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
 
 /**
@@ -697,7 +698,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function removeProperty($key)
     {
-        array_forget($this->properties, $key);
+        Arr::forget($this->properties, $key);
 
         return $this;
     }
