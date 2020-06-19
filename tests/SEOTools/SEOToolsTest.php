@@ -120,7 +120,7 @@ class SEOToolsTest extends BaseTest
     protected function setRightAssertion($expectedString)
     {
         $expectedDom = $this->makeDomDocument($expectedString);
-        $actualDom = $this->makeDomDocument($this->seoTools->generate());
+        $actualDom = $this->makeDomDocument($this->seoTools->generate(true));
 
         $this->assertEquals($expectedDom->C14N(), str_replace(["\n", "\r"], '', $actualDom->C14N()));
     }

@@ -30,7 +30,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Artesaos\\SEOTools\\Test\\": "tests/"
+      "Artesaos\\SEOTools\\Tests\\": "tests/SEOTools"
     }
   },
   "config": {
