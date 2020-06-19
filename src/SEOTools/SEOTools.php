@@ -46,6 +46,14 @@ class SEOTools implements SEOContract
     /**
      * {@inheritdoc}
      */
+    public function jsonLdMulti()
+    {
+        return app('seotools.json-ld-multi');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setTitle($title, $appendDefault = true)
     {
         $this->metatags()->setTitle($title, $appendDefault);
@@ -120,7 +128,8 @@ class SEOTools implements SEOContract
         $html .= PHP_EOL;
         $html .= $this->twitter()->generate();
         $html .= PHP_EOL;
-        $html .= $this->jsonLd()->generate();
+        // if json ld multi is use don't show simple json ld
+        $html .= $this->jsonLdMulti()->generate() ?? $this->jsonLd()->generate();
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }

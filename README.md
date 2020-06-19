@@ -90,6 +90,7 @@ You may get access to the SEO tool services using following facades:
  - `Artesaos\SEOTools\Facades\OpenGraph`
  - `Artesaos\SEOTools\Facades\TwitterCard`
  - `Artesaos\SEOTools\Facades\JsonLd`
+ - `Artesaos\SEOTools\Facades\JsonLdMulti`
  - `Artesaos\SEOTools\Facades\SEOTools`
 
 You can setup a short-version aliases for these facades in your `config/app.php` file. For example:
@@ -100,10 +101,11 @@ You can setup a short-version aliases for these facades in your `config/app.php`
 return [
     // ...
     'aliases' => [
-        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-        'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
+        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         // ...
@@ -159,6 +161,7 @@ $metatags = app('seotools.metatags');
 $twitter = app('seotools.twitter');
 $opengraph = app('seotools.opengraph');
 $jsonld = app('seotools.json-ld');
+$jsonldMulti = app('seotools.json-ld-multi');
 
 // The behavior is the same as the facade
 
@@ -188,6 +191,9 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
+// OR with multi
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -253,6 +259,17 @@ class CommomController extends Controller
         JsonLd::setType('Article');
         JsonLd::addImage($post->images->list('url'));
 
+        // OR with multi
+
+        JsonLdMulti::setTitle($post->title);
+        JsonLdMulti::setDescription($post->resume);
+        JsonLdMulti::setType('Article');
+        JsonLdMulti::addImage($post->images->list('url'));
+        if(! JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('WebPage');
+            JsonLdMulti::setTitle('Page Article - '.$post->title);
+        }
 
         // Namespace URI: http://ogp.me/ns/article#
         // article
@@ -446,6 +463,9 @@ class CommomController extends Controller
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
+    // OR with multi
+    {!! JsonLdMulti::generate() !!}
+
     <!-- OR -->
     {!! SEO::generate() !!}
 
@@ -490,6 +510,9 @@ class CommomController extends Controller
     <meta name="twitter:site"content="@LuizVinicius73" />
     
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
+    <!-- OR with multi -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Title - Over 9000 Thousand!"}</script>
 </head>
 <body>
 
@@ -623,6 +646,47 @@ JsonLd::addValue($key, $value)
 
 // Generate html tags
 JsonLd::generate();
+```
+
+### API (JsonLdMulti)
+
+```php
+<?php
+
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
+JsonLdMulti::newJsonLd(); // create a new JsonLd group
+JsonLdMulti::isEmpty(); // check if the current JsonLd group is empty
+JsonLdMulti::select($index); // choose the JsonLd group that will be edited by the methods below
+JsonLdMulti::addValue($key, $value); // value can be string or array
+JsonLdMulti::setType($type); // type of twitter card tag
+JsonLdMulti::setTitle($type); // title of twitter card tag
+JsonLdMulti::setSite($type); // site of twitter card tag
+JsonLdMulti::setDescription($type); // description of twitter card tag
+JsonLdMulti::setUrl($type); // url of twitter card tag
+JsonLdMulti::setImage($url); // add image url
+
+// You can chain methods
+JsonLdMulti::addValue($key, $value)
+    ->setType($type)
+    ->setImage($url)
+    ->setTitle($title)
+    ->setDescription($description)
+    ->setUrl($url)
+    ->setSite($name);
+// You can add an other group
+if(! JsonLdMulti::isEmpty()) {
+    JsonLdMulti::newJsonLd()
+        ->setType($type)
+        ->setImage($url)
+        ->setTitle($title)
+        ->setDescription($description)
+        ->setUrl($url)
+        ->setSite($name);
+}
+// Generate html tags
+JsonLdMulti::generate();
+// You will have retrieve <script content="application/ld+json"/>
 ```
 
 #### API (SEO)

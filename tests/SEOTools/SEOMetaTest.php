@@ -35,7 +35,7 @@ class SEOMetaTest extends BaseTest
     public function test_set_title_with_append_default()
     {
         $fullTitle = "Kamehamehaaaaaaaa - It's Over 9000!";
-        $fullHeader = '<title>' .$fullTitle. '</title>';
+        $fullHeader = '<title>' . $fullTitle . '</title>';
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
 
         $this->seoMeta->setTitle('Kamehamehaaaaaaaa');
@@ -47,7 +47,7 @@ class SEOMetaTest extends BaseTest
     public function test_set_title_without_append_default()
     {
         $fullTitle = 'Kamehamehaaaaaaaa';
-        $fullHeader = '<title>' .$fullTitle. '</title>';
+        $fullHeader = '<title>' . $fullTitle . '</title>';
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
 
         $this->seoMeta->setTitle($fullTitle, false);
@@ -59,7 +59,7 @@ class SEOMetaTest extends BaseTest
     public function test_set_default_title()
     {
         $fullTitle = 'Kamehamehaaaaaaaa';
-        $fullHeader = '<title>' .$fullTitle. '</title>';
+        $fullHeader = '<title>' . $fullTitle . '</title>';
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
 
         $this->seoMeta->setTitleDefault($fullTitle);
@@ -86,7 +86,7 @@ class SEOMetaTest extends BaseTest
     {
         $description = 'Kamehamehaaaaaaaa';
         $fullHeader = "<title>It's Over 9000!</title>";
-        $fullHeader .= "<meta name=\"description\" content=\"".$description.'">';
+        $fullHeader .= "<meta name=\"description\" content=\"" . $description . '">';
 
         $this->seoMeta->setDescription($description);
 
@@ -131,10 +131,9 @@ class SEOMetaTest extends BaseTest
         $this->setRightAssertion($fullHeader);
         $this->assertEquals('masenko, makankosappo', implode($this->seoMeta->getKeywords(), ', '));
 
-        $this->seoMeta->addKeyword(['kienzan','tayoken']);
+        $this->seoMeta->addKeyword(['kienzan', 'tayoken']);
 
         $this->assertEquals('kienzan, tayoken, masenko, makankosappo', implode($this->seoMeta->getKeywords(), ', '));
-
     }
 
     public function test_remove_metatag()
@@ -146,7 +145,7 @@ class SEOMetaTest extends BaseTest
         $this->seoMeta->addMeta(['custom-meta' => 'value']);
         $this->seoMeta->addMeta('custom-meta', 'value', 'test');
 
-        $fullHeaderWithTags = $fullHeader."<meta test=\"custom-meta\" content=\"value\">";
+        $fullHeaderWithTags = $fullHeader . "<meta test=\"custom-meta\" content=\"value\">";
         $this->setRightAssertion($fullHeaderWithTags);
 
         $this->seoMeta->removeMeta('custom-meta');
@@ -224,7 +223,7 @@ class SEOMetaTest extends BaseTest
 
         $this->seoMeta->addAlternateLanguages($expectedLangs);
 
-        $this->assertEquals(array_merge($expectedLangs,$expectedLangs), $this->seoMeta->getAlternateLanguages());
+        $this->assertEquals(array_merge($expectedLangs, $expectedLangs), $this->seoMeta->getAlternateLanguages());
     }
 
     public function test_set_reset()
@@ -253,7 +252,7 @@ class SEOMetaTest extends BaseTest
         $expectedDom = $this->makeDomDocument($expectedString);
         $actualDom = $this->makeDomDocument($this->seoMeta->generate());
 
-        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
+        $this->assertEquals($expectedDom->C14N(), str_replace(["\n", "\r"], '', $actualDom->C14N()));
     }
 
     public function test_it_sets_default_meta_robots_to_none()
@@ -275,14 +274,13 @@ class SEOMetaTest extends BaseTest
 
     /**
      * @depends test_set_description
-     *
-     * @see https://github.com/artesaos/seotools/issues/122
+     * @see     https://github.com/artesaos/seotools/issues/122
      */
     public function test_utf8()
     {
         $description = 'de fidélisation des salariés';
         $fullHeader = "<title>It's Over 9000!</title>";
-        $fullHeader .= "<meta name=\"description\" content=\"".$description.'">';
+        $fullHeader .= "<meta name=\"description\" content=\"" . $description . '">';
 
         $this->seoMeta->setDescription($description);
 
@@ -294,12 +292,12 @@ class SEOMetaTest extends BaseTest
     {
         $this->seoMeta = new SEOMeta(new \Illuminate\Config\Repository([
             'add_notranslate_class' => true,
-            'defaults' => [
-                'title' => 'It\'s Over 9000!',
+            'defaults'              => [
+                'title'       => 'It\'s Over 9000!',
                 'description' => 'For those who helped create the Genki Dama',
             ],
         ]));
-        
+
         $expected = "<title class=\"notranslate\">It's Over 9000!</title>";
         $expected .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
 

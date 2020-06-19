@@ -3,15 +3,11 @@
 namespace Artesaos\SEOTools\Contracts;
 
 /**
- * JsonLd defines contract for the JSON Linked Data container.
- *
+ * JsonLdMulti defines contract for the JSON Linked Data container.
  * Usage example:
- *
  * ```php
- * use Artesaos\SEOTools\JsonLd; // implements `Artesaos\SEOTools\Contracts\JsonLd`
- *
- * $jsonLd = new JsonLd();
- *
+ * use Artesaos\SEOTools\JsonLdMulti; // implements `Artesaos\SEOTools\Contracts\JsonLdMulti`
+ * $jsonLd = new JsonLdMulti(1);
  * // specify JSON data
  * $jsonLd->setName('Home');
  * $jsonLd->setDescription('This is my page description');
@@ -19,39 +15,42 @@ namespace Artesaos\SEOTools\Contracts;
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
- *
+ * $jsonLd->newJsonLd();
+ * $jsonLd->setName('Homepage');
+ * $jsonLd->setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
  * echo $jsonLd->generate();
  * ```
- *
- * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\JsonLd} facade.
+ * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\JsonLdMulti} facade.
  * Facade usage example:
- *
  * ```php
- * use Artesaos\SEOTools\Facades\JsonLd;
- *
+ * use Artesaos\SEOTools\Facades\JsonLdMulti;
  * // specify JSON data
- * JsonLd::setName('Homepage');
- * JsonLd::setDescription('This is my page description');
- * JsonLd::addValue('author', [
+ * JsonLdMulti::setName('Homepage');
+ * JsonLdMulti::setDescription('This is my page description');
+ * JsonLdMulti::addValue('author', [
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
- *
+ * JsonLdMulti::newJsonLd();
+ * JsonLdMulti::setName('Homepage');
+ * JsonLdMulti::setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
- * echo JsonLd::generate();
+ * echo JsonLdMulti::generate();
  * ```
  *
  * @see https://json-ld.org/
- * @see \Artesaos\SEOTools\JsonLd
- * @see \Artesaos\SEOTools\Facades\JsonLd
+ * @see \Artesaos\SEOTools\JsonLdMulti
+ * @see \Artesaos\SEOTools\Facades\JsonLdMulti
  */
-interface JsonLd
+interface JsonLdMulti
 {
     /**
-     * @param array $defaults
+     * JsonLdMulti constructor.
+     *
+     * @param array $defaultJsonLdData
      */
-    public function __construct(array $defaults = []);
+    public function __construct(array $defaultJsonLdData = []);
 
     /**
      * Generates linked data script tag.
@@ -63,14 +62,30 @@ interface JsonLd
     public function generate($minify = false);
 
     /**
-     *  Check if all attribute are empty
+     * Create a new JsonLd group and increment the selector to target it
+     *
+     * @return static
+     */
+    public function newJsonLd();
+
+    /**
+     *  Check if the current JsonLd group is empty
      *
      * @return static
      */
     public function isEmpty();
 
     /**
-     * @param string       $key
+     * Target a JsonLd group that will be edited in the next methods
+     *
+     * @param int $index
+     *
+     * @return static
+     */
+    public function select($index);
+
+    /**
+     * @param string $key
      * @param string|array $value
      *
      * @return static

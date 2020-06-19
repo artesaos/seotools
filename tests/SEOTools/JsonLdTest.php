@@ -3,6 +3,7 @@
 namespace Artesaos\SEOTools\Tests;
 
 use Artesaos\SEOTools\JsonLd;
+use Artesaos\SEOTools\JsonLdMulti;
 
 /**
  * Class TwitterCardsTest.
@@ -148,6 +149,15 @@ class JsonLdTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_is_empty()
+    {
+        // make default json-ld data as empty on create
+        config()->set('seotools.json-ld.defaults',[]);
+        $this->jsonLd = new JsonLd();
+
+        $this->assertTrue($this->jsonLd->isEmpty());
+    }
+
     /**
      * @param string $expectedString
      */
@@ -156,6 +166,6 @@ class JsonLdTest extends BaseTest
         $expectedDom = $this->makeDomDocument($expectedString);
         $actualDom = $this->makeDomDocument($this->jsonLd->generate());
 
-        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
+        $this->assertEquals($expectedDom->C14N(), str_replace(["\n", "\r"], '', $actualDom->C14N()));
     }
 }
