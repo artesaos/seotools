@@ -222,8 +222,13 @@ class OpenGraph implements OpenGraphContract
         foreach ($properties as $property => $value) {
             // multiple properties
             if (is_array($value)) {
-                $subListPrefix = (is_string($property)) ? $property : $prefix;
-                $subList = $this->eachProperties($value, $subListPrefix);
+                if (is_string($property)){
+                    $subListPrefix = $prefix.":".$property;
+                    $subList = $this->eachProperties($value, $subListPrefix, false);
+                } else {
+                    $subListPrefix = (is_string($property)) ? $property : $prefix;
+                    $subList = $this->eachProperties($value, $subListPrefix);
+                }
 
                 $html[] = $subList;
             } else {
