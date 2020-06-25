@@ -716,6 +716,7 @@ class OpenGraph implements OpenGraphContract
             'type',
             'width',
             'height',
+            'alt',
         ];
 
         if (is_array($source)) {
