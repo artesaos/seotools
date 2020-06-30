@@ -110,7 +110,7 @@ class JsonLdMultiTest extends BaseTest
         $this->jsonLdMulti->setImages(['sayajin.png', 'namekusei.png']);
 
         $expected = '<html><head>' . $this->defaultJsonLdHtml
-            . '<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","image":"[\"sayajin.png\",\"namekusei.png\"]"}</script></head></html>';
+            . '<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","image":["sayajin.png","namekusei.png"]}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }

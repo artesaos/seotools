@@ -116,7 +116,7 @@ class SEOMetaTest extends BaseTest
         $this->seoMeta->setKeywords($keywords);
 
         $this->setRightAssertion($fullHeader);
-        $this->assertEquals($keywords, implode($this->seoMeta->getKeywords(), ','));
+        $this->assertEquals($keywords, implode(',', $this->seoMeta->getKeywords()));
     }
 
     public function test_add_keywords()
@@ -129,11 +129,11 @@ class SEOMetaTest extends BaseTest
         $this->seoMeta->addKeyword('makankosappo');
 
         $this->setRightAssertion($fullHeader);
-        $this->assertEquals('masenko, makankosappo', implode($this->seoMeta->getKeywords(), ', '));
+        $this->assertEquals('masenko, makankosappo', implode(', ', $this->seoMeta->getKeywords()));
 
         $this->seoMeta->addKeyword(['kienzan', 'tayoken']);
 
-        $this->assertEquals('kienzan, tayoken, masenko, makankosappo', implode($this->seoMeta->getKeywords(), ', '));
+        $this->assertEquals('kienzan, tayoken, masenko, makankosappo', implode(', ', $this->seoMeta->getKeywords()));
     }
 
     public function test_remove_metatag()
