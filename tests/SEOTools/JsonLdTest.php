@@ -97,7 +97,7 @@ class JsonLdTest extends BaseTest
     {
         $this->jsonLd->setImages(['sayajin.png', 'namekusei.png']);
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","image":"[\"sayajin.png\",\"namekusei.png\"]"}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","image":["sayajin.png","namekusei.png"]}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
