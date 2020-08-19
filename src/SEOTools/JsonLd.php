@@ -108,7 +108,7 @@ class JsonLd implements JsonLdContract
         }
 
         if (! empty($this->images)) {
-            $generated['image'] = count($this->images) === 1 ? reset($this->images) : json_encode($this->images);
+            $generated['image'] = count($this->images) === 1 ? reset($this->images) : $this->images;
         }
 
         $generated = array_merge($generated, $this->values);
