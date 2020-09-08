@@ -16,8 +16,8 @@
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
-    "illuminate/config": "5.8.* || ^6.0 || ^7.0",
-    "illuminate/support": "5.8.* || ^6.0 || ^7.0"
+    "illuminate/config": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+    "illuminate/support": "5.8.* || ^6.0 || ^7.0 || ^8.0"
   },
   "require-dev": {
     "orchestra/testbench": "~3.8.4 || ^4.0 || ^5.0",
