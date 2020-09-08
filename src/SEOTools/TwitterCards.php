@@ -1,13 +1,13 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Apility\SEOTools;
 
-use Artesaos\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
+use Apility\SEOTools\Contracts\TwitterCards as TwitterCardsContract;
 
 /**
  * TwitterCards provides implementation for `TwitterCards` contract.
  *
- * @see \Artesaos\SEOTools\Contracts\TwitterCards
+ * @see \Apility\SEOTools\Contracts\TwitterCards
  */
 class TwitterCards implements TwitterCardsContract
 {

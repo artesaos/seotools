@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://github.com/artesaos" target="_blank">
+    <a href="https://github.com/apility" target="_blank">
         <img src="https://avatars3.githubusercontent.com/u/11164074" height="100px">
     </a>
     <h1 align="center">SEOTools - SEO Tools for Laravel and Lumen</h1>
@@ -10,12 +10,12 @@ SEOTools is a package for [Laravel 5.8+](https://laravel.com/) and [Lumen](https
 
 > Current Build Status
 
-[![Build Status](https://travis-ci.org/artesaos/seotools.svg)](https://travis-ci.org/artesaos/seotools)
-[![Code Climate](https://codeclimate.com/github/artesaos/seotools/badges/gpa.svg)](https://codeclimate.com/github/artesaos/seotools)
+[![Build Status](https://travis-ci.org/apility/seotools.svg)](https://travis-ci.org/apility/seotools)
+[![Code Climate](https://codeclimate.com/github/apility/seotools/badges/gpa.svg)](https://codeclimate.com/github/apility/seotools)
 
 > Statistics
 
-[![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
+[![Latest Stable Version](https://poser.pugx.org/apility/seotools/v/stable)](https://packagist.org/packages/apility/seotools) [![Total Downloads](https://poser.pugx.org/apility/seotools/downloads)](https://packagist.org/packages/apility/seotools) [![Latest Unstable Version](https://poser.pugx.org/apility/seotools/v/unstable)](https://packagist.org/packages/apility/seotools) [![License](https://poser.pugx.org/apility/seotools/license)](https://packagist.org/packages/apility/seotools)
 
 For license information check the [LICENSE](LICENSE.md)-file.
 
@@ -35,7 +35,7 @@ Installation
 The first step is using composer to install the package and automatically update your `composer.json` file, you can do this by running:
 
 ```shell
-composer require artesaos/seotools
+composer require apility/seotools
 ```
 
 > **Note**: If you are using Laravel 5.5, the steps 2 and 3, for providers and aliases, are unnecessaries. SEOTools supports Laravel new [Package Discovery](https://laravel.com/docs/5.5/packages#package-discovery).
@@ -52,7 +52,7 @@ You need to update your application configuration in order to register the packa
 return [
     // ...
     'providers' => [
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Apility\SEOTools\Providers\SEOToolsServiceProvider::class,
         // ...
     ],
     // ...
@@ -73,7 +73,7 @@ $app = new Laravel\Lumen\Application(
 
 // ...
 
-$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
+$app->register(Apility\SEOTools\Providers\SEOToolsServiceProvider::class);
 
 // ...
 
@@ -86,12 +86,12 @@ return $app;
 
 You may get access to the SEO tool services using following facades:
 
- - `Artesaos\SEOTools\Facades\SEOMeta`
- - `Artesaos\SEOTools\Facades\OpenGraph`
- - `Artesaos\SEOTools\Facades\TwitterCard`
- - `Artesaos\SEOTools\Facades\JsonLd`
- - `Artesaos\SEOTools\Facades\JsonLdMulti`
- - `Artesaos\SEOTools\Facades\SEOTools`
+ - `Apility\SEOTools\Facades\SEOMeta`
+ - `Apility\SEOTools\Facades\OpenGraph`
+ - `Apility\SEOTools\Facades\TwitterCard`
+ - `Apility\SEOTools\Facades\JsonLd`
+ - `Apility\SEOTools\Facades\JsonLdMulti`
+ - `Apility\SEOTools\Facades\SEOTools`
 
 You can setup a short-version aliases for these facades in your `config/app.php` file. For example:
 
@@ -101,13 +101,13 @@ You can setup a short-version aliases for these facades in your `config/app.php`
 return [
     // ...
     'aliases' => [
-        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
-        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
-        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'SEOMeta'       => Apility\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'     => Apility\SEOTools\Facades\OpenGraph::class,
+        'Twitter'       => Apility\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'        => Apility\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti'   => Apility\SEOTools\Facades\JsonLdMulti::class,
         // or
-        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'SEO' => Apility\SEOTools\Facades\SEOTools::class,
         // ...
     ],
     // ...
@@ -127,7 +127,7 @@ php artisan vendor:publish
 or
 
 ```shell
-php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
+php artisan vendor:publish --provider="Apility\SEOTools\Providers\SEOToolsServiceProvider"
 ```
 
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
@@ -187,15 +187,15 @@ With **Twitter** you can create OpenGraph tags to the `head`
 
 namespace App\Http\Controllers;
 
-use Artesaos\SEOTools\Facades\SEOMeta;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
+use Apility\SEOTools\Facades\SEOMeta;
+use Apility\SEOTools\Facades\OpenGraph;
+use Apility\SEOTools\Facades\TwitterCard;
+use Apility\SEOTools\Facades\JsonLd;
 // OR with multi
-use Artesaos\SEOTools\Facades\JsonLdMulti;
+use Apility\SEOTools\Facades\JsonLdMulti;
 
 // OR
-use Artesaos\SEOTools\Facades\SEOTools;
+use Apility\SEOTools\Facades\SEOTools;
 
 class CommomController extends Controller
 {
@@ -430,7 +430,7 @@ class CommomController extends Controller
 
 namespace App\Http\Controllers;
 
-use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Apility\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class CommomController extends Controller
 {
@@ -525,7 +525,7 @@ class CommomController extends Controller
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\SEOMeta;
+use Apility\SEOTools\Facades\SEOMeta;
 
 SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
@@ -569,7 +569,7 @@ SEOMeta::generate();
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\OpenGraph;
+use Apility\SEOTools\Facades\OpenGraph;
 
 OpenGraph::addProperty($key, $value); // value can be string or array
 OpenGraph::addImage($url); // add image url
@@ -597,7 +597,7 @@ OpenGraph::generate();
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\TwitterCard;
+use Apility\SEOTools\Facades\TwitterCard;
 
 TwitterCard::addValue($key, $value); // value can be string or array
 TwitterCard::setType($type); // type of twitter card tag
@@ -625,7 +625,7 @@ TwitterCard::generate();
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\JsonLd;
+use Apility\SEOTools\Facades\JsonLd;
 
 JsonLd::addValue($key, $value); // value can be string or array
 JsonLd::setType($type); // type of twitter card tag
@@ -653,7 +653,7 @@ JsonLd::generate();
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\JsonLdMulti;
+use Apility\SEOTools\Facades\JsonLdMulti;
 
 JsonLdMulti::newJsonLd(); // create a new JsonLd group
 JsonLdMulti::isEmpty(); // check if the current JsonLd group is empty
@@ -696,7 +696,7 @@ JsonLdMulti::generate();
 ```php
 <?php
 
-use Artesaos\SEOTools\Facades\SEOTools;
+use Apility\SEOTools\Facades\SEOTools;
 
 SEOTools::metatags();
 SEOTools::twitter();

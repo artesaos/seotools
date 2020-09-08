@@ -1,36 +1,40 @@
 {
-  "name": "artesaos/seotools",
+  "name": "apility/seotools",
   "description": "SEO Tools for Laravel and Lumen",
   "keywords": ["laravel", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph", "json-ld"],
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/artesaos/seotools/issues",
-    "source": "https://github.com/artesaos/seotools"
+    "issues": "https://github.com/apility/seotools/issues",
+    "source": "https://github.com/apility/seotools"
   },
   "authors": [
     {
       "name": "Vinicius",
       "email": "luiz.vinicius73@gmail.com"
+    },
+    {
+      "name": "Thomas Alrek",
+      "email": "thomas@apility.no"
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.3",
     "ext-json": "*",
     "illuminate/config": "5.8.* || ^6.0 || ^7.0 || ^8.0",
     "illuminate/support": "5.8.* || ^6.0 || ^7.0 || ^8.0"
   },
   "require-dev": {
-    "orchestra/testbench": "~3.8.4 || ^4.0 || ^5.0",
+    "orchestra/testbench": "~3.8.4 || ^4.0 || ^5.0 || ^6.0",
     "phpspec/phpspec": "~5.1.1 || ^6.0"
   },
   "autoload": {
     "psr-4": {
-      "Artesaos\\SEOTools\\": "src/SEOTools/"
+      "Apility\\SEOTools\\": "src/SEOTools/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Artesaos\\SEOTools\\Tests\\": "tests/SEOTools"
+      "Apility\\SEOTools\\Tests\\": "tests/SEOTools"
     }
   },
   "config": {
@@ -39,17 +43,15 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+        "Apility\\SEOTools\\Providers\\SEOToolsServiceProvider"
       ],
       "aliases": {
-        "SEOMeta": "Artesaos\\SEOTools\\Facades\\SEOMeta",
-        "OpenGraph": "Artesaos\\SEOTools\\Facades\\OpenGraph",
-        "Twitter": "Artesaos\\SEOTools\\Facades\\TwitterCard",
-        "JsonLd": "Artesaos\\SEOTools\\Facades\\JsonLd",
-        "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
+        "SEOMeta": "Apility\\SEOTools\\Facades\\SEOMeta",
+        "OpenGraph": "Apility\\SEOTools\\Facades\\OpenGraph",
+        "Twitter": "Apility\\SEOTools\\Facades\\TwitterCard",
+        "JsonLd": "Apility\\SEOTools\\Facades\\JsonLd",
+        "SEO": "Apility\\SEOTools\\Facades\\SEOTools"
       }
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }

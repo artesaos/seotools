@@ -1,13 +1,13 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Apility\SEOTools;
 
-use Artesaos\SEOTools\Contracts\JsonLd as JsonLdContract;
+use Apility\SEOTools\Contracts\JsonLd as JsonLdContract;
 
 /**
  * JsonLd provides implementation for `JsonLd` contract.
  *
- * @see \Artesaos\SEOTools\Contracts\JsonLd
+ * @see \Apility\SEOTools\Contracts\JsonLd
  */
 class JsonLd implements JsonLdContract
 {

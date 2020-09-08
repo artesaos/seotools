@@ -1,8 +1,8 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Apility\SEOTools\Tests;
 
-use Artesaos\SEOTools\SEOMeta;
+use Apility\SEOTools\SEOMeta;
 
 /**
  * Class SEOMetaTest.
@@ -274,7 +274,7 @@ class SEOMetaTest extends BaseTest
 
     /**
      * @depends test_set_description
-     * @see     https://github.com/artesaos/seotools/issues/122
+     * @see     https://github.com/apility/seotools/issues/122
      */
     public function test_utf8()
     {

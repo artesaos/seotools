@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Apility\SEOTools\Tests;
 
 use Mockery;
 use DOMDocument;
@@ -26,7 +26,7 @@ abstract class BaseTest extends TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [\Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class];
+        return [\Apility\SEOTools\Providers\SEOToolsServiceProvider::class];
     }
 
     /**

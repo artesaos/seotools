@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Contracts;
+namespace Apility\SEOTools\Contracts;
 
 /**
  * OpenGraph defines contract for the "OpenGraph" meta tags container.
@@ -10,7 +10,7 @@ namespace Artesaos\SEOTools\Contracts;
  * Usage example:
  *
  * ```php
- * use Artesaos\SEOTools\OpenGraph; // implements `Artesaos\SEOTools\Contracts\OpenGraph`
+ * use Apility\SEOTools\OpenGraph; // implements `Apility\SEOTools\Contracts\OpenGraph`
  *
  * $openGraph = new OpenGraph();
  *
@@ -24,11 +24,11 @@ namespace Artesaos\SEOTools\Contracts;
  * echo $openGraph->generate();
  * ```
  *
- * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\OpenGraph} facade.
+ * Implementation of this contract is available via {@see \Apility\SEOTools\Facades\OpenGraph} facade.
  * Facade usage example:
  *
  * ```php
- * use Artesaos\SEOTools\Facades\OpenGraph;
+ * use Apility\SEOTools\Facades\OpenGraph;
  *
  * // specify meta info
  * OpenGraph::setTitle('Home');
@@ -54,8 +54,8 @@ namespace Artesaos\SEOTools\Contracts;
  * ```
  *
  * @see https://ogp.me/
- * @see \Artesaos\SEOTools\OpenGraph
- * @see \Artesaos\SEOTools\Facades\OpenGraph
+ * @see \Apility\SEOTools\OpenGraph
+ * @see \Apility\SEOTools\Facades\OpenGraph
  */
 interface OpenGraph
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Contracts;
+namespace Apility\SEOTools\Contracts;
 
 /**
  * JsonLd defines contract for the JSON Linked Data container.
@@ -8,7 +8,7 @@ namespace Artesaos\SEOTools\Contracts;
  * Usage example:
  *
  * ```php
- * use Artesaos\SEOTools\JsonLd; // implements `Artesaos\SEOTools\Contracts\JsonLd`
+ * use Apility\SEOTools\JsonLd; // implements `Apility\SEOTools\Contracts\JsonLd`
  *
  * $jsonLd = new JsonLd();
  *
@@ -17,25 +17,25 @@ namespace Artesaos\SEOTools\Contracts;
  * $jsonLd->setDescription('This is my page description');
  * $jsonLd->addValue('author', [
  *     '@type' => 'Organization',
- *     'name' => 'Artesaos',
+ *     'name' => 'Apility',
  * ]));
  *
  * // render HTML, it should be placed within 'head' HTML tag
  * echo $jsonLd->generate();
  * ```
  *
- * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\JsonLd} facade.
+ * Implementation of this contract is available via {@see \Apility\SEOTools\Facades\JsonLd} facade.
  * Facade usage example:
  *
  * ```php
- * use Artesaos\SEOTools\Facades\JsonLd;
+ * use Apility\SEOTools\Facades\JsonLd;
  *
  * // specify JSON data
  * JsonLd::setName('Homepage');
  * JsonLd::setDescription('This is my page description');
  * JsonLd::addValue('author', [
  *     '@type' => 'Organization',
- *     'name' => 'Artesaos',
+ *     'name' => 'Apility',
  * ]));
  *
  * // render HTML, it should be placed within 'head' HTML tag
@@ -43,8 +43,8 @@ namespace Artesaos\SEOTools\Contracts;
  * ```
  *
  * @see https://json-ld.org/
- * @see \Artesaos\SEOTools\JsonLd
- * @see \Artesaos\SEOTools\Facades\JsonLd
+ * @see \Apility\SEOTools\JsonLd
+ * @see \Apility\SEOTools\Facades\JsonLd
  */
 interface JsonLd
 {

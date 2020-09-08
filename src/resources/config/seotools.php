@@ -1,6 +1,6 @@
 <?php
 /**
- * @see https://github.com/artesaos/seotools
+ * @see https://github.com/apility/seotools
  */
 
 return [

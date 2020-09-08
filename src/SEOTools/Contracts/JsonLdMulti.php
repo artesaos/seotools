@@ -1,19 +1,19 @@
 <?php
 
-namespace Artesaos\SEOTools\Contracts;
+namespace Apility\SEOTools\Contracts;
 
 /**
  * JsonLdMulti defines contract for the JSON Linked Data container.
  * Usage example:
  * ```php
- * use Artesaos\SEOTools\JsonLdMulti; // implements `Artesaos\SEOTools\Contracts\JsonLdMulti`
+ * use Apility\SEOTools\JsonLdMulti; // implements `Apility\SEOTools\Contracts\JsonLdMulti`
  * $jsonLd = new JsonLdMulti(1);
  * // specify JSON data
  * $jsonLd->setName('Home');
  * $jsonLd->setDescription('This is my page description');
  * $jsonLd->addValue('author', [
  *     '@type' => 'Organization',
- *     'name' => 'Artesaos',
+ *     'name' => 'Apility',
  * ]));
  * $jsonLd->newJsonLd();
  * $jsonLd->setName('Homepage');
@@ -21,16 +21,16 @@ namespace Artesaos\SEOTools\Contracts;
  * // render HTML, it should be placed within 'head' HTML tag
  * echo $jsonLd->generate();
  * ```
- * Implementation of this contract is available via {@see \Artesaos\SEOTools\Facades\JsonLdMulti} facade.
+ * Implementation of this contract is available via {@see \Apility\SEOTools\Facades\JsonLdMulti} facade.
  * Facade usage example:
  * ```php
- * use Artesaos\SEOTools\Facades\JsonLdMulti;
+ * use Apility\SEOTools\Facades\JsonLdMulti;
  * // specify JSON data
  * JsonLdMulti::setName('Homepage');
  * JsonLdMulti::setDescription('This is my page description');
  * JsonLdMulti::addValue('author', [
  *     '@type' => 'Organization',
- *     'name' => 'Artesaos',
+ *     'name' => 'Apility',
  * ]));
  * JsonLdMulti::newJsonLd();
  * JsonLdMulti::setName('Homepage');
@@ -40,8 +40,8 @@ namespace Artesaos\SEOTools\Contracts;
  * ```
  *
  * @see https://json-ld.org/
- * @see \Artesaos\SEOTools\JsonLdMulti
- * @see \Artesaos\SEOTools\Facades\JsonLdMulti
+ * @see \Apility\SEOTools\JsonLdMulti
+ * @see \Apility\SEOTools\Facades\JsonLdMulti
  */
 interface JsonLdMulti
 {

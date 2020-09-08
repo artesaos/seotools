@@ -1,9 +1,9 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Apility\SEOTools\Tests;
 
-use Artesaos\SEOTools\JsonLd;
-use Artesaos\SEOTools\JsonLdMulti;
+use Apility\SEOTools\JsonLd;
+use Apility\SEOTools\JsonLdMulti;
 
 /**
  * Class TwitterCardsTest.
@@ -126,10 +126,10 @@ class JsonLdTest extends BaseTest
         $this->jsonLd->addValue('author', [
             '@type' => 'Organization',
             'name' => 'SeoTools',
-            'url' => 'https://github.com/artesaos/seotools',
+            'url' => 'https://github.com/apility/seotools',
         ]);
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https:\/\/github.com\/artesaos\/seotools"}}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https:\/\/github.com\/apility\/seotools"}}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }

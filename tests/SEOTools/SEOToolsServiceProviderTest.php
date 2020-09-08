@@ -1,6 +1,6 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Apility\SEOTools\Tests;
 
 /**
  * Class SEOToolsServiceProviderTest.
@@ -30,28 +30,28 @@ class SEOToolsServiceProviderTest extends BaseTest
     {
         return [
             [
-                'Artesaos\SEOTools\Contracts\MetaTags',
-                'Artesaos\SEOTools\SEOMeta',
+                'Apility\SEOTools\Contracts\MetaTags',
+                'Apility\SEOTools\SEOMeta',
             ],
             [
-                'Artesaos\SEOTools\Contracts\OpenGraph',
-                'Artesaos\SEOTools\OpenGraph',
+                'Apility\SEOTools\Contracts\OpenGraph',
+                'Apility\SEOTools\OpenGraph',
             ],
             [
-                'Artesaos\SEOTools\Contracts\SEOTools',
-                'Artesaos\SEOTools\SEOTools',
+                'Apility\SEOTools\Contracts\SEOTools',
+                'Apility\SEOTools\SEOTools',
             ],
             [
-                'Artesaos\SEOTools\Contracts\TwitterCards',
-                'Artesaos\SEOTools\TwitterCards',
+                'Apility\SEOTools\Contracts\TwitterCards',
+                'Apility\SEOTools\TwitterCards',
             ],
             [
-                'Artesaos\SEOTools\Contracts\JsonLd',
-                'Artesaos\SEOTools\JsonLd',
+                'Apility\SEOTools\Contracts\JsonLd',
+                'Apility\SEOTools\JsonLd',
             ],
             [
-                'Artesaos\SEOTools\Contracts\JsonLdMulti',
-                'Artesaos\SEOTools\JsonLdMulti',
+                'Apility\SEOTools\Contracts\JsonLdMulti',
+                'Apility\SEOTools\JsonLdMulti',
             ],
         ];
     }

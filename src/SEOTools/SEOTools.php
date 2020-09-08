@@ -1,13 +1,13 @@
 <?php
 
-namespace Artesaos\SEOTools;
+namespace Apility\SEOTools;
 
-use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
+use Apility\SEOTools\Contracts\SEOTools as SEOContract;
 
 /**
  * SEOTools provides implementation for `SEOTools` contract.
  *
- * @see \Artesaos\SEOTools\Contracts\SEOTools
+ * @see \Apility\SEOTools\Contracts\SEOTools
  */
 class SEOTools implements SEOContract
 {

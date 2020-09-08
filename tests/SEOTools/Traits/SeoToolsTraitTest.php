@@ -1,9 +1,9 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Apility\SEOTools\Tests;
 
-use Artesaos\SEOTools\Contracts\SEOTools;
-use Artesaos\SEOTools\Tests\stubs\SeoToolsTraitStub;
+use Apility\SEOTools\Contracts\SEOTools;
+use Apility\SEOTools\Tests\stubs\SeoToolsTraitStub;
 use Mockery as m;
 /**
  * Class SeoToolsTraitTest.
