@@ -134,6 +134,32 @@ class JsonLdTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_self_add_value()
+    {
+        $this->jsonLd->addValue('author', new JsonLd([
+            'type' => 'Organization',
+            'name' => 'SeoTools',
+            'url' => 'https://github.com/artesaos/seotools',
+        ]));
+
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","url":"https:\/\/github.com\/artesaos\/seotools","name":"SeoTools"}}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
+
+    public function test_self_array_add_value()
+    {
+        $this->jsonLd->addValue('author', [new JsonLd([
+            'type' => 'Organization',
+            'name' => 'SeoTools',
+            'url' => 'https://github.com/artesaos/seotools',
+        ])]);
+
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":[{"@type":"Organization","url":"https:\/\/github.com\/artesaos\/seotools","name":"SeoTools"}]}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
+
     public function test_add_values()
     {
         $this->jsonLd->addValues([

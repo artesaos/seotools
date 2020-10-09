@@ -85,21 +85,34 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
-    public function generate($minify = false)
+    public function generate($minify = false): string
     {
-        $generated = [
-            '@context' => 'https://schema.org',
-        ];
+        $generated = array_merge(
+            [
+                '@context' => 'https://schema.org',
+            ],
+            $this->convertToArray()
+        );
 
-        if (! empty($this->type)) {
+        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE) . '</script>';
+    }
+
+    /**
+     * @return string[]|string[][]
+     */
+    public function convertToArray(): array
+    {
+        $generated = [];
+
+        if (!empty($this->type)) {
             $generated['@type'] = $this->type;
         }
 
-        if (! empty($this->title)) {
+        if (!empty($this->title)) {
             $generated['name'] = $this->title;
         }
 
-        if (! empty($this->description)) {
+        if (!empty($this->description)) {
             $generated['description'] = $this->description;
         }
 
@@ -107,13 +120,33 @@ class JsonLd implements JsonLdContract
             $generated['url'] = $this->url ?? app('url')->full();
         }
 
-        if (! empty($this->images)) {
+        if (!empty($this->images)) {
             $generated['image'] = count($this->images) === 1 ? reset($this->images) : $this->images;
         }
 
-        $generated = array_merge($generated, $this->values);
+        return self::convertSelfObjectInArray(array_merge($generated, $this->values));
+    }
 
-        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE) . '</script>';
+    /**
+     * @param mixed[] $values
+     *
+     * @return string[]|string[][]
+     */
+    private static function convertSelfObjectInArray(array $values): array
+    {
+        foreach ($values as $key => $value) {
+            if (is_array($value)) {
+                $values[$key] = self::convertSelfObjectInArray($value);
+
+                continue;
+            }
+
+            if ($value instanceof self) {
+                $values[$key] = $value->convertToArray();
+            }
+        }
+
+        return $values;
     }
 
     /**
