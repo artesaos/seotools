@@ -45,7 +45,7 @@ class JsonLdMultiTest extends BaseTest
         $this->jsonLdMulti->setSite('http://kakaroto.9000');
 
         $expected = '<html><head>' . $this->defaultJsonLdHtml
-            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://.9000"}</script></head></html>';
+            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://kakaroto.9000"}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -55,7 +55,7 @@ class JsonLdMultiTest extends BaseTest
         $this->jsonLdMulti->setUrl('http://kakaroto.9000');
 
         $expected = '<html><head>' . $this->defaultJsonLdHtml
-            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://.9000"}</script></head></html>';
+            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://kakaroto.9000"}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -145,7 +145,7 @@ class JsonLdMultiTest extends BaseTest
         ]);
 
         $expected = '<html><head>' . $this->defaultJsonLdHtml
-            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https://github.com\/artesaos\/seotools"}}</script></head></html>';
+            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https://github.com/artesaos/seotools"}}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }

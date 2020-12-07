@@ -38,7 +38,7 @@ class JsonLdTest extends BaseTest
     {
         $this->jsonLd->setSite('http://kakaroto.9000');
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://.9000"}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://kakaroto.9000"}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -47,7 +47,7 @@ class JsonLdTest extends BaseTest
     {
         $this->jsonLd->setUrl('http://kakaroto.9000');
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://.9000"}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","url":"http://kakaroto.9000"}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -129,7 +129,7 @@ class JsonLdTest extends BaseTest
             'url' => 'https://github.com/artesaos/seotools',
         ]);
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https://github.com\/artesaos\/seotools"}}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","name":"SeoTools","url":"https://github.com/artesaos/seotools"}}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -142,7 +142,7 @@ class JsonLdTest extends BaseTest
             'url' => 'https://github.com/artesaos/seotools',
         ]));
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","url":"https://github.com\/artesaos\/seotools","name":"SeoTools"}}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":{"@type":"Organization","url":"https://github.com/artesaos/seotools","name":"SeoTools"}}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
@@ -155,7 +155,7 @@ class JsonLdTest extends BaseTest
             'url' => 'https://github.com/artesaos/seotools',
         ])]);
 
-        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":[{"@type":"Organization","url":"https://github.com\/artesaos\/seotools","name":"SeoTools"}]}</script></head></html>';
+        $expected = '<html><head><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Over 9000 Thousand!","description":"For those who helped create the Genki Dama","author":[{"@type":"Organization","url":"https://github.com/artesaos/seotools","name":"SeoTools"}]}</script></head></html>';
 
         $this->setRightAssertion($expected);
     }
