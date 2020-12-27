@@ -94,7 +94,7 @@ class JsonLd implements JsonLdContract
             $this->convertToArray()
         );
 
-        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE) . '</script>';
+        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
     }
 
     /**
