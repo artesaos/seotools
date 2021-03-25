@@ -78,7 +78,7 @@ class JsonLd implements JsonLdContract
             && empty($this->type)
             && empty($this->title)
             && empty($this->description)
-            && empty($url)
+            && empty($this->url)
             && empty($this->images);
     }
 
