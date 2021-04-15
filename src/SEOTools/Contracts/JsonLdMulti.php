@@ -7,17 +7,17 @@ namespace Artesaos\SEOTools\Contracts;
  * Usage example:
  * ```php
  * use Artesaos\SEOTools\JsonLdMulti; // implements `Artesaos\SEOTools\Contracts\JsonLdMulti`
- * $jsonLd = new JsonLdMulti(1);
+ * $jsonLdMulti = new JsonLdMulti();
  * // specify JSON data
- * $jsonLd->setName('Home');
- * $jsonLd->setDescription('This is my page description');
- * $jsonLd->addValue('author', [
+ * $jsonLdMulti->setTitle('Home');
+ * $jsonLdMulti->setDescription('This is my page description');
+ * $jsonLdMulti->addValue('author', [
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
- * $jsonLd->newJsonLd();
- * $jsonLd->setName('Homepage');
- * $jsonLd->setType('Product');
+ * $jsonLdMulti->newJsonLd();
+ * $jsonLdMulti->setTitle('Homepage');
+ * $jsonLdMulti->setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
  * echo $jsonLd->generate();
  * ```
@@ -26,14 +26,14 @@ namespace Artesaos\SEOTools\Contracts;
  * ```php
  * use Artesaos\SEOTools\Facades\JsonLdMulti;
  * // specify JSON data
- * JsonLdMulti::setName('Homepage');
+ * JsonLdMulti::setTitle('Home');
  * JsonLdMulti::setDescription('This is my page description');
  * JsonLdMulti::addValue('author', [
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
  * JsonLdMulti::newJsonLd();
- * JsonLdMulti::setName('Homepage');
+ * JsonLdMulti::setTitle('Homepage');
  * JsonLdMulti::setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
  * echo JsonLdMulti::generate();
