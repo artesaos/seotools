@@ -140,6 +140,8 @@ php artisan config:cache
 
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
 
+> **Pro Tip**: In laravel don't forget to run `php artisan config:cache`
+
 In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
 
 #### seotools.php
