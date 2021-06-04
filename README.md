@@ -130,6 +130,14 @@ or
 php artisan vendor:publish --provider="Artesaos\SEOTools\Providers\SEOToolsServiceProvider"
 ```
 
+##### Config cache (Laravel)
+
+In your terminal type
+
+```shell
+php artisan config:cache
+```
+
 > Lumen does not support this command, for it you should copy the file `src/resources/config/seotools.php` to `config/seotools.php` of your project
 
 In `seotools.php` configuration file you can determine the properties of the default values and some behaviors.
@@ -253,7 +261,7 @@ class CommomController extends Controller
         OpenGraph::addImage($post->images->list('url'));
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
         OpenGraph::addImage('http://image.url.com/cover.jpg', ['height' => 300, 'width' => 300]);
-        
+
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->resume);
         JsonLd::setType('Article');
@@ -508,7 +516,7 @@ class CommomController extends Controller
     <meta name="twitter:card"content="summary" />
     <meta name="twitter:title"content="Title" />
     <meta name="twitter:site"content="@LuizVinicius73" />
-    
+
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
     <!-- OR with multi -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
