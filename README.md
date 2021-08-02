@@ -136,15 +136,15 @@ In `seotools.php` configuration file you can determine the properties of the def
 
 #### seotools.php
 
-- meta
- - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
- - **webmaster** - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
-- opengraph
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
-- twitter
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
-- json-ld
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **meta**
+   - `defaults` - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
+   - `webmaster` - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
+- **opengraph**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **twitter**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **json-ld**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
 
 Usage
 -----
