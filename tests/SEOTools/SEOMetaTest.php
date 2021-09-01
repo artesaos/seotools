@@ -168,6 +168,50 @@ class SEOMetaTest extends BaseTest
         $this->assertEquals($canonical, $this->seoMeta->getCanonical());
     }
 
+    public function dataTestUrls()
+    {
+        return [
+            ['http://localhost/hello/world', 'http://localhost/hello/world'],
+            ['http://localhost/hello/world?param=1', 'http://localhost/hello/world'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataTestUrls
+     */
+    public function test_get_canonical_null($fullUrl)
+    {
+        config()->set('defaults.canonical', null);
+        $this->seoMeta = new SEOMeta(config());
+
+        $this->get($fullUrl);
+        $this->assertEquals($fullUrl, $this->seoMeta->getCanonical());
+    }
+
+    /**
+     * @dataProvider dataTestUrls
+     */
+    public function test_get_canonical_full($fullUrl)
+    {
+        config()->set('defaults.canonical', 'full');
+        $this->seoMeta = new SEOMeta(config());
+
+        $this->get($fullUrl);
+        $this->assertEquals($fullUrl, $this->seoMeta->getCanonical());
+    }
+
+    /**
+     * @dataProvider dataTestUrls
+     */
+    public function test_get_canonical_current($fullUrl, $currentUrl)
+    {
+        config()->set('defaults.canonical', 'current');
+        $this->seoMeta = new SEOMeta(config());
+
+        $this->get($fullUrl);
+        $this->assertEquals($currentUrl, $this->seoMeta->getCanonical());
+    }
+
     public function test_set_amp()
     {
         $fullHeader = "<title>It's Over 9000!</title>";
