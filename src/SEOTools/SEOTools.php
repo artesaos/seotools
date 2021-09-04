@@ -11,6 +11,8 @@ use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
  */
 class SEOTools implements SEOContract
 {
+    use Macroable;
+    
     /**
      * {@inheritdoc}
      */
