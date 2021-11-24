@@ -83,12 +83,32 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
-        $value = str_replace(['http-equiv=', 'url='], '', $value);
         return sprintf(
             '<meta name="%s" content="%s" />',
             $this->prefix.strip_tags($key),
-            strip_tags($value)
+            $this->cleanTagValue($value)
         );
+    }
+
+    /**
+     * Clean tag value
+     *
+     * @param string $value    meta content value
+     *
+     * @return string
+     */
+    protected function cleanTagValue($value)
+    {
+        // Safety
+        $value = str_replace(['http-equiv=', 'url='], '', $value);
+
+        // Escape double quotes
+        $value = htmlspecialchars($value, ENT_QUOTES, null, false);
+
+        // Clean
+        $value = strip_tags($value);
+
+        return $value;
     }
 
     /**
