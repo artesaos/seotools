@@ -263,7 +263,7 @@ class OpenGraph implements OpenGraphContract
      */
     protected function makeTag($key = null, $value = null, $ogPrefix = false)
     {
-        $value = str_replace(['http-equiv=', 'url='], '', $value);
+        $value = str_replace(['http-equiv='], '', $value);
         return sprintf(
             '<meta property="%s%s" content="%s" />%s',
             $ogPrefix ? $this->og_prefix : '',
