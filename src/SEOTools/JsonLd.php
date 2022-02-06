@@ -117,7 +117,13 @@ class JsonLd implements JsonLdContract
         }
 
         if ($this->url !== false) {
-            $generated['url'] = $this->url ?? app('url')->full();
+            if ($this->url === null || $this->url === 'full') {
+                $generated['url'] = app('url')->full();
+            } elseif ($this->url === 'current') {
+                $generated['url'] = app('url')->current();
+            } else {
+                $generated['url'] = $this->url;
+            }
         }
 
         if (!empty($this->images)) {
