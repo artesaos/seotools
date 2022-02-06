@@ -263,14 +263,34 @@ class OpenGraph implements OpenGraphContract
      */
     protected function makeTag($key = null, $value = null, $ogPrefix = false)
     {
-        $value = str_replace(['http-equiv=', 'url='], '', $value);
         return sprintf(
             '<meta property="%s%s" content="%s" />%s',
             $ogPrefix ? $this->og_prefix : '',
             strip_tags($key),
-            strip_tags($value),
+            $this->cleanTagValue($value),
             PHP_EOL
         );
+    }
+
+    /**
+     * Clean og tag value
+     *
+     * @param string $value    meta property value
+     *
+     * @return string
+     */
+    protected function cleanTagValue($value)
+    {
+        // Safety
+        $value = str_replace(['http-equiv=', 'url='], '', $value);
+
+        // Escape double quotes
+        $value = htmlspecialchars($value, ENT_QUOTES, null, false);
+
+        // Clean
+        $value = strip_tags($value);
+
+        return $value;
     }
 
     /**
