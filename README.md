@@ -714,7 +714,7 @@ Missing Features
 ----------------
 
 There are many SEO-related features, which you may need for your project. While this package provides support for the basic ones,
-other are out of its scope. You'll have to use separated packages fot their integration.
+other are out of its scope. You'll have to use separate packages for their integration.
 
 ### SiteMap
 
