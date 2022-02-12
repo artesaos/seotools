@@ -1,5 +1,10 @@
-SEOTools - SEO Tools for Laravel and Lumen
-==========================================
+<p align="center">
+    <a href="https://github.com/artesaos" target="_blank">
+        <img src="https://avatars3.githubusercontent.com/u/11164074" height="100px">
+    </a>
+    <h1 align="center">SEOTools - SEO Tools for Laravel and Lumen</h1>
+    <br>
+</p>
 
 SEOTools is a package for [Laravel 5.8+](https://laravel.com/) and [Lumen](https://lumen.laravel.com/) that provides helpers for some common SEO techniques.
 
@@ -11,6 +16,8 @@ SEOTools is a package for [Laravel 5.8+](https://laravel.com/) and [Lumen](https
 > Statistics
 
 [![Latest Stable Version](https://poser.pugx.org/artesaos/seotools/v/stable)](https://packagist.org/packages/artesaos/seotools) [![Total Downloads](https://poser.pugx.org/artesaos/seotools/downloads)](https://packagist.org/packages/artesaos/seotools) [![Latest Unstable Version](https://poser.pugx.org/artesaos/seotools/v/unstable)](https://packagist.org/packages/artesaos/seotools) [![License](https://poser.pugx.org/artesaos/seotools/license)](https://packagist.org/packages/artesaos/seotools)
+
+For license information check the [LICENSE](LICENSE.md)-file.
 
 Features
 --------
@@ -83,6 +90,7 @@ You may get access to the SEO tool services using following facades:
  - `Artesaos\SEOTools\Facades\OpenGraph`
  - `Artesaos\SEOTools\Facades\TwitterCard`
  - `Artesaos\SEOTools\Facades\JsonLd`
+ - `Artesaos\SEOTools\Facades\JsonLdMulti`
  - `Artesaos\SEOTools\Facades\SEOTools`
 
 You can setup a short-version aliases for these facades in your `config/app.php` file. For example:
@@ -93,10 +101,11 @@ You can setup a short-version aliases for these facades in your `config/app.php`
 return [
     // ...
     'aliases' => [
-        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-        'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
+        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         // ...
@@ -127,15 +136,15 @@ In `seotools.php` configuration file you can determine the properties of the def
 
 #### seotools.php
 
-- meta
- - **defaults** - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
- - **webmaster** - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
-- opengraph
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
-- twitter
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
-- json-ld
- - **defaults** - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **meta**
+   - `defaults` - What values are displayed if not specified any value for the page display. If the value is `false`, nothing is displayed.
+   - `webmaster` - Are the settings of tags values for major webmaster tools. If you are `null` nothing is displayed.
+- **opengraph**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **twitter**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
+- **json-ld**
+   - `defaults` - Are the properties that will always be displayed and when no other value is set instead. **You can add additional tags** that are not included in the original configuration file.
 
 Usage
 -----
@@ -152,6 +161,7 @@ $metatags = app('seotools.metatags');
 $twitter = app('seotools.twitter');
 $opengraph = app('seotools.opengraph');
 $jsonld = app('seotools.json-ld');
+$jsonldMulti = app('seotools.json-ld-multi');
 
 // The behavior is the same as the facade
 
@@ -181,6 +191,9 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
+// OR with multi
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -246,6 +259,17 @@ class CommomController extends Controller
         JsonLd::setType('Article');
         JsonLd::addImage($post->images->list('url'));
 
+        // OR with multi
+
+        JsonLdMulti::setTitle($post->title);
+        JsonLdMulti::setDescription($post->resume);
+        JsonLdMulti::setType('Article');
+        JsonLdMulti::addImage($post->images->list('url'));
+        if(! JsonLdMulti::isEmpty()) {
+            JsonLdMulti::newJsonLd();
+            JsonLdMulti::setType('WebPage');
+            JsonLdMulti::setTitle('Page Article - '.$post->title);
+        }
 
         // Namespace URI: http://ogp.me/ns/article#
         // article
@@ -439,6 +463,9 @@ class CommomController extends Controller
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
+    // OR with multi
+    {!! JsonLdMulti::generate() !!}
+
     <!-- OR -->
     {!! SEO::generate() !!}
 
@@ -483,6 +510,9 @@ class CommomController extends Controller
     <meta name="twitter:site"content="@LuizVinicius73" />
     
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
+    <!-- OR with multi -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Title - Over 9000 Thousand!"}</script>
 </head>
 <body>
 
@@ -618,6 +648,47 @@ JsonLd::addValue($key, $value)
 JsonLd::generate();
 ```
 
+### API (JsonLdMulti)
+
+```php
+<?php
+
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
+JsonLdMulti::newJsonLd(); // create a new JsonLd group
+JsonLdMulti::isEmpty(); // check if the current JsonLd group is empty
+JsonLdMulti::select($index); // choose the JsonLd group that will be edited by the methods below
+JsonLdMulti::addValue($key, $value); // value can be string or array
+JsonLdMulti::setType($type); // type of twitter card tag
+JsonLdMulti::setTitle($type); // title of twitter card tag
+JsonLdMulti::setSite($type); // site of twitter card tag
+JsonLdMulti::setDescription($type); // description of twitter card tag
+JsonLdMulti::setUrl($type); // url of twitter card tag
+JsonLdMulti::setImage($url); // add image url
+
+// You can chain methods
+JsonLdMulti::addValue($key, $value)
+    ->setType($type)
+    ->setImage($url)
+    ->setTitle($title)
+    ->setDescription($description)
+    ->setUrl($url)
+    ->setSite($name);
+// You can add an other group
+if(! JsonLdMulti::isEmpty()) {
+    JsonLdMulti::newJsonLd()
+        ->setType($type)
+        ->setImage($url)
+        ->setTitle($title)
+        ->setDescription($description)
+        ->setUrl($url)
+        ->setSite($name);
+}
+// Generate html tags
+JsonLdMulti::generate();
+// You will have retrieve <script content="application/ld+json"/>
+```
+
 #### API (SEO)
 
 > Facilitates access to all the SEO Providers
@@ -638,3 +709,48 @@ SEOTools::setDescription($description);
 SEOTools::setCanonical($url);
 SEOTools::addImages($urls);
 ```
+
+Missing Features
+----------------
+
+There are many SEO-related features, which you may need for your project. While this package provides support for the basic ones,
+other are out of its scope. You'll have to use separate packages for their integration.
+
+### SiteMap
+
+This package does not support sitemap files generation. Please consider usage one of the following packages for it:
+
+- [laravelium/sitemap](https://packagist.org/packages/laravelium/sitemap)
+
+- [spatie/laravel-sitemap](https://packagist.org/packages/spatie/laravel-sitemap)
+
+### URL Trailing Slash
+
+This package does not handle URL consistency regardless absence or presence of the slash symbol at its end.
+Please consider usage one of the following packages if you need it:
+
+- [illuminatech/url-trailing-slash](https://packagist.org/packages/illuminatech/url-trailing-slash)
+
+- [fsasvari/laravel-trailing-slash](https://packagist.org/packages/fsasvari/laravel-trailing-slash)
+
+### Microdata Markup
+
+This package does provide generation of the [microdata HTML markup](https://www.w3.org/TR/microdata/). If you need to create HTML like the following one:
+
+```html
+<div itemscope>
+ <p>My name is
+  <span itemprop="name">Elizabeth</span>.</p>
+</div>
+```
+
+you will need to handle it yourself.
+
+> Note: nowadays microdata markup is considered to be outdated. It is recommened to use [JSON Linked Data](https://json-ld.org/) instead,
+  which is supported by this extension.
+
+### RSS
+
+This package does not support RSS feed generation or related meta data composition. Please consider usage one of the following packages for it:
+
+- [spatie/laravel-feed](https://packagist.org/packages/spatie/laravel-feed)

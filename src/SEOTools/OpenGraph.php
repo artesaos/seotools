@@ -2,8 +2,14 @@
 
 namespace Artesaos\SEOTools;
 
+use Illuminate\Support\Arr;
 use Artesaos\SEOTools\Contracts\OpenGraph as OpenGraphContract;
 
+/**
+ * OpenGraph provides implementation for `OpenGraph` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\OpenGraph
+ */
 class OpenGraph implements OpenGraphContract
 {
     /**
@@ -216,8 +222,13 @@ class OpenGraph implements OpenGraphContract
         foreach ($properties as $property => $value) {
             // multiple properties
             if (is_array($value)) {
-                $subListPrefix = (is_string($property)) ? $property : $prefix;
-                $subList = $this->eachProperties($value, $subListPrefix);
+                if (is_string($property)){
+                    $subListPrefix = $prefix.":".$property;
+                    $subList = $this->eachProperties($value, $subListPrefix, false);
+                } else {
+                    $subListPrefix = (is_string($property)) ? $property : $prefix;
+                    $subList = $this->eachProperties($value, $subListPrefix);
+                }
 
                 $html[] = $subList;
             } else {
@@ -256,9 +267,30 @@ class OpenGraph implements OpenGraphContract
             '<meta property="%s%s" content="%s" />%s',
             $ogPrefix ? $this->og_prefix : '',
             strip_tags($key),
-            strip_tags($value),
+            $this->cleanTagValue($value),
             PHP_EOL
         );
+    }
+
+    /**
+     * Clean og tag value
+     *
+     * @param string $value    meta property value
+     *
+     * @return string
+     */
+    protected function cleanTagValue($value)
+    {
+        // Safety
+        $value = str_replace(['http-equiv=', 'url='], '', $value);
+
+        // Escape double quotes
+        $value = htmlspecialchars($value, ENT_QUOTES, null, false);
+
+        // Clean
+        $value = strip_tags($value);
+
+        return $value;
     }
 
     /**
@@ -273,15 +305,16 @@ class OpenGraph implements OpenGraphContract
             [];
 
         foreach ($defaults as $key => $value) {
-            if ($key == 'images') {
+            if ($key === 'images') {
                 if (empty($this->images)) {
                     $this->images = $value;
                 }
-            } elseif ($key == 'url' && $value === null) {
-                $this->addProperty('url', $this->url ?: (($value === null)
-                    ? app('url')->current()
-                    : $this->config['defaults.url'])
-                );
+            } elseif ($key === 'url' && empty($value)) {
+                if ($value === null) {
+                    $this->addProperty('url', $this->url ?: app('url')->current());
+                } elseif ($this->url) {
+                    $this->addProperty('url', $this->url);
+                }
             } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
@@ -692,7 +725,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function removeProperty($key)
     {
-        array_forget($this->properties, $key);
+        Arr::forget($this->properties, $key);
 
         return $this;
     }
@@ -708,6 +741,7 @@ class OpenGraph implements OpenGraphContract
             'type',
             'width',
             'height',
+            'alt',
         ];
 
         if (is_array($source)) {

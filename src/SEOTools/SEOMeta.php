@@ -6,6 +6,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Config\Repository as Config;
 use Artesaos\SEOTools\Contracts\MetaTags as MetaTagsContract;
 
+/**
+ * SEOMeta provides implementation for `MetaTags` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\MetaTags
+ */
 class SEOMeta implements MetaTagsContract
 {
     /**
@@ -115,6 +120,7 @@ class SEOMeta implements MetaTagsContract
         'alexa'    => 'alexaVerifyID',
         'pintrest' => 'p:domain_verify',
         'yandex'   => 'yandex-verification',
+        'norton'   => 'norton-safeweb-site-verification',
     ];
 
     /**
@@ -146,7 +152,7 @@ class SEOMeta implements MetaTagsContract
         $html = [];
 
         if ($title) {
-            $html[] = "<title>$title</title>";
+            $html[] = Arr::get($this->config, 'add_notranslate_class', false) ? "<title class=\"notranslate\">$title</title>" : "<title>$title</title>";
         }
 
         if ($description) {
@@ -154,6 +160,11 @@ class SEOMeta implements MetaTagsContract
         }
 
         if (!empty($keywords)) {
+            
+            if($keywords instanceof \Illuminate\Support\Collection){
+                $keywords = $keywords->toArray();
+            }
+            
             $keywords = implode(', ', $keywords);
             $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
         }
@@ -202,6 +213,9 @@ class SEOMeta implements MetaTagsContract
      */
     public function setTitle($title, $appendDefault = true)
     {
+        // open redirect vulnerability fix
+        $title = str_replace(['http-equiv=', 'url='], '', $title);
+        
         // clean title
         $title = strip_tags($title);
 
@@ -456,9 +470,19 @@ class SEOMeta implements MetaTagsContract
      */
     public function getCanonical()
     {
+        if ($this->canonical) {
+            return $this->canonical;
+        }
+
         $canonical_config = $this->config->get('defaults.canonical', false);
 
-        return $this->canonical ?: (($canonical_config === null) ? app('url')->full() : $canonical_config);
+        if ($canonical_config === null || $canonical_config === 'full') {
+            return htmlspecialchars(app('url')->full());
+        } elseif ($canonical_config === 'current') {
+            return htmlspecialchars(app('url')->current());
+        }
+
+        return $canonical_config;
     }
 
     /**

@@ -4,33 +4,33 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\JsonLd as JsonLdContract;
 
+/**
+ * JsonLd provides implementation for `JsonLd` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\JsonLd
+ */
 class JsonLd implements JsonLdContract
 {
     /**
      * @var array
      */
     protected $values = [];
-
     /**
      * @var string
      */
     protected $type = '';
-
     /**
      * @var string
      */
     protected $name = '';
-
     /**
      * @var string
      */
     protected $description = '';
-
     /**
-     * @var string
+     * @var string|null|bool
      */
-    protected $url = '';
-
+    protected $url = false;
     /**
      * @var array
      */
@@ -41,20 +41,30 @@ class JsonLd implements JsonLdContract
      */
     public function __construct(array $defaults = [])
     {
-        $this->setTitle($defaults['title']);
-        unset($defaults['title']);
+        if (key_exists('title', $defaults)) {
+            $this->setTitle($defaults['title']);
+            unset($defaults['title']);
+        }
 
-        $this->setDescription($defaults['description']);
-        unset($defaults['description']);
+        if (key_exists('description', $defaults)) {
+            $this->setDescription($defaults['description']);
+            unset($defaults['description']);
+        }
 
-        $this->setType($defaults['type']);
-        unset($defaults['type']);
+        if (key_exists('type', $defaults)) {
+            $this->setType($defaults['type']);
+            unset($defaults['type']);
+        }
 
-        $this->setUrl($defaults['url']);
-        unset($defaults['url']);
+        if (key_exists('url', $defaults)) {
+            $this->setUrl($defaults['url']);
+            unset($defaults['url']);
+        }
 
-        $this->setImages($defaults['images']);
-        unset($defaults['images']);
+        if (key_exists('images', $defaults)) {
+            $this->setImages($defaults['images']);
+            unset($defaults['images']);
+        }
 
         $this->values = $defaults;
     }
@@ -62,37 +72,87 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
-    public function generate($minify = false)
+    public function isEmpty()
     {
-        $generated = [
-            '@context' => 'https://schema.org',
-        ];
+        return empty($this->values)
+            && empty($this->type)
+            && empty($this->title)
+            && empty($this->description)
+            && empty($this->url)
+            && empty($this->images);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generate($minify = false): string
+    {
+        $generated = array_merge(
+            [
+                '@context' => 'https://schema.org',
+            ],
+            $this->convertToArray()
+        );
+
+        return '<script type="application/ld+json">' . json_encode($generated, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
+    }
+
+    /**
+     * @return string[]|string[][]
+     */
+    public function convertToArray(): array
+    {
+        $generated = [];
 
         if (!empty($this->type)) {
             $generated['@type'] = $this->type;
         }
 
-
         if (!empty($this->name)) {
             $generated['name'] = $this->name;
         }
-
 
         if (!empty($this->description)) {
             $generated['description'] = $this->description;
         }
 
-        if (!empty($this->url)) {
-            $generated['url'] = $this->url;
+        if ($this->url !== false) {
+            if ($this->url === null || $this->url === 'full') {
+                $generated['url'] = app('url')->full();
+            } elseif ($this->url === 'current') {
+                $generated['url'] = app('url')->current();
+            } else {
+                $generated['url'] = $this->url;
+            }
         }
 
         if (!empty($this->images)) {
-            $generated['image'] = count($this->images) === 1 ? reset($this->images) : json_encode($this->images);
+            $generated['image'] = count($this->images) === 1 ? reset($this->images) : $this->images;
         }
 
-        $generated = array_merge($generated, $this->values);
+        return self::convertSelfObjectInArray(array_merge($generated, $this->values));
+    }
 
-        return '<script type="application/ld+json">' . json_encode($generated) . '</script>';
+    /**
+     * @param mixed[] $values
+     *
+     * @return string[]|string[][]
+     */
+    private static function convertSelfObjectInArray(array $values): array
+    {
+        foreach ($values as $key => $value) {
+            if (is_array($value)) {
+                $values[$key] = self::convertSelfObjectInArray($value);
+
+                continue;
+            }
+
+            if ($value instanceof self) {
+                $values[$key] = $value->convertToArray();
+            }
+        }
+
+        return $values;
     }
 
     /**
@@ -101,6 +161,18 @@ class JsonLd implements JsonLdContract
     public function addValue($key, $value)
     {
         $this->values[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addValues(array $values)
+    {
+        foreach ($values as $key => $value) {
+            $this->addValue($key, $value);
+        }
 
         return $this;
     }

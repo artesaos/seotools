@@ -4,6 +4,11 @@ namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
 
+/**
+ * SEOTools provides implementation for `SEOTools` contract.
+ *
+ * @see \Artesaos\SEOTools\Contracts\SEOTools
+ */
 class SEOTools implements SEOContract
 {
     /**
@@ -36,6 +41,14 @@ class SEOTools implements SEOContract
     public function jsonLd()
     {
         return app('seotools.json-ld');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonLdMulti()
+    {
+        return app('seotools.json-ld-multi');
     }
 
     /**
@@ -85,7 +98,7 @@ class SEOTools implements SEOContract
             $this->opengraph()->addImage($urls);
         }
 
-        $this->twitter()->addImage($urls);
+        $this->twitter()->setImage($urls);
 
         $this->jsonLd()->addImage($urls);
 
@@ -115,7 +128,8 @@ class SEOTools implements SEOContract
         $html .= PHP_EOL;
         $html .= $this->twitter()->generate();
         $html .= PHP_EOL;
-        $html .= $this->jsonLd()->generate();
+        // if json ld multi is use don't show simple json ld
+        $html .= $this->jsonLdMulti()->generate() ?? $this->jsonLd()->generate();
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }

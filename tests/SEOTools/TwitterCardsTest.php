@@ -105,8 +105,8 @@ class TwitterCardsTest extends BaseTest
     protected function setRightAssertion($expectedString)
     {
         $expectedDom = $this->makeDomDocument($expectedString);
-        $actualDom = $this->makeDomDocument($this->twitterCards->generate());
+        $actualDom = $this->makeDomDocument($this->twitterCards->generate(true));
 
-        $this->assertEquals($expectedDom->C14N(), $actualDom->C14N());
+        $this->assertEquals($expectedDom->C14N(), str_replace(["\n", "\r"], '', $actualDom->C14N()));
     }
 }
