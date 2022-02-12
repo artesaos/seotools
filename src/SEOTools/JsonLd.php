@@ -41,6 +41,12 @@ class JsonLd implements JsonLdContract
      */
     public function __construct(array $defaults = [])
     {
+        if (key_exists('name', $defaults)) {
+            $this->setName($defaults['name']);
+            unset($defaults['name']);
+        }
+        
+        // Backwards compatibility
         if (key_exists('title', $defaults)) {
             $this->setTitle($defaults['title']);
             unset($defaults['title']);
@@ -76,7 +82,7 @@ class JsonLd implements JsonLdContract
     {
         return empty($this->values)
             && empty($this->type)
-            && empty($this->title)
+            && empty($this->name)
             && empty($this->description)
             && empty($this->url)
             && empty($this->images);
