@@ -13,7 +13,7 @@ namespace Artesaos\SEOTools\Contracts;
  * $jsonLd = new JsonLd();
  *
  * // specify JSON data
- * $jsonLd->setTitle('Home');
+ * $jsonLd->setName('Home');
  * $jsonLd->setDescription('This is my page description');
  * $jsonLd->addValue('author', [
  *     '@type' => 'Organization',
@@ -31,7 +31,7 @@ namespace Artesaos\SEOTools\Contracts;
  * use Artesaos\SEOTools\Facades\JsonLd;
  *
  * // specify JSON data
- * JsonLd::setTitle('Homepage');
+ * JsonLd::setName('Homepage');
  * JsonLd::setDescription('This is my page description');
  * JsonLd::addValue('author', [
  *     '@type' => 'Organization',
