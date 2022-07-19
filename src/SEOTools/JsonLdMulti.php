@@ -47,11 +47,9 @@ class JsonLdMulti implements JsonLdMultiContract
      */
     public function generate($minify = false)
     {
-        if (count($this->list) > 1) {
-            return array_reduce($this->list, function (string $output, JsonLd $jsonLd) {
-                return $output . (! $jsonLd->isEmpty() ? $jsonLd->generate() : '');
-            }, '');
-        }
+        return array_reduce($this->list, function (string $output, JsonLd $jsonLd) {
+            return $output . (! $jsonLd->isEmpty() ? $jsonLd->generate() : '');
+        }, '');
     }
 
     /**

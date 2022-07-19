@@ -30,6 +30,15 @@ class JsonLdMultiTest extends BaseTest
         $this->jsonLdMulti->newJsonLd();
     }
 
+    public function test_single_instance()
+    {
+        $jsonLdSingle = new JsonLdMulti();
+
+        $expected = '<html><head>' . $this->defaultJsonLdHtml . '</head></html>';
+
+        $this->assertEquals($this->makeDomDocument($expected)->C14N(), $this->makeDomDocument($jsonLdSingle->generate())->C14N());
+    }
+
     public function test_set_title()
     {
         $this->jsonLdMulti->setTitle('Kamehamehaaaaaaaa');
