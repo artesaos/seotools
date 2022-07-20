@@ -117,9 +117,19 @@ class JsonLdMulti implements JsonLdMultiContract
     /**
      * {@inheritdoc}
      */
+    public function setName($name)
+    {
+        $this->list[$this->index]->setName($name);
+
+        return $this;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
     public function setTitle($title)
     {
-        $this->list[$this->index]->setTitle($title);
+        $this->list[$this->index]->setName($title);
 
         return $this;
     }

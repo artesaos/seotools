@@ -9,14 +9,14 @@ namespace Artesaos\SEOTools\Contracts;
  * use Artesaos\SEOTools\JsonLdMulti; // implements `Artesaos\SEOTools\Contracts\JsonLdMulti`
  * $jsonLdMulti = new JsonLdMulti();
  * // specify JSON data
- * $jsonLdMulti->setTitle('Home');
+ * $jsonLdMulti->setName('Home');
  * $jsonLdMulti->setDescription('This is my page description');
  * $jsonLdMulti->addValue('author', [
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
  * $jsonLdMulti->newJsonLd();
- * $jsonLdMulti->setTitle('Homepage');
+ * $jsonLdMulti->setName('Homepage');
  * $jsonLdMulti->setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
  * echo $jsonLd->generate();
@@ -26,14 +26,14 @@ namespace Artesaos\SEOTools\Contracts;
  * ```php
  * use Artesaos\SEOTools\Facades\JsonLdMulti;
  * // specify JSON data
- * JsonLdMulti::setTitle('Home');
+ * JsonLdMulti::setName('Home');
  * JsonLdMulti::setDescription('This is my page description');
  * JsonLdMulti::addValue('author', [
  *     '@type' => 'Organization',
  *     'name' => 'Artesaos',
  * ]));
  * JsonLdMulti::newJsonLd();
- * JsonLdMulti::setTitle('Homepage');
+ * JsonLdMulti::setName('Homepage');
  * JsonLdMulti::setType('Product');
  * // render HTML, it should be placed within 'head' HTML tag
  * echo JsonLdMulti::generate();
@@ -106,6 +106,13 @@ interface JsonLdMulti
      */
     public function setType($type);
 
+    /**
+     * @param string $name
+     *
+     * @return static
+     */
+    public function setName($name);
+    
     /**
      * @param string $title
      *

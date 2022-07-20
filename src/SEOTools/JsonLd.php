@@ -22,7 +22,7 @@ class JsonLd implements JsonLdContract
     /**
      * @var string
      */
-    protected $title = '';
+    protected $name = '';
     /**
      * @var string
      */
@@ -41,6 +41,12 @@ class JsonLd implements JsonLdContract
      */
     public function __construct(array $defaults = [])
     {
+        if (key_exists('name', $defaults)) {
+            $this->setName($defaults['name']);
+            unset($defaults['name']);
+        }
+        
+        // Backwards compatibility
         if (key_exists('title', $defaults)) {
             $this->setTitle($defaults['title']);
             unset($defaults['title']);
@@ -76,7 +82,7 @@ class JsonLd implements JsonLdContract
     {
         return empty($this->values)
             && empty($this->type)
-            && empty($this->title)
+            && empty($this->name)
             && empty($this->description)
             && empty($this->url)
             && empty($this->images);
@@ -108,8 +114,8 @@ class JsonLd implements JsonLdContract
             $generated['@type'] = $this->type;
         }
 
-        if (!empty($this->title)) {
-            $generated['name'] = $this->title;
+        if (!empty($this->name)) {
+            $generated['name'] = $this->name;
         }
 
         if (!empty($this->description)) {
@@ -190,11 +196,19 @@ class JsonLd implements JsonLdContract
     /**
      * {@inheritdoc}
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        return $this->setName($title);
     }
 
     /**

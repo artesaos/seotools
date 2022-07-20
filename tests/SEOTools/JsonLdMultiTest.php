@@ -29,6 +29,16 @@ class JsonLdMultiTest extends BaseTest
         $this->jsonLdMulti = $this->app->make('seotools.json-ld-multi');
         $this->jsonLdMulti->newJsonLd();
     }
+    
+    public function test_set_name()
+    {
+        $this->jsonLdMulti->setName('Kamehamehaaaaaaaa');
+
+        $expected = '<html><head>' . $this->defaultJsonLdHtml
+            . '<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Kamehamehaaaaaaaa","description":"For those who helped create the Genki Dama"}</script></head></html>';
+
+        $this->setRightAssertion($expected);
+    }
 
     public function test_single_instance()
     {
