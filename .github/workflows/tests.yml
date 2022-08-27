@@ -6,7 +6,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
 
     strategy:
       fail-fast: true
