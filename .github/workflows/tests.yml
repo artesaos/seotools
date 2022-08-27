@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [7.2, 7.3, 8.0, 8.1]
-        laravel: [8, 9]
+        laravel: [9.*, 8.*, 7.*, 6.*, 5.4]
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
 
