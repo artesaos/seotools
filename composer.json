@@ -1,7 +1,16 @@
 {
   "name": "artesaos/seotools",
   "description": "SEO Tools for Laravel and Lumen",
-  "keywords": ["laravel", "lumen" ,"seo", "seotools", "webmaster", "metatags", "opengraph", "json-ld"],
+  "keywords": [
+    "laravel",
+    "lumen",
+    "seo",
+    "seotools",
+    "webmaster",
+    "metatags",
+    "opengraph",
+    "json-ld"
+  ],
   "license": "MIT",
   "support": {
     "issues": "https://github.com/artesaos/seotools/issues",
@@ -20,8 +29,8 @@
     "illuminate/support": "5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0"
   },
   "require-dev": {
-    "orchestra/testbench": "~3.8.4 || ^4.0 || ^5.0",
-    "phpspec/phpspec": "~5.1.1 || ^6.0"
+    "orchestra/testbench": "~3.8.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+    "phpspec/phpspec": "~5.1.1 || ^6.0 || ^7.0"
   },
   "autoload": {
     "psr-4": {
