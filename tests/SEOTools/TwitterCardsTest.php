@@ -28,7 +28,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setTitle('Kamehamehaaaaaaaa');
 
-        $expected = '<meta name="twitter:title" content="Kamehamehaaaaaaaa" />';
+        $expected = '<meta name="twitter:title" content="Kamehamehaaaaaaaa">';
 
         $this->setRightAssertion($expected);
     }
@@ -37,7 +37,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setSite('http://kakaroto.9000');
 
-        $expected = '<meta name="twitter:site" content="http://kakaroto.9000" />';
+        $expected = '<meta name="twitter:site" content="http://kakaroto.9000">';
 
         $this->setRightAssertion($expected);
     }
@@ -46,7 +46,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setUrl('http://kakaroto.9000');
 
-        $expected = '<meta name="twitter:url" content="http://kakaroto.9000" />';
+        $expected = '<meta name="twitter:url" content="http://kakaroto.9000">';
 
         $this->setRightAssertion($expected);
     }
@@ -55,7 +55,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setDescription('Kamehamehaaaaaaaa');
 
-        $expected = '<meta name="twitter:description" content="Kamehamehaaaaaaaa" />';
+        $expected = '<meta name="twitter:description" content="Kamehamehaaaaaaaa">';
 
         $this->setRightAssertion($expected);
     }
@@ -66,7 +66,7 @@ class TwitterCardsTest extends BaseTest
 
         $this->twitterCards->setDescription($description);
 
-        $expected = '<meta name="twitter:description" content="&quot;Foo bar&quot; -&gt; abc" />';
+        $expected = '<meta name="twitter:description" content="&quot;Foo bar&quot; -&gt; abc">';
 
         $this->setRightAssertion($expected);
     }
@@ -75,7 +75,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setType('sayajin');
 
-        $expected = '<meta name="twitter:card" content="sayajin" />';
+        $expected = '<meta name="twitter:card" content="sayajin">';
 
         $this->setRightAssertion($expected);
     }
@@ -84,8 +84,8 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setImages(['sayajin.png', 'namekusei.png']);
 
-        $expected = "<meta name=\"twitter:images0\" content=\"sayajin.png\" />";
-        $expected .= "<meta name=\"twitter:images1\" content=\"namekusei.png\" />";
+        $expected = "<meta name=\"twitter:images0\" content=\"sayajin.png\">";
+        $expected .= "<meta name=\"twitter:images1\" content=\"namekusei.png\">";
 
         $this->setRightAssertion($expected);
     }
@@ -94,7 +94,7 @@ class TwitterCardsTest extends BaseTest
     {
         $this->twitterCards->setImage('sayajin.png');
 
-        $expected = "<meta name=\"twitter:image\" content=\"sayajin.png\" />";
+        $expected = "<meta name=\"twitter:image\" content=\"sayajin.png\">";
 
         $this->setRightAssertion($expected);
     }

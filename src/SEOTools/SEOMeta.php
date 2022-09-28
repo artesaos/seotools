@@ -160,11 +160,11 @@ class SEOMeta implements MetaTagsContract
         }
 
         if (!empty($keywords)) {
-            
+
             if($keywords instanceof \Illuminate\Support\Collection){
                 $keywords = $keywords->toArray();
             }
-            
+
             $keywords = implode(', ', $keywords);
             $html[] = "<meta name=\"keywords\" content=\"{$keywords}\">";
         }
@@ -182,23 +182,23 @@ class SEOMeta implements MetaTagsContract
         }
 
         if ($canonical) {
-            $html[] = "<link rel=\"canonical\" href=\"{$canonical}\"/>";
+            $html[] = "<link rel=\"canonical\" href=\"{$canonical}\">";
         }
 
         if ($amphtml) {
-            $html[] = "<link rel=\"amphtml\" href=\"{$amphtml}\"/>";
+            $html[] = "<link rel=\"amphtml\" href=\"{$amphtml}\">";
         }
 
         if ($prev) {
-            $html[] = "<link rel=\"prev\" href=\"{$prev}\"/>";
+            $html[] = "<link rel=\"prev\" href=\"{$prev}\">";
         }
 
         if ($next) {
-            $html[] = "<link rel=\"next\" href=\"{$next}\"/>";
+            $html[] = "<link rel=\"next\" href=\"{$next}\">";
         }
 
         foreach ($languages as $lang) {
-            $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\"/>";
+            $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\">";
         }
 
         if ($robots) {
@@ -215,7 +215,7 @@ class SEOMeta implements MetaTagsContract
     {
         // open redirect vulnerability fix
         $title = str_replace(['http-equiv=', 'url='], '', $title);
-        
+
         // clean title
         $title = strip_tags($title);
 
