@@ -159,7 +159,7 @@ class SEOMetaTest extends BaseTest
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "<link rel=\"canonical\" href=\"http://domain.com\"/>";
+        $fullHeader .= "<link rel=\"canonical\" href=\"http://domain.com\">";
         $canonical = 'http://domain.com';
 
         $this->seoMeta->setCanonical($canonical);
@@ -216,7 +216,7 @@ class SEOMetaTest extends BaseTest
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "<link rel=\"amphtml\" href=\"http://domain.com/amp\"/>";
+        $fullHeader .= "<link rel=\"amphtml\" href=\"http://domain.com/amp\">";
         $amphtml = 'http://domain.com/amp';
 
         $this->seoMeta->setAmpHtml($amphtml);
@@ -229,7 +229,7 @@ class SEOMetaTest extends BaseTest
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "<link rel=\"next\" href=\"http://domain.com\"/>";
+        $fullHeader .= "<link rel=\"next\" href=\"http://domain.com\">";
         $next = 'http://domain.com';
 
         $this->seoMeta->setNext($next);
@@ -242,7 +242,7 @@ class SEOMetaTest extends BaseTest
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "<link rel=\"prev\" href=\"http://domain.com\"/>";
+        $fullHeader .= "<link rel=\"prev\" href=\"http://domain.com\">";
         $prev = 'http://domain.com';
 
         $this->seoMeta->setPrev($prev);
@@ -255,7 +255,7 @@ class SEOMetaTest extends BaseTest
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
-        $fullHeader .= "<link rel=\"alternate\" hreflang=\"en\" href=\"http://domain.com\"/>";
+        $fullHeader .= "<link rel=\"alternate\" hreflang=\"en\" href=\"http://domain.com\">";
         $lang = 'en';
         $langUrl = 'http://domain.com';
 

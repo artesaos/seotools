@@ -84,7 +84,7 @@ class TwitterCards implements TwitterCardsContract
     private function makeTag($key, $value)
     {
         return sprintf(
-            '<meta name="%s" content="%s" />',
+            '<meta name="%s" content="%s">',
             $this->prefix.strip_tags($key),
             $this->cleanTagValue($value)
         );

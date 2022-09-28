@@ -264,7 +264,7 @@ class OpenGraph implements OpenGraphContract
     protected function makeTag($key = null, $value = null, $ogPrefix = false)
     {
         return sprintf(
-            '<meta property="%s%s" content="%s" />%s',
+            '<meta property="%s%s" content="%s">%s',
             $ogPrefix ? $this->og_prefix : '',
             strip_tags($key),
             $this->cleanTagValue($value),

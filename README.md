@@ -253,7 +253,7 @@ class CommomController extends Controller
         OpenGraph::addImage($post->images->list('url'));
         OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
         OpenGraph::addImage('http://image.url.com/cover.jpg', ['height' => 300, 'width' => 300]);
-        
+
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->resume);
         JsonLd::setType('Article');
@@ -485,30 +485,30 @@ class CommomController extends Controller
 <html>
 <head>
     <title>Title - Over 9000 Thousand!</title>
-    <meta name='description' itemprop='description' content='description...' />
-    <meta name='keywords' content='key1, key2, key3' />
-    <meta property='article:published_time' content='2015-01-31T20:30:11-02:00' />
-    <meta property='article:section' content='news' />
+    <meta name='description' itemprop='description' content='description...'>
+    <meta name='keywords' content='key1, key2, key3'>
+    <meta property='article:published_time' content='2015-01-31T20:30:11-02:00'>
+    <meta property='article:section' content='news'>
 
-    <meta property="og:description"content="description..." />
-    <meta property="og:title"content="Title" />
-    <meta property="og:url"content="http://current.url.com" />
-    <meta property="og:type"content="article" />
-    <meta property="og:locale"content="pt-br" />
-    <meta property="og:locale:alternate"content="pt-pt" />
-    <meta property="og:locale:alternate"content="en-us" />
-    <meta property="og:site_name"content="name" />
-    <meta property="og:image"content="http://image.url.com/cover.jpg" />
-    <meta property="og:image"content="http://image.url.com/img1.jpg" />
-    <meta property="og:image"content="http://image.url.com/img2.jpg" />
-    <meta property="og:image"content="http://image.url.com/img3.jpg" />
-    <meta property="og:image:url"content="http://image.url.com/cover.jpg" />
-    <meta property="og:image:size"content="300" />
+    <meta property="og:description" content="description...">
+    <meta property="og:title" content="Title">
+    <meta property="og:url" content="http://current.url.com">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="pt-br">
+    <meta property="og:locale:alternate" content="pt-pt">
+    <meta property="og:locale:alternate" content="en-us">
+    <meta property="og:site_name" content="name">
+    <meta property="og:image" content="http://image.url.com/cover.jpg">
+    <meta property="og:image" content="http://image.url.com/img1.jpg">
+    <meta property="og:image" content="http://image.url.com/img2.jpg">
+    <meta property="og:image" content="http://image.url.com/img3.jpg">
+    <meta property="og:image:url" content="http://image.url.com/cover.jpg">
+    <meta property="og:image:size" content="300">
 
-    <meta name="twitter:card"content="summary" />
-    <meta name="twitter:title"content="Title" />
-    <meta name="twitter:site"content="@LuizVinicius73" />
-    
+    <meta name="twitter:card"content="summary">
+    <meta name="twitter:title"content="Title">
+    <meta name="twitter:site"content="@LuizVinicius73">
+
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
     <!-- OR with multi -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Title - Over 9000 Thousand!"}</script>
