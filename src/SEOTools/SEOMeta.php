@@ -288,7 +288,7 @@ class SEOMeta implements MetaTagsContract
     public function addKeyword($keyword)
     {
         if (is_array($keyword)) {
-            $this->keywords = array_merge($keyword, $this->keywords);
+            $this->keywords = array_merge($keyword, $this->getKeywords());
         } else {
             $this->keywords[] = strip_tags($keyword);
         }
