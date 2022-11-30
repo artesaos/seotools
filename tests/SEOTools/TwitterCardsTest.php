@@ -99,6 +99,15 @@ class TwitterCardsTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function it_can_escape_html_special_chars_in_title()
+    {
+        $this->twitterCards->setTitle('Test "quote" > and chevron');
+
+        $expected = '<meta name="twitter:title" content="' . 'Test "quote" > and chevron' . '">';
+
+        $this->setRightAssertion($expected);
+    }
+
     /**
      * @param $expectedString
      */

@@ -126,7 +126,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setTitle($title)
     {
-        return $this->addValue('title', $title);
+        return $this->addValue('title', htmlentities($title));
     }
 
     /**

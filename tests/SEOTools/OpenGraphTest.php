@@ -59,6 +59,15 @@ class OpenGraphTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function it_can_escape_html_special_chars_in_title()
+    {
+        $this->openGraphs->setTitle('Test "quote" > and chevron');
+
+        $expected = '<meta property="og:title" content="' . 'Test "quote" > and chevron' . '">';
+
+        $this->setRightAssertion($expected);
+    }
+
     /**
      * @param $expectedString
      */
