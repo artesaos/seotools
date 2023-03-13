@@ -63,6 +63,20 @@ class SEOMeta implements MetaTagsContract
     protected $metatags = [];
 
     /**
+     * The preload links meta.
+     *
+     * @var string
+     */
+    protected $preloads = [];
+
+    /**
+     * The custom meta tags.
+     *
+     * @var string
+     */
+    protected $custom = [];
+
+    /**
      * The canonical URL.
      *
      * @var string
@@ -142,6 +156,8 @@ class SEOMeta implements MetaTagsContract
         $description = $this->getDescription();
         $keywords = $this->getKeywords();
         $metatags = $this->getMetatags();
+        $preloads = $this->getPreloads();
+        $custom = $this->getCustoms();
         $canonical = $this->getCanonical();
         $amphtml = $this->getAmpHtml();
         $prev = $this->getPrev();
@@ -179,6 +195,22 @@ class SEOMeta implements MetaTagsContract
             }
 
             $html[] = "<meta {$name}=\"{$key}\" content=\"{$content}\">";
+        }
+
+        foreach ($preloads as $preload) {
+            $href = $preload[0];
+            $as = $preload[1];
+
+            // if $href is empty jump to next
+            if (empty($href)) {
+                continue;
+            }
+
+            $html[] = "<link rel=\"preload\" href=\"{$href}\" as=\"{$as}\" />";
+        }
+
+        foreach ($custom as $meta) {
+            $html[] = $meta;
         }
 
         if ($canonical) {
@@ -326,6 +358,28 @@ class SEOMeta implements MetaTagsContract
     /**
      * {@inheritdoc}
      */
+    public function addPreload($href, $as)
+    {
+
+        $this->preloads[] = [$href, $as];
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addCustom($meta)
+    {
+
+        $this->preloads[] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setCanonical($url)
     {
         $this->canonical = $url;
@@ -451,6 +505,26 @@ class SEOMeta implements MetaTagsContract
     public function getMetatags()
     {
         return $this->metatags;
+    }
+
+    /**
+     * Get preload links.
+     *
+     * @return string
+     */
+    public function getPreloads()
+    {
+        return $this->preloads;
+    }
+
+    /**
+     * Get custom meta.
+     *
+     * @return string
+     */
+    public function getCustoms()
+    {
+        return $this->custom;
     }
 
     /**
