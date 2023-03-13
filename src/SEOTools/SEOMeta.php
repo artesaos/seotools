@@ -372,7 +372,7 @@ class SEOMeta implements MetaTagsContract
     public function addCustom($meta)
     {
 
-        $this->preloads[] = $meta;
+        $this->custom[] = $meta;
 
         return $this;
     }
