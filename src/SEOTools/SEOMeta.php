@@ -201,11 +201,6 @@ class SEOMeta implements MetaTagsContract
             $href = $preload[0];
             $as = $preload[1];
 
-            // if $href is empty jump to next
-            if (empty($href)) {
-                continue;
-            }
-
             $html[] = "<link rel=\"preload\" href=\"{$href}\" as=\"{$as}\" />";
         }
 
