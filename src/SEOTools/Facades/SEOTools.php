@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setTitle(string $title, bool $appendDefault = true)
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setDescription(string $description)
  * @method static \Artesaos\SEOTools\Contracts\SEOTools setCanonical(string $url)
- * @method static \Artesaos\SEOTools\Contracts\SEOTools addImages(array $urls)
+ * @method static \Artesaos\SEOTools\Contracts\SEOTools addImages(array|string $urls)
  * @method static string getTitle(bool $session = false)
  */
 class SEOTools extends Facade

@@ -259,7 +259,7 @@ interface OpenGraph
     /**
      * Add Video properties.
      *
-     * @param string $source
+     * @param string|null $source
      * @param array  $attributes
      *
      * @return static
@@ -269,7 +269,7 @@ interface OpenGraph
     /**
      * Add audio properties.
      *
-     * @param string $source
+     * @param string|null $source
      * @param array  $attributes
      *
      * @return static
