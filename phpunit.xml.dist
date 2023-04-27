@@ -11,11 +11,6 @@
             <directory suffix=".php">./tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
     <logging>
         <log type="tap" target="build/report.tap" />
         <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true" />
