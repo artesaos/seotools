@@ -168,7 +168,7 @@ class SEOMetaTest extends BaseTest
         $this->assertEquals($canonical, $this->seoMeta->getCanonical());
     }
 
-    public function dataTestUrls()
+    public static function dataTestUrls()
     {
         return [
             ['http://localhost/hello/world', 'http://localhost/hello/world'],
