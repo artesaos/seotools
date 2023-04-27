@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
-    backupStaticAttributes="false"
     bootstrap="vendor/autoload.php"
     colors="true"
     processIsolation="false"
@@ -11,11 +10,4 @@
             <directory suffix=".php">./tests</directory>
         </testsuite>
     </testsuites>
-    <logging>
-        <log type="tap" target="build/report.tap" />
-        <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true" />
-        <log type="coverage-text" target="build/coverage.txt" />
-        <log type="coverage-clover" target="build/logs/clover.xml" />
-        <log type="coverage-php" target="build/coverage.serialized" />
-    </logging>
 </phpunit>
