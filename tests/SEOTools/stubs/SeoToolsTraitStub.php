@@ -1,6 +1,7 @@
 <?php
 
 namespace Artesaos\SEOTools\Tests\stubs;
+
 use Artesaos\SEOTools\Traits\SEOTools;
 
 /**
