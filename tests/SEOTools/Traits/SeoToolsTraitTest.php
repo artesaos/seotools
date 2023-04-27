@@ -1,10 +1,12 @@
 <?php
 
-namespace Artesaos\SEOTools\Tests;
+namespace Artesaos\SEOTools\Tests\Traits;
 
 use Artesaos\SEOTools\Contracts\SEOTools;
 use Artesaos\SEOTools\Tests\stubs\SeoToolsTraitStub;
+use Artesaos\SEOTools\Tests\BaseTest;
 use Mockery as m;
+
 /**
  * Class SeoToolsTraitTest.
  */
