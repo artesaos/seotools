@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @see \Artesaos\SEOTools\Contracts\OpenGraph
  *
  * @method static string generate(bool $minify = false)
- * @method static \Artesaos\SEOTools\Contracts\OpenGraph addProperty(string $key, array|string $value)
+ * @method static \Artesaos\SEOTools\Contracts\OpenGraph addProperty(string $key, string|array $value)
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph removeProperty(string $key)
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph addImage(string $url, array $attributes = [])
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph addImages(array $urls)

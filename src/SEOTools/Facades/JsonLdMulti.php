@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti newJsonLd()
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti isEmpty()
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti select(int $index)
- * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti addValue(string $key, array|string $value)
+ * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti addValue(string $key, string|array $value)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti addValues(array $values)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setType(string $type)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setTitle(string $title)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setSite(string $site)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setDescription(string $description)
- * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setUrl(string $url)
+ * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setUrl(string|null|bool $url)
  * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti addImage(array|string $image)
- * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setImages(array $images)
+ * @method static \Artesaos\SEOTools\Contracts\JsonLdMulti setImages(string|array $images)
  */
 class JsonLdMulti extends Facade
 {
