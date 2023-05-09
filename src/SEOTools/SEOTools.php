@@ -3,6 +3,7 @@
 namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
+use Illuminate\Support\Traits\Macroable;
 
 /**
  * SEOTools provides implementation for `SEOTools` contract.
@@ -11,6 +12,8 @@ use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
  */
 class SEOTools implements SEOContract
 {
+    use Macroable;
+    
     /**
      * {@inheritdoc}
      */
