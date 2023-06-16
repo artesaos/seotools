@@ -520,6 +520,27 @@ class CommomController extends Controller
 </html>
 ```
 
+#### Using Macro
+Using the same code in multiple places can be tedious, which is why this package includes a Macroable trait. This trait allows additional functionality to be added to a class that was not defined in the class definition, using a simple trait.
+
+For example, imagine that you need to add meta titles and descriptions for your pages. You can add your Macroable functions in the AppServiceProvider or create a dedicated file for this purpose, and define your function as shown in the code snippet:
+```php
+    SEOTools::macro('webPage', function (string $title, string $description) {
+        SEOMeta::setTitle($title);
+        SEOMeta::setDescription($description);
+        SEOMeta::setCanonical('http://current.url.com');
+        OpenGraph::setDescription($description);
+        OpenGraph::setTitle($title);
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'webpage');
+    });
+```
+
+In your controller, you can use the following code to utilize the function:
+```php
+    SEOTools::webPage('Page title', 'Page description');
+```
+
 #### API (SEOMeta)
 
 ```php

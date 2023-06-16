@@ -644,6 +644,7 @@ class OpenGraph implements OpenGraphContract
 
     /**
      * Set product properties.
+     * Reference: https://developers.facebook.com/docs/marketing-api/catalog/reference/#example-feeds
      *
      * @param array $attributes opengraph product attributes
      *
@@ -652,25 +653,57 @@ class OpenGraph implements OpenGraphContract
     public function setProduct($attributes = [])
     {
         $validkeys = [
+            // Required
+            'brand',
+            'availability',
+            'condition',
+
+            // Conditionally required
+            'locale',
+            'plural_title',
+
+            // Conditionally required: https://developers.facebook.com/docs/payments/product/
+            'price:amount', // Required if Static Pricing & not Dynamic Pricing
+            'price:currency', // Required if Static Pricing & not Dynamic Pricing
+
+            // Optional
+            'catalog_id',
+            'item_group_id',
+            'category',
+            'gender',
+            'gtin',
+            'isbn',
+            'mfr_part_no',
+
+            'sale_price:amount',
+            'sale_price:currency',
+            'sale_price_dates:start',
+            'sale_price_dates:end',
+
+
+            // Optional - extra
+            'custom_label_0',
+            'custom_label_1',
+            'custom_label_2',
+            'custom_label_3',
+            'custom_label_4',
+
+
+            // Deprecated
             'original_price:amount',
             'original_price:currency',
             'pretax_price:amount',
             'pretax_price:currency',
-            'price:amount',
-            'price:currency',
             'shipping_cost:amount',
             'shipping_cost:currency',
             'weight:value',
             'weight:units',
             'shipping_weight:value',
             'shipping_weight:units',
-            'sale_price:amount',
-            'sale_price:currency',
-            'sale_price_dates:start',
-            'sale_price_dates:end'
         ];
 
         $this->setProperties('product', 'productProperties', $attributes, $validkeys);
+
         return $this;
     }
 

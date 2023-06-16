@@ -134,7 +134,7 @@ interface MetaTags
      * Add a custom meta tag.
      *
      * @param string|array $meta
-     * @param string       $value
+     * @param string|null  $value
      * @param string       $name
      *
      * @return static
