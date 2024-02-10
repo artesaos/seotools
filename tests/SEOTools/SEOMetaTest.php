@@ -251,7 +251,7 @@ class SEOMetaTest extends BaseTest
         $this->assertEquals($prev, $this->seoMeta->getPrev());
     }
 
-    public function test_set_alternate_languages()
+    public function test_add_alternate_languages()
     {
         $fullHeader = "<title>It's Over 9000!</title>";
         $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
@@ -268,6 +268,70 @@ class SEOMetaTest extends BaseTest
         $this->seoMeta->addAlternateLanguages($expectedLangs);
 
         $this->assertEquals(array_merge($expectedLangs, $expectedLangs), $this->seoMeta->getAlternateLanguages());
+    }
+
+    public function test_set_alternate_languages()
+    {
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+        $fullHeader .= "<link rel=\"alternate\" hreflang=\"en\" href=\"http://domain.com\">";
+        $lang = 'en';
+        $langUrl = 'http://domain.com';
+
+        $expectedLangs = [['lang' => $lang, 'url' => $langUrl]];
+        $this->seoMeta->setAlternateLanguage($lang, $langUrl);
+
+        $this->setRightAssertion($fullHeader);
+        $this->assertEquals($expectedLangs, $this->seoMeta->getAlternateLanguages());
+
+        $this->seoMeta->setAlternateLanguages($expectedLangs);
+
+        $this->assertEquals($expectedLangs, $this->seoMeta->getAlternateLanguages());
+    }
+
+    public function test_set_override_alternate_language()
+    {
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+        $fullHeader .= "<link rel=\"alternate\" hreflang=\"en\" href=\"http://domain.test\">";
+        $lang = 'en';
+        $langUrl = 'http://domain.com';
+        $langUrlOverridden = 'http://domain.test';
+
+        $expectedLangs = [['lang' => $lang, 'url' => $langUrl]];
+        $expectedLangsOverridden = [['lang' => $lang, 'url' => $langUrlOverridden]];
+
+        $this->seoMeta->setAlternateLanguage($lang, $langUrl);
+        $this->assertEquals($expectedLangs, $this->seoMeta->getAlternateLanguages());
+
+        $this->seoMeta->setAlternateLanguage($lang, $langUrlOverridden);
+        $this->setRightAssertion($fullHeader);
+        $this->assertEquals($expectedLangsOverridden, $this->seoMeta->getAlternateLanguages());
+    }
+
+    public function test_remove_alternate_language()
+    {
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+        $lang = 'en';
+        $langUrl = 'http://domain.com';
+
+        $expectedLangs = [['lang' => $lang, 'url' => false]];
+
+        $this->seoMeta->setAlternateLanguage($lang, $langUrl);
+        $this->seoMeta->setAlternateLanguage($lang, false);
+        $this->setRightAssertion($fullHeader);
+        $this->assertEquals($expectedLangs, $this->seoMeta->getAlternateLanguages());
+    }
+
+    public function test_remove_alternate_languages()
+    {
+        $fullHeader = "<title>It's Over 9000!</title>";
+        $fullHeader .= "<meta name=\"description\" content=\"For those who helped create the Genki Dama\">";
+
+        $this->seoMeta->setAlternateLanguages([]);
+        $this->setRightAssertion($fullHeader);
+        $this->assertEquals([], $this->seoMeta->getAlternateLanguages());
     }
 
     public function test_set_reset()
