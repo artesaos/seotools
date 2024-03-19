@@ -142,6 +142,25 @@ interface MetaTags
     public function addMeta($meta, $value = null, $name = 'name');
 
     /**
+     * Add a preload link meta tag.
+     *
+     * @param string $href
+     * @param string $as
+     *
+     * @return static
+     */
+    public function addPreload($href, $as);
+
+    /**
+     * Add a custom meta tag.
+     *
+     * @param string|array $meta
+     *
+     * @return static
+     */
+    public function addCustom($meta);
+
+    /**
      * Sets the canonical URL.
      *
      * @param string $url
