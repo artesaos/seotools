@@ -552,6 +552,8 @@ SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
 SEOMeta::addAlternateLanguage($lang, $url);
 SEOMeta::addAlternateLanguages(array $languages);
+SEOMeta::setAlternateLanguage($lang, $url);
+SEOMeta::setAlternateLanguages(array $languages);
 SEOMeta::setTitleSeparator($separator);
 SEOMeta::setTitle($title);
 SEOMeta::setTitleDefault($default);
