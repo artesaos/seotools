@@ -197,7 +197,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
 
-class CommomController extends Controller
+class CommonController extends Controller
 {
     public function index()
     {
@@ -432,7 +432,7 @@ namespace App\Http\Controllers;
 
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
-class CommomController extends Controller
+class CommonController extends Controller
 {
     use SEOToolsTrait;
 

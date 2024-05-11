@@ -9,7 +9,7 @@ use Orchestra\Testbench\TestCase;
 /**
  * Class BaseTest.
  */
-abstract class BaseTest extends TestCase
+class BaseTest extends TestCase
 {
     /**
      * {@inheritdoc}
