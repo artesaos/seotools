@@ -674,6 +674,7 @@ class OpenGraph implements OpenGraphContract
             'gtin',
             'isbn',
             'mfr_part_no',
+            'retailer_item_id',
 
             'sale_price:amount',
             'sale_price:currency',

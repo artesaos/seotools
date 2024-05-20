@@ -225,7 +225,9 @@ class SEOMeta implements MetaTagsContract
         }
 
         foreach ($languages as $lang) {
-            $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\">";
+            if (!empty($lang['lang'] && !empty($lang['url']))) {
+                $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\">";
+            }
         }
 
         if ($robots) {
@@ -432,6 +434,32 @@ class SEOMeta implements MetaTagsContract
     public function addAlternateLanguages(array $languages)
     {
         $this->alternateLanguages = array_merge($this->alternateLanguages, $languages);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAlternateLanguage($lang, $url)
+    {
+        // Remove language if already existing
+        $this->alternateLanguages = array_filter($this->alternateLanguages, function ($arr) use ($lang) {
+            return $arr['lang'] !== $lang;
+        });
+
+        // Append (updated) language
+        $this->alternateLanguages[] = ['lang' => $lang, 'url' => $url];
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAlternateLanguages(array $languages)
+    {
+        $this->alternateLanguages = $languages;
 
         return $this;
     }

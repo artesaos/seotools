@@ -207,6 +207,25 @@ interface MetaTags
     public function addAlternateLanguages(array $languages);
 
     /**
+     * Set an alternate language.
+     *
+     * @param string $lang language code in format ISO 639-1
+     * @param string $url
+     *
+     * @return static
+     */
+    public function setAlternateLanguage($lang, $url);
+
+    /**
+     * Set alternate languages.
+     *
+     * @param array $languages
+     *
+     * @return static
+     */
+    public function setAlternateLanguages(array $languages);
+
+    /**
      * Get the title formatted for display.
      *
      * @return string
