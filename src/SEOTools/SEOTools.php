@@ -3,6 +3,7 @@
 namespace Artesaos\SEOTools;
 
 use Artesaos\SEOTools\Contracts\SEOTools as SEOContract;
+use Artesaos\SEOTools\Integrations\Inertia;
 use Illuminate\Support\Traits\Macroable;
 
 /**
@@ -13,7 +14,7 @@ use Illuminate\Support\Traits\Macroable;
 class SEOTools implements SEOContract
 {
     use Macroable;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -134,6 +135,10 @@ class SEOTools implements SEOContract
 
         // Use jsonLdMulti by default; since it is just a wrapper
         $html .= $this->jsonLdMulti()->generate();
+
+        if (config('seotools.inertia') === true) {
+            $html = app(Inertia::class)->convertHeadToInertiaStyle($html);
+        }
 
         return ($minify) ? str_replace(PHP_EOL, '', $html) : $html;
     }
