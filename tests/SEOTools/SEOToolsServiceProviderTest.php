@@ -26,7 +26,7 @@ class SEOToolsServiceProviderTest extends BaseTest
     /**
      * @return array
      */
-    public function bindsListProvider()
+    public static function bindsListProvider()
     {
         return [
             [

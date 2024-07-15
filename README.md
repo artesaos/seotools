@@ -197,7 +197,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
 
-class CommomController extends Controller
+class CommonController extends Controller
 {
     public function index()
     {
@@ -432,7 +432,7 @@ namespace App\Http\Controllers;
 
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
-class CommomController extends Controller
+class CommonController extends Controller
 {
     use SEOToolsTrait;
 
@@ -552,6 +552,8 @@ SEOMeta::addKeyword($keyword);
 SEOMeta::addMeta($meta, $value = null, $name = 'name');
 SEOMeta::addAlternateLanguage($lang, $url);
 SEOMeta::addAlternateLanguages(array $languages);
+SEOMeta::setAlternateLanguage($lang, $url);
+SEOMeta::setAlternateLanguages(array $languages);
 SEOMeta::setTitleSeparator($separator);
 SEOMeta::setTitle($title);
 SEOMeta::setTitleDefault($default);

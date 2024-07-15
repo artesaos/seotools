@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\MetaTags setNext(string $url)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags addAlternateLanguage(string $lang, string $url)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags addAlternateLanguages(array $languages)
+ * @method static \Artesaos\SEOTools\Contracts\MetaTags setAlternateLanguage(string $lang, string $url)
+ * @method static \Artesaos\SEOTools\Contracts\MetaTags setAlternateLanguages(array $languages)
  * @method static string getTitle()
  * @method static string getTitleSession()
  * @method static string getTitleSeparator()
