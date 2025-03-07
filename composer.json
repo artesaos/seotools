@@ -30,7 +30,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
-        "phpspec/phpspec": "~5.1.1 || ^6.0 || ^7.0",
+        "phpspec/phpspec": "~5.1.1 || ^6.0 || ^7.0 || ^7.5",
         "phpunit/phpunit": "^9.0 || ^10.0 || ^11.5.3"
     },
     "autoload": {
