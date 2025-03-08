@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\MetaTags addKeyword(string|array $keyword)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags removeMeta(string $key)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags addMeta(string|array $meta, string|null $value = null, string $name = 'name')
+ * @method static \Artesaos\SEOTools\Contracts\MetaTags addPreload(string $href, string $as)
+ * @method static \Artesaos\SEOTools\Contracts\MetaTags addCustom(string $meta)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags setCanonical(string $url)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags setPrev(string $url)
  * @method static \Artesaos\SEOTools\Contracts\MetaTags setNext(string $url)
