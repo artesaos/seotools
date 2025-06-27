@@ -599,6 +599,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 OpenGraph::addProperty($key, $value); // value can be string or array
 OpenGraph::addImage($url); // add image url
 OpenGraph::addImages($url); // add an array of url images
+OpenGraph::setImage($url); // define image (remove all images and set new image)
 OpenGraph::setTitle($title); // define title
 OpenGraph::setDescription($description);  // define description
 OpenGraph::setUrl($url); // define url
