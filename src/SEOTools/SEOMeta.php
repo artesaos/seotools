@@ -198,7 +198,7 @@ class SEOMeta implements MetaTagsContract
         }
 
         foreach ($languages as $lang) {
-            if (!empty($lang['lang'] && !empty($lang['url']))) {
+            if (!empty($lang['lang']) && !empty($lang['url'])) {
                 $html[] = "<link rel=\"alternate\" hreflang=\"{$lang['lang']}\" href=\"{$lang['url']}\">";
             }
         }
