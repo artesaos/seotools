@@ -25,12 +25,12 @@
     "require": {
         "php": "^8.1",
         "ext-json": "*",
-        "illuminate/config": "^10.0 || ^11.0 || ^12.0",
-        "illuminate/support": "^10.0 || ^11.0 || ^12.0"
+        "illuminate/config": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^10.0 || ^11.0 || ^12.0 || ^13.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
-        "phpunit/phpunit": "^9.0 || ^10.0 || ^11.5.3"
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "phpunit/phpunit": "^9.0 || ^10.0 || ^11.5.3 || ^12.5.12"
     },
     "autoload": {
         "psr-4": {
