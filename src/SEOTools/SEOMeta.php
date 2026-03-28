@@ -336,11 +336,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Sets the AMP html URL.
-     *
-     * @param string $url
-     *
-     * @return MetaTagsContract
+     * {@inheritdoc}
      */
     public function setAmpHtml($url)
     {
@@ -416,11 +412,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Sets the meta robots.
-     *
-     * @param string $robots
-     *
-     * @return MetaTagsContract
+     * {@inheritDoc}
      */
     public function setRobots($robots)
     {
@@ -514,9 +506,7 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
-     * Get the AMP html URL.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getAmpHtml()
     {

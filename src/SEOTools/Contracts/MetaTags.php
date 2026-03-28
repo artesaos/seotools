@@ -151,6 +151,15 @@ interface MetaTags
     public function setCanonical($url);
 
     /**
+     * Sets the AMP html URL.
+     *
+     * @param string $url
+     *
+     * @return static
+     */
+    public function setAmpHtml($url);
+
+    /**
      * Sets the prev URL.
      *
      * @param string $url
@@ -207,6 +216,15 @@ interface MetaTags
     public function setAlternateLanguages(array $languages);
 
     /**
+     * Sets the meta robots tag.
+     *
+     * @param string $robots
+     *
+     * @return static
+     */
+    public function setRobots($robots);
+
+    /**
      * Get the title formatted for display.
      *
      * @return string
@@ -254,6 +272,13 @@ interface MetaTags
      * @return string
      */
     public function getCanonical();
+
+    /**
+     * Get the AMP html URL.
+     *
+     * @return string
+     */
+    public function getAmpHtml();
 
     /**
      * Get the prev URL.
