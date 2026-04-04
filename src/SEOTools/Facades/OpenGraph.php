@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph removeProperty(string $key)
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph addImage(string $url, array $attributes = [])
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph addImages(array $urls)
+ * @method static \Artesaos\SEOTools\Contracts\OpenGraph setImage(string $url, array $attributes = [])
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph setTitle(string $title)
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph setDescription(string $description)
  * @method static \Artesaos\SEOTools\Contracts\OpenGraph setUrl(string $url)

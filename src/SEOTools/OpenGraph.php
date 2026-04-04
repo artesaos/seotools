@@ -841,4 +841,19 @@ class OpenGraph implements OpenGraphContract
     {
         return $this->addProperty('site_name', $name);
     }
+
+    /**
+     * Remove all images and set new image.
+     *
+     * @param string $url
+     * @param array  $attributes
+     *
+     * @return static
+     */
+    public function setImage($source = null, $attributes = [])
+    {
+        $this->images = [];
+
+        return $this->addImage($source, $attributes);
+    }
 }

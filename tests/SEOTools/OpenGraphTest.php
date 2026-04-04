@@ -59,6 +59,27 @@ class OpenGraphTest extends BaseTest
         $this->setRightAssertion($expected);
     }
 
+    public function test_add_image_and_add_images_append_new_images()
+    {
+        $this->openGraphs->addImages(['image1.png']);
+        $this->openGraphs->addImage('image2.png');
+
+        $expected = '<meta property="og:title" content="Over 9000 Thousand!"><meta property="og:description" content="For those who helped create the Genki Dama"><meta property="og:image" content="image1.png"><meta property="og:image" content="image2.png">';
+
+        $this->setRightAssertion($expected); 
+    }
+
+    public function test_set_image_remove_old_images_and_add_new()
+    {
+        $this->openGraphs->addImages(['image1.png']);
+        $this->openGraphs->addImage('image2.png');
+        $this->openGraphs->setImage('image3.png');
+
+        $expected = '<meta property="og:title" content="Over 9000 Thousand!"><meta property="og:description" content="For those who helped create the Genki Dama"><meta property="og:image" content="image3.png">';
+
+        $this->setRightAssertion($expected); 
+    }
+
     /**
      * @param $expectedString
      */
